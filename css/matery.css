@@ -35,6 +35,8 @@
 
 body {
     background-color: #eaeaea;
+    background: linear-gradient(60deg, rgba(224,255,125, 0.5) 5%, rgba(0, 228, 255, 0.35)) 0% 0% / cover;
+    background-attachment: fixed;
     margin: 0;
     color: #34495e;
     overflow-x: hidden;
@@ -594,7 +596,7 @@ header .go-back i {
 }
 
 @-webkit-keyframes rainbow {
-
+/*
     0%,
     100% {
         background: rgba(156, 39, 176, 0.75);
@@ -637,10 +639,11 @@ header .go-back i {
         background: -moz-linear-gradient(135deg, rgba(233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
         background: -webkit-linear-gradient(135deg, rgba(2233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
     }
+    */
 }
 
 @keyframes rainbow {
-
+/*
     0%,
     100% {
         background: rgba(156, 39, 176, 0.75);
@@ -683,6 +686,7 @@ header .go-back i {
         background: -moz-linear-gradient(135deg, rgba(233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
         background: -webkit-linear-gradient(135deg, rgba(2233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
     }
+    */
 }
 
 .index-card {
