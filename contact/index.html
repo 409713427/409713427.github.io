@@ -35,7 +35,6 @@
 
 
 <body>
-
     <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
@@ -307,7 +306,13 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/barrager.css">
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.barrager.js"></script>
+
+<div class="bg-cover pd-header about-cover">
     <div class="container">
     <div class="row">
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
@@ -324,7 +329,13 @@
                 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
                 <script>
                     var typed = new Typed("#subtitle", {
-                        strings: ['从来没有真正的绝境, 只有心灵的迷途','Never really desperate, only the lost of the soul'],
+                        strings: [ 
+                            
+                                "从来没有真正的绝境, 只有心灵的迷途",
+                            
+                                "Never really desperate, only the lost of the soul",
+                            
+                        ],
                         startDelay: 300,
                         typeSpeed: 100,
                         loop: true,
@@ -341,15 +352,29 @@
 
 <script>
     // 每天切换 banner 图.  Switch banner image every day.
-//修改后
-var bannerUrl = "/medias/banner/" + new Date().getDay() + '.webp';
-$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.webp)');
+    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
 </script>
 
 
     </div>
 </div>
 
+<style>
+    #send{
+        margin-bottom: 10px;
+        width: 49%;
+        background-color: #0ba360;
+    }
+    #clear{
+        margin-bottom: 10px;
+        width: 49%;
+        background-color: #e7c65c;
+    }
+    p{
+        text-align: center;
+    }
+</style>
 <main class="content">
     <div id="contact" class="container chip-container">
         <div class="card">
@@ -359,7 +384,11 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </div>
                 
             </div>
+            <!--valine评论弹幕-->
+            
         </div>
+
+        <!--其他评论card-->
         <div class="card">
             
 
@@ -370,8 +399,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
 
             
-			
-			
+
+            
 
             
 
@@ -436,7 +465,9 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
     
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
@@ -450,21 +481,23 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             
             
+                
             
             
-            
-            <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
             </span>
             
             
-            <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
             </span>
             
             <br>
+
+            <!-- 运行天数提醒. -->
             
             <br>
             
@@ -498,11 +531,6 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 
     <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
         <i class="fas fa-rss"></i>
-    </a>
-
-
-    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
     </a>
 
 </div>
@@ -660,7 +688,8 @@ $(function () {
 
     
 
-	
+    <!--腾讯兔小巢-->
+    
     
 
     
