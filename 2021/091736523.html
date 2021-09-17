@@ -30,7 +30,7 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Wst's Blog" type="application/atom+xml">
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -472,42 +472,42 @@
 <h3 id="1-3-子类不能继承的内容"><a href="#1-3-子类不能继承的内容" class="headerlink" title="1.3 子类不能继承的内容"></a>1.3 子类不能继承的内容</h3><h4 id="1-3-1-引入"><a href="#1-3-1-引入" class="headerlink" title="1.3.1 引入"></a>1.3.1 引入</h4><p>并不是父类的所有内容都可以给子类继承的：</p>
 <p><strong>子类不能继承父类的构造器，因为子类有自己的构造器。</strong></p>
 <p><strong>值得注意的是子类可以继承父类的私有成员（成员变量，方法），只是子类无法直接访问而已，可以通过getter/setter方法访问父类的private成员变量。</strong></p>
-<h4 id="1-3-2-演示代码"><a href="#1-3-2-演示代码" class="headerlink" title="1.3.2 演示代码"></a>1.3.2 演示代码</h4><pre><code class="java">public class Demo03 &#123;
-    public static void main(String[] args) &#123;
-        Zi z = new Zi();
-        System.out.println(z.num1);
-//        System.out.println(z.num2); // 私有的子类无法使用
-        // 通过getter/setter方法访问父类的private成员变量
-        System.out.println(z.getNum2());
+<h4 id="1-3-2-演示代码"><a href="#1-3-2-演示代码" class="headerlink" title="1.3.2 演示代码"></a>1.3.2 演示代码</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo03</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        Zi z <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Zi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>z<span class="token punctuation">.</span>num1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//        System.out.println(z.num2); // 私有的子类无法使用</span>
+        <span class="token comment" spellcheck="true">// 通过getter/setter方法访问父类的private成员变量</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>z<span class="token punctuation">.</span><span class="token function">getNum2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        z.show1();
-        // z.show2(); // 私有的子类无法使用
-    &#125;
-&#125;
+        z<span class="token punctuation">.</span><span class="token function">show1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// z.show2(); // 私有的子类无法使用</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-class Fu &#123;
-    public int num1 = 10;
-    private int num2 = 20;
+<span class="token keyword">class</span> <span class="token class-name">Fu</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> num1 <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> num2 <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
 
-    public void show1() &#123;
-        System.out.println(&quot;show1&quot;);
-    &#125;
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">show1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"show1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    private void show2() &#123;
-        System.out.println(&quot;show2&quot;);
-    &#125;
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">show2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"show2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    public int getNum2() &#123;
-        return num2;
-    &#125;
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getNum2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> num2<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    public void setNum2(int num2) &#123;
-        this.num2 = num2;
-    &#125;
-&#125;
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setNum2</span><span class="token punctuation">(</span><span class="token keyword">int</span> num2<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>num2 <span class="token operator">=</span> num2<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-class Zi extends Fu &#123;
-&#125;
+<span class="token keyword">class</span> <span class="token class-name">Zi</span> <span class="token keyword">extends</span> <span class="token class-name">Fu</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <blockquote>
 <p>小贴士：父类中的成员变量是非私有的，子类中可以直接访问。若父类中的成员变量私有了，子类是不能直接访问的。通常编码时，我们遵循封装的原则，使用private修饰成员变量，那么如何访问父类的私有成员变量呢？对！可以在父类中提供公共的getXxx()方法和setXxx()方法。</p>
@@ -515,33 +515,33 @@ class Zi extends Fu &#123;
 <h3 id="1-4-方法重写"><a href="#1-4-方法重写" class="headerlink" title="1.4 方法重写"></a>1.4 方法重写</h3><h4 id="1-4-1-概念"><a href="#1-4-1-概念" class="headerlink" title="1.4.1 概念"></a>1.4.1 概念</h4><p><strong>方法重写</strong> ：子类中出现与父类一模一样的方法时（返回值类型，方法名和参数列表都相同），会出现覆盖效果，也称为重写或者复写。<strong>声明不变，重新实现</strong>。</p>
 <h4 id="1-4-2使用场景与案例"><a href="#1-4-2使用场景与案例" class="headerlink" title="1.4.2使用场景与案例"></a>1.4.2使用场景与案例</h4><p>发生在子父类之间的关系。<br>子类继承了父类的方法，但是子类觉得父类的这方法不足以满足自己的需求，子类重新写了一个与父类同名的方法，以便覆盖父类的该方 法。</p>
 <p>例如：我们定义了一个动物类代码如下：</p>
-<pre><code class="java">public class Animal  &#123;
-    public void run()&#123;
-        System.out.println(&quot;动物跑的很快！&quot;);
-    &#125;
-    public void cry()&#123;
-        System.out.println(&quot;动物都可以叫~~~&quot;);
-    &#125;
-&#125;
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Animal</span>  <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"动物跑的很快！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">cry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"动物都可以叫~~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <p>然后定义一个猫类，猫可能认为父类cry()方法不能满足自己的需求</p>
 <p>代码如下：</p>
-<pre><code class="java">public class Cat extends Animal &#123;
-    public void cry()&#123;
-        System.out.println(&quot;我们一起学猫叫，喵喵喵！喵的非常好听！&quot;);
-    &#125;
-&#125;
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Cat</span> <span class="token keyword">extends</span> <span class="token class-name">Animal</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">cry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"我们一起学猫叫，喵喵喵！喵的非常好听！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-public class Test &#123;
-    public static void main(String[] args) &#123;
-          // 创建子类对象
-          Cat ddm = new Cat()；
-        // 调用父类继承而来的方法
-        ddm.run();
-          // 调用子类重写的方法
-          ddm.cry();
-    &#125;
-&#125;
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+          <span class="token comment" spellcheck="true">// 创建子类对象</span>
+          Cat ddm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Cat</span><span class="token punctuation">(</span><span class="token punctuation">)</span>；
+        <span class="token comment" spellcheck="true">// 调用父类继承而来的方法</span>
+        ddm<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token comment" spellcheck="true">// 调用子类重写的方法</span>
+          ddm<span class="token punctuation">.</span><span class="token function">cry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="1-4-3-Override重写注解"><a href="#1-4-3-Override重写注解" class="headerlink" title="1.4.3 @Override重写注解"></a>1.4.3 @Override重写注解</h4><ul>
 <li><p>@Override:注解，重写注解校验！</p>
@@ -550,14 +550,14 @@ public class Test &#123;
 </li>
 <li><p>建议重写都加上这个注解，一方面可以提高代码的可读性，一方面可以防止重写出错！</p>
 <p>加上后的子类代码形式如下：</p>
-<pre><code class="java">public class Cat extends Animal &#123;
-     // 声明不变，重新实现
-    // 方法名称与父类全部一样，只是方法体中的功能重写写了！
-    @Override
-    public void cry()&#123;
-        System.out.println(&quot;我们一起学猫叫，喵喵喵！喵的非常好听！&quot;);
-    &#125;
-&#125;
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Cat</span> <span class="token keyword">extends</span> <span class="token class-name">Animal</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+     <span class="token comment" spellcheck="true">// 声明不变，重新实现</span>
+    <span class="token comment" spellcheck="true">// 方法名称与父类全部一样，只是方法体中的功能重写写了！</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">cry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"我们一起学猫叫，喵喵喵！喵的非常好听！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 </li>
 </ul>
@@ -579,100 +579,100 @@ public class Test &#123;
 </li>
 </ul>
 <h2 id="第二章-引用类型使用总结"><a href="#第二章-引用类型使用总结" class="headerlink" title="第二章 引用类型使用总结"></a>第二章 引用类型使用总结</h2><p>实际的开发中，引用类型的使用非常重要，也是非常普遍的。我们可以在理解基本类型的使用方式基础上，进一步去掌握引用类型的使用方式。基本类型可以作为成员变量、作为方法的参数、作为方法的返回值，那么当然引用类型也是可以的。在这我们使用两个例子 , 来学习一下。</p>
-<h3 id="2-1-引用类型作为方法参数和返回值"><a href="#2-1-引用类型作为方法参数和返回值" class="headerlink" title="2.1 引用类型作为方法参数和返回值"></a>2.1 引用类型作为方法参数和返回值</h3><pre><code class="java">public class Person&#123;
-  public void eat()&#123;
-    System.out.println(&quot;吃饭&quot;);
-  &#125;
-&#125;
-public class Test&#123;
-  public static void main(String[] args)&#123;
-        method(new Person());
-           Person p = createPerson();
-  &#125;
+<h3 id="2-1-引用类型作为方法参数和返回值"><a href="#2-1-引用类型作为方法参数和返回值" class="headerlink" title="2.1 引用类型作为方法参数和返回值"></a>2.1 引用类型作为方法参数和返回值</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"吃饭"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token function">method</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+           Person p <span class="token operator">=</span> <span class="token function">createPerson</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
     
-  //引用类型作为方法参数,在前面笔记本案例中我们也使用了接口类型作为方法参数
-  pubic static void method(Person p)&#123;
-       p.eat();
-  &#125;
+  <span class="token comment" spellcheck="true">//引用类型作为方法参数,在前面笔记本案例中我们也使用了接口类型作为方法参数</span>
+  pubic <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">method</span><span class="token punctuation">(</span>Person p<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+       p<span class="token punctuation">.</span><span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
     
-  //引用类型作为返回值
-  public static Person createPerson()&#123;
-        return new Person();
-  &#125;
-&#125;
+  <span class="token comment" spellcheck="true">//引用类型作为返回值</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> Person <span class="token function">createPerson</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="2-2-引用类型作为成员变量"><a href="#2-2-引用类型作为成员变量" class="headerlink" title="2.2 引用类型作为成员变量"></a>2.2 引用类型作为成员变量</h3><p>​    我们每个人(Person)都有一个身份证(IDCard) , 为了表示这种关系 , 就需要在Person中定义一个IDCard的成员变量。定义Person类时，代码如下：</p>
-<pre><code class="java">class Person &#123;
-    String name;//姓名
-    int age;//年龄
-&#125;
+<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    String name<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//姓名</span>
+    <span class="token keyword">int</span> age<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//年龄</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <p>​    使用使用<code>String</code> 类型表示姓名 , <code>int</code> 类型表示年龄。其实，<code>String</code>本身就是引用类型，我们往往忽略了它是引用类型。如果我们继续丰富这个类的定义，给<code>Person</code> 增加身份证号 , 身份证签发机关等属性，我们将如何编写呢？这时候就需要编写一个IDCard类了</p>
 <p>定义IDCard(身份证)类，添加身份证号 , 签发地等属性：</p>
-<pre><code class="java">class IDCard &#123;
-    String idNum;//身份证号
-    String authority;//签发地
+<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">IDCard</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    String idNum<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//身份证号</span>
+    String authority<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//签发地</span>
   
-      //getter和setter方法
-      //...
+      <span class="token comment" spellcheck="true">//getter和setter方法</span>
+      <span class="token comment" spellcheck="true">//...</span>
       
-      //toString方法
-      //...
-&#125;
+      <span class="token comment" spellcheck="true">//toString方法</span>
+      <span class="token comment" spellcheck="true">//...</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <p>修改Person类：</p>
-<pre><code class="java">public class Person &#123;
-    String name;//姓名
-    int age;//年龄
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    String name<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//姓名</span>
+    <span class="token keyword">int</span> age<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//年龄</span>
 
-    IDCard idCard;//表示自己的身份证信息
+    IDCard idCard<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//表示自己的身份证信息</span>
 
-    //name和age的getter、setter方法
-    //...
+    <span class="token comment" spellcheck="true">//name和age的getter、setter方法</span>
+    <span class="token comment" spellcheck="true">//...</span>
 
-    public IDCard getIdCard() &#123;
-        return idCard;
-    &#125;
+    <span class="token keyword">public</span> IDCard <span class="token function">getIdCard</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> idCard<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    public void setIdCard(IDCard idCard) &#123;
-        this.idCard = idCard;
-    &#125;
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setIdCard</span><span class="token punctuation">(</span>IDCard idCard<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>idCard <span class="token operator">=</span> idCard<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    @Override
-    public String toString() &#123;
-        return &quot;Person&#123;&quot; +
-                &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
-                &quot;, age=&quot; + age +
-                &quot;, idCard=&quot; + idCard +
-                &#39;&#125;&#39;;
-    &#125;
-&#125;
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string">"Person&amp;#123;"</span> <span class="token operator">+</span>
+                <span class="token string">"name='"</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
+                <span class="token string">", age="</span> <span class="token operator">+</span> age <span class="token operator">+</span>
+                <span class="token string">", idCard="</span> <span class="token operator">+</span> idCard <span class="token operator">+</span>
+                <span class="token string">'&amp;#125;'</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <p>测试类：</p>
-<pre><code class="java">public class TestDemo &#123;
-    public static void main(String[] args) &#123;
-        //创建IDCard对象
-        IDCard idCard = new IDCard();
-        //设置身份证号
-        idCard.setIdNum(&quot;110113201606066666&quot;);
-        //设置签发地
-        idCard.setAuthority(&quot;北京市顺义区公安局&quot;);
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestDemo</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//创建IDCard对象</span>
+        IDCard idCard <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IDCard</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//设置身份证号</span>
+        idCard<span class="token punctuation">.</span><span class="token function">setIdNum</span><span class="token punctuation">(</span><span class="token string">"110113201606066666"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//设置签发地</span>
+        idCard<span class="token punctuation">.</span><span class="token function">setAuthority</span><span class="token punctuation">(</span><span class="token string">"北京市顺义区公安局"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //创建Person对象
-        Person p = new Person();
-        //设置姓名
-        p.setName(&quot;小顺子&quot;);
-        //设置年龄
-        p.setAge(2);
-        //设置身份证信息
-        p.setIdCard(idCard);
+        <span class="token comment" spellcheck="true">//创建Person对象</span>
+        Person p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//设置姓名</span>
+        p<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"小顺子"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//设置年龄</span>
+        p<span class="token punctuation">.</span><span class="token function">setAge</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//设置身份证信息</span>
+        p<span class="token punctuation">.</span><span class="token function">setIdCard</span><span class="token punctuation">(</span>idCard<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //打印小顺子的信息
-        System.out.println(p);
-    &#125;
-&#125;
-输出结果:
-Person&#123;name=&#39;小顺子&#39;, age=2, idCard=IDCard&#123;idNum=&#39;110113201606066666&#39;, authority=&#39;北京市顺义区公安局&#39;&#125;&#125;
+        <span class="token comment" spellcheck="true">//打印小顺子的信息</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+输出结果<span class="token operator">:</span>
+Person<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>name<span class="token operator">=</span><span class="token string">'小顺子'</span><span class="token punctuation">,</span> age<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> idCard<span class="token operator">=</span>IDCard<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>idNum<span class="token operator">=</span><span class="token string">'110113201606066666'</span><span class="token punctuation">,</span> authority<span class="token operator">=</span><span class="token string">'北京市顺义区公安局'</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <blockquote>
 <p>类作为成员变量时，对它进行赋值的操作，实际上，是赋给它该类的一个对象。同理 , 接口也是如此 , 例如我们笔记本案例中使用usb设备。在此我们只是通过小例子 , 让大家熟识下引用类型的用法 , 后续在咱们的就业班学习中 , 这种方式会使用的很多。  </p>
