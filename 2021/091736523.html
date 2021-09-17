@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="我的第一篇博客文章, Wst&#39;s Blog">
+    <meta name="keywords" content="java, Wst&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>我的第一篇博客文章 | Wst&#39;s Blog</title>
+    <title>java | Wst&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -294,12 +294,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">我的第一篇博客文章</h1>
+                    <h1 class="description center-align post-title">java</h1>
                 </div>
             </div>
         </div>
@@ -417,12 +417,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/java/" class="post-category">
+                                java
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -431,7 +444,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-09-16
+                    2021-09-17
                 </div>
                 
 
@@ -452,16 +465,218 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="我的博客文章编写"><a href="#我的博客文章编写" class="headerlink" title="我的博客文章编写"></a>我的博客文章编写</h1><span id="more"></span>
-<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>使用标题时候需要写#  </p>
-<p> 这是第一个段落  </p>
-<p> 这是第二个段落  </p>
-<h2 id="区块引用"><a href="#区块引用" class="headerlink" title="区块引用"></a>区块引用</h2><blockquote>
-<p>这是一段高亮显示  </p>
+                <h1 id="Java基础-【继承，引用类型使用】"><a href="#Java基础-【继承，引用类型使用】" class="headerlink" title="Java基础 【继承，引用类型使用】"></a>Java基础 【继承，引用类型使用】</h1><h2 id="第一章-继承"><a href="#第一章-继承" class="headerlink" title="第一章 继承"></a>第一章 继承</h2><h3 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1 定义"></a>1.1 定义</h3><p>​        继承就是子类继承父类的<strong>属性</strong>和<strong>行为</strong>，使得子类对象可以直接具有与父类相同的属性、相同的行为。子类可以直接访问父类中的<strong>非私有</strong>的属性和行为</p>
+<h3 id="1-2-继承的好处"><a href="#1-2-继承的好处" class="headerlink" title="1.2 继承的好处"></a>1.2 继承的好处</h3><pre><code>      1. 提高**代码的复用性**（减少代码冗余，相同代码重复利用）。
+      2. 使类与类之间产生了关系。
+</code></pre>
+<h3 id="1-3-子类不能继承的内容"><a href="#1-3-子类不能继承的内容" class="headerlink" title="1.3 子类不能继承的内容"></a>1.3 子类不能继承的内容</h3><h4 id="1-3-1-引入"><a href="#1-3-1-引入" class="headerlink" title="1.3.1 引入"></a>1.3.1 引入</h4><p>并不是父类的所有内容都可以给子类继承的：</p>
+<p><strong>子类不能继承父类的构造器，因为子类有自己的构造器。</strong></p>
+<p><strong>值得注意的是子类可以继承父类的私有成员（成员变量，方法），只是子类无法直接访问而已，可以通过getter/setter方法访问父类的private成员变量。</strong></p>
+<h4 id="1-3-2-演示代码"><a href="#1-3-2-演示代码" class="headerlink" title="1.3.2 演示代码"></a>1.3.2 演示代码</h4><pre><code class="java">public class Demo03 &#123;
+    public static void main(String[] args) &#123;
+        Zi z = new Zi();
+        System.out.println(z.num1);
+//        System.out.println(z.num2); // 私有的子类无法使用
+        // 通过getter/setter方法访问父类的private成员变量
+        System.out.println(z.getNum2());
+
+        z.show1();
+        // z.show2(); // 私有的子类无法使用
+    &#125;
+&#125;
+
+class Fu &#123;
+    public int num1 = 10;
+    private int num2 = 20;
+
+    public void show1() &#123;
+        System.out.println(&quot;show1&quot;);
+    &#125;
+
+    private void show2() &#123;
+        System.out.println(&quot;show2&quot;);
+    &#125;
+
+    public int getNum2() &#123;
+        return num2;
+    &#125;
+
+    public void setNum2(int num2) &#123;
+        this.num2 = num2;
+    &#125;
+&#125;
+
+class Zi extends Fu &#123;
+&#125;
+</code></pre>
+<blockquote>
+<p>小贴士：父类中的成员变量是非私有的，子类中可以直接访问。若父类中的成员变量私有了，子类是不能直接访问的。通常编码时，我们遵循封装的原则，使用private修饰成员变量，那么如何访问父类的私有成员变量呢？对！可以在父类中提供公共的getXxx()方法和setXxx()方法。</p>
 </blockquote>
-<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><p> <a href="www.baidu.com">百度</a></p>
-<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><hr>
-<hr>
+<h3 id="1-4-方法重写"><a href="#1-4-方法重写" class="headerlink" title="1.4 方法重写"></a>1.4 方法重写</h3><h4 id="1-4-1-概念"><a href="#1-4-1-概念" class="headerlink" title="1.4.1 概念"></a>1.4.1 概念</h4><p><strong>方法重写</strong> ：子类中出现与父类一模一样的方法时（返回值类型，方法名和参数列表都相同），会出现覆盖效果，也称为重写或者复写。<strong>声明不变，重新实现</strong>。</p>
+<h4 id="1-4-2使用场景与案例"><a href="#1-4-2使用场景与案例" class="headerlink" title="1.4.2使用场景与案例"></a>1.4.2使用场景与案例</h4><p>发生在子父类之间的关系。<br>子类继承了父类的方法，但是子类觉得父类的这方法不足以满足自己的需求，子类重新写了一个与父类同名的方法，以便覆盖父类的该方 法。</p>
+<p>例如：我们定义了一个动物类代码如下：</p>
+<pre><code class="java">public class Animal  &#123;
+    public void run()&#123;
+        System.out.println(&quot;动物跑的很快！&quot;);
+    &#125;
+    public void cry()&#123;
+        System.out.println(&quot;动物都可以叫~~~&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p>然后定义一个猫类，猫可能认为父类cry()方法不能满足自己的需求</p>
+<p>代码如下：</p>
+<pre><code class="java">public class Cat extends Animal &#123;
+    public void cry()&#123;
+        System.out.println(&quot;我们一起学猫叫，喵喵喵！喵的非常好听！&quot;);
+    &#125;
+&#125;
+
+public class Test &#123;
+    public static void main(String[] args) &#123;
+          // 创建子类对象
+          Cat ddm = new Cat()；
+        // 调用父类继承而来的方法
+        ddm.run();
+          // 调用子类重写的方法
+          ddm.cry();
+    &#125;
+&#125;
+</code></pre>
+<h4 id="1-4-3-Override重写注解"><a href="#1-4-3-Override重写注解" class="headerlink" title="1.4.3 @Override重写注解"></a>1.4.3 @Override重写注解</h4><ul>
+<li><p>@Override:注解，重写注解校验！</p>
+</li>
+<li><p>这个注解标记的方法，就说明这个方法必须是重写父类的方法，否则编译阶段报错。</p>
+</li>
+<li><p>建议重写都加上这个注解，一方面可以提高代码的可读性，一方面可以防止重写出错！</p>
+<p>加上后的子类代码形式如下：</p>
+<pre><code class="java">public class Cat extends Animal &#123;
+     // 声明不变，重新实现
+    // 方法名称与父类全部一样，只是方法体中的功能重写写了！
+    @Override
+    public void cry()&#123;
+        System.out.println(&quot;我们一起学猫叫，喵喵喵！喵的非常好听！&quot;);
+    &#125;
+&#125;
+</code></pre>
+</li>
+</ul>
+<h4 id="1-4-4-注意事项"><a href="#1-4-4-注意事项" class="headerlink" title="1.4.4 注意事项"></a>1.4.4 注意事项</h4><ol>
+<li>方法重写是发生在子父类之间的关系。</li>
+<li>子类方法覆盖父类方法，必须要保证权限大于等于父类权限。</li>
+<li>子类方法覆盖父类方法，返回值类型、函数名和参数列表都要一模一样。</li>
+</ol>
+<h3 id="1-5-this与super"><a href="#1-5-this与super" class="headerlink" title="1.5 this与super"></a>1.5 this与super</h3><ul>
+<li><p><strong>子类的每个构造方法中均有默认的super()，调用父类的空参构造。手动调用父类构造会覆盖默认的super()。</strong></p>
+</li>
+<li><p><strong>super() 和 this() 都必须是在构造方法的第一行，所以不能同时出现。</strong></p>
+</li>
+<li><p><strong>super(..)和this(…)是根据参数去确定调用父类哪个构造器的。</strong></p>
+</li>
+<li><p>super(..)可以调用父类构造器初始化继承自父类的成员变量的数据。</p>
+</li>
+<li><p>this(..)可以调用本类中的其他构造器。</p>
+</li>
+</ul>
+<h2 id="第二章-引用类型使用总结"><a href="#第二章-引用类型使用总结" class="headerlink" title="第二章 引用类型使用总结"></a>第二章 引用类型使用总结</h2><p>实际的开发中，引用类型的使用非常重要，也是非常普遍的。我们可以在理解基本类型的使用方式基础上，进一步去掌握引用类型的使用方式。基本类型可以作为成员变量、作为方法的参数、作为方法的返回值，那么当然引用类型也是可以的。在这我们使用两个例子 , 来学习一下。</p>
+<h3 id="2-1-引用类型作为方法参数和返回值"><a href="#2-1-引用类型作为方法参数和返回值" class="headerlink" title="2.1 引用类型作为方法参数和返回值"></a>2.1 引用类型作为方法参数和返回值</h3><pre><code class="java">public class Person&#123;
+  public void eat()&#123;
+    System.out.println(&quot;吃饭&quot;);
+  &#125;
+&#125;
+public class Test&#123;
+  public static void main(String[] args)&#123;
+        method(new Person());
+           Person p = createPerson();
+  &#125;
+    
+  //引用类型作为方法参数,在前面笔记本案例中我们也使用了接口类型作为方法参数
+  pubic static void method(Person p)&#123;
+       p.eat();
+  &#125;
+    
+  //引用类型作为返回值
+  public static Person createPerson()&#123;
+        return new Person();
+  &#125;
+&#125;
+</code></pre>
+<h3 id="2-2-引用类型作为成员变量"><a href="#2-2-引用类型作为成员变量" class="headerlink" title="2.2 引用类型作为成员变量"></a>2.2 引用类型作为成员变量</h3><p>​    我们每个人(Person)都有一个身份证(IDCard) , 为了表示这种关系 , 就需要在Person中定义一个IDCard的成员变量。定义Person类时，代码如下：</p>
+<pre><code class="java">class Person &#123;
+    String name;//姓名
+    int age;//年龄
+&#125;
+</code></pre>
+<p>​    使用使用<code>String</code> 类型表示姓名 , <code>int</code> 类型表示年龄。其实，<code>String</code>本身就是引用类型，我们往往忽略了它是引用类型。如果我们继续丰富这个类的定义，给<code>Person</code> 增加身份证号 , 身份证签发机关等属性，我们将如何编写呢？这时候就需要编写一个IDCard类了</p>
+<p>定义IDCard(身份证)类，添加身份证号 , 签发地等属性：</p>
+<pre><code class="java">class IDCard &#123;
+    String idNum;//身份证号
+    String authority;//签发地
+  
+      //getter和setter方法
+      //...
+      
+      //toString方法
+      //...
+&#125;
+</code></pre>
+<p>修改Person类：</p>
+<pre><code class="java">public class Person &#123;
+    String name;//姓名
+    int age;//年龄
+
+    IDCard idCard;//表示自己的身份证信息
+
+    //name和age的getter、setter方法
+    //...
+
+    public IDCard getIdCard() &#123;
+        return idCard;
+    &#125;
+
+    public void setIdCard(IDCard idCard) &#123;
+        this.idCard = idCard;
+    &#125;
+
+    @Override
+    public String toString() &#123;
+        return &quot;Person&#123;&quot; +
+                &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                &quot;, age=&quot; + age +
+                &quot;, idCard=&quot; + idCard +
+                &#39;&#125;&#39;;
+    &#125;
+&#125;
+</code></pre>
+<p>测试类：</p>
+<pre><code class="java">public class TestDemo &#123;
+    public static void main(String[] args) &#123;
+        //创建IDCard对象
+        IDCard idCard = new IDCard();
+        //设置身份证号
+        idCard.setIdNum(&quot;110113201606066666&quot;);
+        //设置签发地
+        idCard.setAuthority(&quot;北京市顺义区公安局&quot;);
+
+        //创建Person对象
+        Person p = new Person();
+        //设置姓名
+        p.setName(&quot;小顺子&quot;);
+        //设置年龄
+        p.setAge(2);
+        //设置身份证信息
+        p.setIdCard(idCard);
+
+        //打印小顺子的信息
+        System.out.println(p);
+    &#125;
+&#125;
+输出结果:
+Person&#123;name=&#39;小顺子&#39;, age=2, idCard=IDCard&#123;idNum=&#39;110113201606066666&#39;, authority=&#39;北京市顺义区公安局&#39;&#125;&#125;
+</code></pre>
+<blockquote>
+<p>类作为成员变量时，对它进行赋值的操作，实际上，是赋给它该类的一个对象。同理 , 接口也是如此 , 例如我们笔记本案例中使用usb设备。在此我们只是通过小例子 , 让大家熟识下引用类型的用法 , 后续在咱们的就业班学习中 , 这种方式会使用的很多。  </p>
+</blockquote>
 
                 
             </div>
@@ -478,7 +693,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">ShuaiTongWang</a>
+                    <a href="/about" rel="external nofollow noreferrer">wst</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -488,7 +703,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://409713427.github.io/2021/091615650.html">https://409713427.github.io/2021/091615650.html</a>
+                    <a href="https://409713427.github.io/2021/091736523.html">https://409713427.github.io/2021/091736523.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -501,7 +716,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">ShuaiTongWang</a>
+                    <a href="/about" target="_blank">wst</a>
                     !
                 </span>
             </div>
@@ -525,7 +740,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -961,9 +1180,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/091736523.html">
                     <div class="card-image">
@@ -980,9 +1200,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -995,6 +1215,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1013,24 +1234,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/091516107.html">
+                <a href="/2021/091615650.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="我的第一篇博客文章">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">我的第一篇博客文章</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            我的博客文章编写
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-16
                             </span>
                         <span class="publish-author">
                             
