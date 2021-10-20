@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>【Linux安装插件系列】Linux安装配置jdk1.8</title>
+      <link href="/2021/102036523.html"/>
+      <url>/2021/102036523.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Linux安装jdk1-8"><a href="#Linux安装jdk1-8" class="headerlink" title="Linux安装jdk1.8"></a>Linux安装jdk1.8</h1><p>第一次再Linux安装jdk并且配置环境,为了以后查看,在这里记录一下.</p><p>linux 下安装jdk和windows下的安装是一样的，之前在windows安装的时候是先下载压缩包，然后再配置环境变量。其实在linux下也是一样的。</p><h3 id="第一步：创建jdk安装目录-该-usr-local-src-目录是空的-最好把我们自己下载的放到这-容易区分"><a href="#第一步：创建jdk安装目录-该-usr-local-src-目录是空的-最好把我们自己下载的放到这-容易区分" class="headerlink" title="第一步：创建jdk安装目录(该/usr/local/src 目录是空的,最好把我们自己下载的放到这,容易区分)"></a>第一步：创建jdk安装目录(该/usr/local/src 目录是空的,最好把我们自己下载的放到这,容易区分)</h3><pre><code>命令： mkdir -p /usr/local/src/jdk</code></pre><h3 id="第二步：查看安装程序"><a href="#第二步：查看安装程序" class="headerlink" title="第二步：查看安装程序"></a>第二步：查看安装程序</h3><pre><code>命令：rpm -qa | grep -i jdk</code></pre><p>　　 若之前安装过jdk，下次安装一定把之前的删除干净</p><h3 id="第三步：下载jdk包需要联网，下载也需要点时间）"><a href="#第三步：下载jdk包需要联网，下载也需要点时间）" class="headerlink" title="第三步：下载jdk包需要联网，下载也需要点时间）"></a>第三步：下载jdk包需要联网，下载也需要点时间）</h3><p>此次使用的为后缀为tar.gz的文件（不需要安装），如jdk-8u131-linux-x64.tar.gz</p><pre><code>安装指令: [root@master wst]# wget --no-check-certificate --no-cookies --header &quot;Cookie: oraclelicense=accept-securebackup-cookie&quot;  http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz</code></pre><p>注意：如果上面wget命令不能用,报错：-bash: wget: command not found。执行一下该命令(安装依赖包) yum -y install wget</p><p>   　　  注意 : 记住需要加上：–no-check-certificate –no-cookies –header “Cookie: oraclelicense=accept-securebackup-cookie”    这段是为了避开用户验证用的</p><h3 id="第四步：解压"><a href="#第四步：解压" class="headerlink" title="第四步：解压"></a>第四步：解压</h3><pre><code>解压命令 : tar -zxvf jdk-8u131-linux-x64.tar.gz</code></pre><p>  　　    系统会生成一个名为：jdk1.8.0_131 的文件夹。可以使用mv命令自定义文件名。</p><pre><code>更改文件夹名称 : mv jdk1.8.0_131  jdk1.8</code></pre><p><a href="https://imgtu.com/i/5BQqiQ" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BQqiQ.png" alt="5BQqiQ.png"></a></p><p> 　　第五步：配置环境变量</p><pre><code>　　 编辑配置文件: vi /etc/profile</code></pre><p>可以看到这个文件的内容，profile文件有点类似于windows系统里面的环境变量的配置，</p><p>　　  <strong>shift + g 定位到最后一行</strong></p><p>　　  <strong>这个时候按一下a或i键，进入编辑模式</strong></p><pre><code>export JAVA_HOME=/usr/local/src/jdk/jdk1.8export PATH=$PATH:$JAVA_HOME/binexport CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</code></pre><p><a href="https://imgtu.com/i/5BQHIg" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BQHIg.jpg" alt="5BQHIg.jpg"></a></p><h3 id="第六步：退出文件，保存"><a href="#第六步：退出文件，保存" class="headerlink" title="第六步：退出文件，保存"></a>第六步：退出文件，保存</h3><pre><code> 　　  按Esc键   输入:wq   保存并退出</code></pre><h3 id="第七步：让配置文件生效"><a href="#第七步：让配置文件生效" class="headerlink" title="第七步：让配置文件生效"></a>第七步：让配置文件生效</h3><pre><code># source /etc/profile</code></pre><h3 id="第八步：查看是否配置成功"><a href="#第八步：查看是否配置成功" class="headerlink" title="第八步：查看是否配置成功"></a>第八步：查看是否配置成功</h3><pre><code>[root@master wst]# java -version </code></pre><p>　　　　若出现jdk版本号，则安装并配置环境变量成功</p><p><a href="https://imgtu.com/i/5BQ7dS" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BQ7dS.jpg" alt="5BQ7dS.jpg"></a></p><pre><code>   　　如果提示命令找不到的话，查看一下jdk的配置路径是否错误。</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>java基础【抽象类，接口、代码块、final、单例、枚举】</title>
       <link href="/2021/091936523.html"/>
       <url>/2021/091936523.html</url>
