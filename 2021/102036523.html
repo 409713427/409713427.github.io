@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【Linux安装插件系列】Linux安装配置jdk1.8 | Wst&#39;s Blog</title>
+    <title>【Linux安装插件系列】Linux安装配置tomcat9.0 | Wst&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -299,7 +299,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【Linux安装插件系列】Linux安装配置jdk1.8</h1>
+                    <h1 class="description center-align post-title">【Linux安装插件系列】Linux安装配置tomcat9.0</h1>
                 </div>
             </div>
         </div>
@@ -465,47 +465,59 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Linux安装jdk1-8"><a href="#Linux安装jdk1-8" class="headerlink" title="Linux安装jdk1.8"></a>Linux安装jdk1.8</h1><p>第一次再Linux安装jdk并且配置环境,为了以后查看,在这里记录一下.</p>
-<p>linux 下安装jdk和windows下的安装是一样的，之前在windows安装的时候是先下载压缩包，然后再配置环境变量。其实在linux下也是一样的。</p>
-<h3 id="第一步：创建jdk安装目录-该-usr-local-src-目录是空的-最好把我们自己下载的放到这-容易区分"><a href="#第一步：创建jdk安装目录-该-usr-local-src-目录是空的-最好把我们自己下载的放到这-容易区分" class="headerlink" title="第一步：创建jdk安装目录(该/usr/local/src 目录是空的,最好把我们自己下载的放到这,容易区分)"></a>第一步：创建jdk安装目录(该/usr/local/src 目录是空的,最好把我们自己下载的放到这,容易区分)</h3><pre class=" language-bash"><code class="language-bash">命令： <span class="token function">mkdir</span> -p /usr/local/src/jdk
+                <h1 id="Linux服务器上安装tomcat"><a href="#Linux服务器上安装tomcat" class="headerlink" title="Linux服务器上安装tomcat"></a>Linux服务器上安装tomcat</h1><p> 安装软件 ： apache-tomcat-9.0.0.M1.tar.gz（下载地址<a href="http://tomcat.apache.org/%EF%BC%89" target="_blank" rel="noopener">http://tomcat.apache.org/）</a></p>
+<h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>　　Tomcat是其中一个开源的且免费的java Web服务器，是Apache软件基金会的项目，所以安装Tomcat之前要安装java JDk，请参照<a href="https://409713427.github.io/2021/102036523.html">Linux安装jdk1.8</a></p>
+<h3 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h3><p>　　下载Tomcat9</p>
+<p>​    <a href="https://imgtu.com/i/5Bwrp6" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5Bwrp6.jpg" alt="5Bwrp6.jpg"></a></p>
+<pre><code>将文件移动到apache-tomcat-9.0.0.M1.tar.gz移动到/usr/tomcat/下，并解压：
 </code></pre>
-<h3 id="第二步：查看安装程序"><a href="#第二步：查看安装程序" class="headerlink" title="第二步：查看安装程序"></a>第二步：查看安装程序</h3><pre class=" language-bash"><code class="language-bash">命令：rpm -qa <span class="token operator">|</span> <span class="token function">grep</span> -i jdk
+<p><a href="https://imgtu.com/i/5Bws1K" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5Bws1K.jpg" alt="5Bws1K.jpg"></a></p>
+<pre class=" language-bash"><code class="language-bash">解压命令 <span class="token keyword">:</span> <span class="token function">tar</span> -xzvf apache-tomcat-10.0.12.tar.gz 
 </code></pre>
-<p>　　 若之前安装过jdk，下次安装一定把之前的删除干净</p>
-<h3 id="第三步：下载jdk包需要联网，下载也需要点时间）"><a href="#第三步：下载jdk包需要联网，下载也需要点时间）" class="headerlink" title="第三步：下载jdk包需要联网，下载也需要点时间）"></a>第三步：下载jdk包需要联网，下载也需要点时间）</h3><p>此次使用的为后缀为tar.gz的文件（不需要安装），如jdk-8u131-linux-x64.tar.gz</p>
-<pre class=" language-bash"><code class="language-bash">安装指令: <span class="token punctuation">[</span>root@master wst<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" </span>
- http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz
+<p>   <a href="https://imgtu.com/i/5Bw0t1" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5Bw0t1.jpg" alt="5Bw0t1.jpg"></a></p>
+<p>并修改文件名</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">mv</span> apache-tomcat-10.0.12 apache-tomcat-10.0.12-8082
 </code></pre>
-<p>注意：如果上面wget命令不能用,报错：-bash: wget: command not found。执行一下该命令(安装依赖包) yum -y install wget</p>
-<p>   　　  注意 : 记住需要加上：–no-check-certificate –no-cookies –header “Cookie: oraclelicense=accept-securebackup-cookie”    这段是为了避开用户验证用的</p>
-<h3 id="第四步：解压"><a href="#第四步：解压" class="headerlink" title="第四步：解压"></a>第四步：解压</h3><pre class=" language-bash"><code class="language-bash">解压命令 <span class="token keyword">:</span> <span class="token function">tar</span> -zxvf jdk-8u131-linux-x64.tar.gz
-</code></pre>
-<p>  　　    系统会生成一个名为：jdk1.8.0_131 的文件夹。可以使用mv命令自定义文件名。</p>
-<pre class=" language-bash"><code class="language-bash">更改文件夹名称 <span class="token keyword">:</span> <span class="token function">mv</span> jdk1.8.0_131  jdk1.8
-</code></pre>
-<p><a href="https://imgtu.com/i/5BQqiQ" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BQqiQ.png" alt="5BQqiQ.png"></a></p>
-<p> 　　第五步：配置环境变量</p>
-<pre class=" language-bash"><code class="language-bash">　　 编辑配置文件: <span class="token function">vi</span> /etc/profile
-</code></pre>
-<p>可以看到这个文件的内容，profile文件有点类似于windows系统里面的环境变量的配置，</p>
-<p>　　  <strong>shift + g 定位到最后一行</strong></p>
-<p>　　  <strong>这个时候按一下a或i键，进入编辑模式</strong></p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">export</span> JAVA_HOME<span class="token operator">=</span>/usr/local/src/jdk/jdk1.8
+<p>　　再次解压apache-tomcat-10.0.12.tar.gz 文件，并修改解压后的文件价名为apache-tomcat-10.0.12-8082，得到　</p>
+<p>​    <a href="https://imgtu.com/i/5BwBfx" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BwBfx.jpg" alt="5BwBfx.jpg"></a></p>
+<p>步骤三</p>
+<p>　　修改端口，分别修改tomcat里面conf/server.xml</p>
+<p>server.xml文件中有三个端口设置</p>
+<p>　　</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token operator">&lt;</span>Server port<span class="token operator">=</span><span class="token string">"8005"</span> shutdown<span class="token operator">=</span><span class="token string">"SHUTDOWN"</span><span class="token operator">></span> ：关闭时使用
 
-<span class="token function">export</span> PATH<span class="token operator">=</span><span class="token variable">$PATH</span><span class="token keyword">:</span><span class="token variable">$JAVA_HOME</span>/bin
+　　<span class="token operator">&lt;</span>Connector port<span class="token operator">=</span><span class="token string">"8080"</span> protocol<span class="token operator">=</span><span class="token string">"HTTP/1.1"</span> connectionTimeout<span class="token operator">=</span><span class="token string">"20000"</span> redirectPort<span class="token operator">=</span><span class="token string">"8443"</span> /<span class="token operator">></span> ： 一般应用使用
 
-<span class="token function">export</span> CLASSPATH<span class="token operator">=</span>.:<span class="token variable">$JAVA_HOME</span>/lib/dt.jar:<span class="token variable">$JAVA_HOME</span>/lib/tools.jar
+　　<span class="token operator">&lt;</span>Connector port<span class="token operator">=</span><span class="token string">"8009"</span> protocol<span class="token operator">=</span><span class="token string">"AJP/1.3"</span> redirectPort<span class="token operator">=</span><span class="token string">"8443"</span> /<span class="token operator">></span>：为AJP端口，即容器使用，如 APACHE能通过AJP协议访问Tomcat的8009端口
 </code></pre>
-<p><a href="https://imgtu.com/i/5BQHIg" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BQHIg.jpg" alt="5BQHIg.jpg"></a></p>
-<h3 id="第六步：退出文件，保存"><a href="#第六步：退出文件，保存" class="headerlink" title="第六步：退出文件，保存"></a>第六步：退出文件，保存</h3><p>​        按Esc键   输入:wq   保存并退出</p>
-<h3 id="第七步：让配置文件生效"><a href="#第七步：让配置文件生效" class="headerlink" title="第七步：让配置文件生效"></a>第七步：让配置文件生效</h3><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># source /etc/profile</span>
+<p>　　第一个80的tomcat的三个端口分别修改为：8005/80/8009</p>
+<p>　　第二个8082的tomcat的三个端口分别修改为：7082/8082/9082</p>
+<p>步骤四</p>
+<p>　　启动tomcat，分别进入tomcat里面的bin目录</p>
+<p>　　执行： ./startup.sh  –&gt;启动tomcat</p>
+<p>　　执行： ./shutdown.sh –&gt;关闭tomcat</p>
+<p>　　浏览器中输入：<a href="http://localhost:8080/" target="_blank" rel="noopener">http://ip:80</a> 和<a href="http://localhost:8090/" target="_blank" rel="noopener">http://</a><a href="http://localhost:8080/" target="_blank" rel="noopener">ip</a><a href="http://localhost:8090/" target="_blank" rel="noopener">:80</a>82（ip指服务器的IP地址），即可访问不同的tomcat</p>
+<p><a href="https://imgtu.com/i/5B0dKS" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5B0dKS.jpg" alt="5B0dKS.jpg"></a></p>
+<p><a href="https://imgtu.com/i/5BBCGt" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BBCGt.jpg" alt="5BBCGt.jpg"></a></p>
+<p>步骤五</p>
+<p>　　设置tomcat开机启动</p>
+<p>　　1、找到/etc文件夹下的rc.local文件（有的是在/etc/rc.d文件夹下），在文件的最后添加以下java环境变量和启动tomcat命令：</p>
+<p>　</p>
+<pre class=" language-bash"><code class="language-bash">　<span class="token function">export</span> JAVA_HOME<span class="token operator">=</span>/home/wst/jdk1.8
+
+  <span class="token function">export</span> JRE_HOME<span class="token operator">=</span><span class="token variable">$JAVA_HOME</span>/jre
+
+　sh /home/wst/Documents/tomcat10/apache-tomcat-10.0.12-80/bin/startup.sh（启动命令，可以配置条）
 </code></pre>
-<h3 id="第八步：查看是否配置成功"><a href="#第八步：查看是否配置成功" class="headerlink" title="第八步：查看是否配置成功"></a>第八步：查看是否配置成功</h3><pre class=" language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@master wst<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># java -version </span>
+<p> <img src="https://img2018.cnblogs.com/blog/997648/201810/997648-20181011102318788-1124306211.png" alt="img"></p>
+<p><a href="https://imgtu.com/i/5BwwkR" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BwwkR.jpg" alt="5BwwkR.jpg"></a></p>
+<p>　保存退出 :wq</p>
+<p>　　2、给rc.local文件添加执行权限</p>
+<pre class=" language-bash"><code class="language-bash">　<span class="token function">chmod</span> +x rc.local
 </code></pre>
-<p>　　　　若出现jdk版本号，则安装并配置环境变量成功</p>
-<p><a href="https://imgtu.com/i/5BQ7dS" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BQ7dS.jpg" alt="5BQ7dS.jpg"></a></p>
-<p>​            如果提示命令找不到的话，查看一下jdk的配置路径是否错误。</p>
-<p>   　　</p>
+<p>　　 3、重启服务器，即可访问Tomcat</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">reboot</span>
+</code></pre>
 
                 
             </div>
@@ -1009,10 +1021,9 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2021/102036523.html">
                     <div class="card-image">
@@ -1029,9 +1040,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-20
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-20
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1044,7 +1055,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
