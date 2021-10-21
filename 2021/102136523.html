@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="linux mysql">
+    <meta name="keywords" content="linux tomcat">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【Linux安装插件系列】Linux安装配置mysql8.0 | Wst&#39;s Blog</title>
+    <title>【Linux安装插件系列】Linux安装配置tomcat9.0 | Wst&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -299,7 +299,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【Linux安装插件系列】Linux安装配置mysql8.0</h1>
+                    <h1 class="description center-align post-title">【Linux安装插件系列】Linux安装配置tomcat9.0</h1>
                 </div>
             </div>
         </div>
@@ -444,7 +444,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-20
+                    2021-10-21
                 </div>
                 
 
@@ -465,224 +465,56 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Linux-CentOS7安装mysql8-0"><a href="#Linux-CentOS7安装mysql8-0" class="headerlink" title="Linux-CentOS7安装mysql8.0"></a>Linux-CentOS7安装mysql8.0</h1><p>密码策略： <a href="https://blog.csdn.net/Hello_World_QWP/article/details/79551789" target="_blank" rel="noopener">https://blog.csdn.net/Hello_World_QWP/article/details/79551789</a></p>
-<h3 id="CentOS7安装mysql8-0步骤"><a href="#CentOS7安装mysql8-0步骤" class="headerlink" title="CentOS7安装mysql8.0步骤"></a>CentOS7安装mysql8.0步骤</h3><p>1.1 安装前清理工作,第一次安装请忽略；<br> 1.1.1 清理原有的mysql数据库；<br> 使用以下命令查找出安装的mysql软件包和依赖包：</p>
-<pre class=" language-undefined"><code class="language-undefined">rpm -pa | grep mysql
+                <h1 id="Linux服务器上安装tomcat"><a href="#Linux服务器上安装tomcat" class="headerlink" title="Linux服务器上安装tomcat"></a>Linux服务器上安装tomcat</h1><p> 安装软件 ： apache-tomcat-9.0.0.M1.tar.gz（下载地址<a href="http://tomcat.apache.org/%EF%BC%89" target="_blank" rel="noopener">http://tomcat.apache.org/）</a></p>
+<h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>　　Tomcat是其中一个开源的且免费的java Web服务器，是Apache软件基金会的项目，所以安装Tomcat之前要安装java JDk，请参照<a href="https://409713427.github.io/2021/102036523.html">Linux安装jdk1.8</a></p>
+<h3 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h3><p>　　下载Tomcat9</p>
+<p>​    <a href="https://imgtu.com/i/5Bwrp6" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5Bwrp6.jpg" alt="5Bwrp6.jpg"></a></p>
+<pre class=" language-bash"><code class="language-bash">将文件移动到apache-tomcat-9.0.0.M1.tar.gz移动到/usr/tomcat/下，并解压：
 </code></pre>
-<p>显示结果如下：</p>
-<pre class=" language-css"><code class="language-css">mysql<span class="token number">80</span>-community-release-el<span class="token number">7</span>-<span class="token number">1.</span>noarch
-mysql-community-server-<span class="token number">8.0.11</span>-<span class="token number">1.</span>el<span class="token number">7.</span>x<span class="token number">86</span>_<span class="token number">64</span>
-mysql-community-common-<span class="token number">8.0.11</span>-<span class="token number">1.</span>el<span class="token number">7.</span>x<span class="token number">86</span>_<span class="token number">64</span>
-mysql-community-libs-<span class="token number">8.0.11</span>-<span class="token number">1.</span>el<span class="token number">7.</span>x<span class="token number">86</span>_<span class="token number">64</span>
-mysql-community-client-<span class="token number">8.0.11</span>-<span class="token number">1.</span>el<span class="token number">7.</span>x<span class="token number">86</span>_<span class="token number">64</span>
-使用以下命令依次删除上面的程序
+<p><a href="https://imgtu.com/i/5Bws1K" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5Bws1K.jpg" alt="5Bws1K.jpg"></a></p>
+<pre class=" language-bash"><code class="language-bash">解压命令 <span class="token keyword">:</span> <span class="token function">tar</span> -xzvf apache-tomcat-10.0.12.tar.gz 
+</code></pre>
+<p>   <a href="https://imgtu.com/i/5Bw0t1" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5Bw0t1.jpg" alt="5Bw0t1.jpg"></a></p>
+<p>并修改文件名</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">mv</span> apache-tomcat-10.0.12 apache-tomcat-10.0.12-8082
+</code></pre>
+<p>　　再次解压apache-tomcat-10.0.12.tar.gz 文件，并修改解压后的文件价名为apache-tomcat-10.0.12-8082，得到　</p>
+<p>​    <a href="https://imgtu.com/i/5BwBfx" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BwBfx.jpg" alt="5BwBfx.jpg"></a></p>
+<h3 id="步骤三"><a href="#步骤三" class="headerlink" title="步骤三"></a>步骤三</h3><p>　　修改端口，分别修改tomcat里面conf/server.xml</p>
+<p>server.xml文件中有三个端口设置</p>
+<p>　　</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token operator">&lt;</span>Server port<span class="token operator">=</span><span class="token string">"8005"</span> shutdown<span class="token operator">=</span><span class="token string">"SHUTDOWN"</span><span class="token operator">></span> ：关闭时使用
 
-yum remove mysql-xxx-xxx-
-</code></pre>
-<p>删除mysql的配置文件，卸载不会自动删除配置文件，首先使用如下命令查找出所用的配置文件；</p>
-<pre class=" language-swift"><code class="language-swift"><span class="token builtin">find</span> <span class="token operator">/</span> <span class="token operator">-</span>name mysql
-</code></pre>
-<p>可能的显示结果如下：</p>
-<pre class=" language-csharp"><code class="language-csharp"><span class="token operator">/</span>etc<span class="token operator">/</span>logrotate<span class="token punctuation">.</span>d<span class="token operator">/</span>mysql
-<span class="token operator">/</span>etc<span class="token operator">/</span>selinux<span class="token operator">/</span>targeted<span class="token operator">/</span>active<span class="token operator">/</span>modules<span class="token operator">/</span><span class="token number">100</span><span class="token operator">/</span>mysql
-<span class="token operator">/</span>etc<span class="token operator">/</span>selinux<span class="token operator">/</span>targeted<span class="token operator">/</span>tmp<span class="token operator">/</span>modules<span class="token operator">/</span><span class="token number">100</span><span class="token operator">/</span>mysql
-<span class="token operator">/</span><span class="token keyword">var</span><span class="token operator">/</span>lib<span class="token operator">/</span>mysql
-<span class="token operator">/</span><span class="token keyword">var</span><span class="token operator">/</span>lib<span class="token operator">/</span>mysql<span class="token operator">/</span>mysql
-<span class="token operator">/</span>usr<span class="token operator">/</span>bin<span class="token operator">/</span>mysql
-<span class="token operator">/</span>usr<span class="token operator">/</span>lib64<span class="token operator">/</span>mysql
-<span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>mysql
-</code></pre>
-<p>根据需求使用以下命令 依次 对配置文件进行删除</p>
-<pre class=" language-csharp"><code class="language-csharp">rm <span class="token operator">-</span>rf <span class="token operator">/</span><span class="token keyword">var</span><span class="token operator">/</span>lib<span class="token operator">/</span>mysql
-</code></pre>
-<h3 id="1-1-2-删除MariaDB的文件，"><a href="#1-1-2-删除MariaDB的文件，" class="headerlink" title="1.1.2 删除MariaDB的文件，"></a>1.1.2 删除MariaDB的文件，</h3><p>由于MySQL在CentOS7中收费了，所以已经不支持MySQL了，取而代之在CentOS7内部集成了mariadb，而安装MySQL的话会和MariaDB的文件冲突，所以需要先卸载掉MariaDB.</p>
-<p>使用rpm 命令查找出要删除的mariadb文件；</p>
-<pre class=" language-bash"><code class="language-bash">rpm -pa <span class="token operator">|</span> <span class="token function">grep</span> mariadb
-可能的显示结果如下：
-mariadb-libs-5.5.56-2.el7.x86_64  
+　　<span class="token operator">&lt;</span>Connector port<span class="token operator">=</span><span class="token string">"8080"</span> protocol<span class="token operator">=</span><span class="token string">"HTTP/1.1"</span> connectionTimeout<span class="token operator">=</span><span class="token string">"20000"</span> redirectPort<span class="token operator">=</span><span class="token string">"8443"</span> /<span class="token operator">></span> ： 一般应用使用
 
-rpm -e mariadb-libs-5.5.56-2.el7.x86_64 <span class="token comment" spellcheck="true">#删除上面的程序</span>
+　　<span class="token operator">&lt;</span>Connector port<span class="token operator">=</span><span class="token string">"8009"</span> protocol<span class="token operator">=</span><span class="token string">"AJP/1.3"</span> redirectPort<span class="token operator">=</span><span class="token string">"8443"</span> /<span class="token operator">></span>：为AJP端口，即容器使用，如 APACHE能通过AJP协议访问Tomcat的8009端口
 </code></pre>
-<p>可能出现错误提示如下：</p>
-<p>依赖检测失败：</p>
-<pre class=" language-css"><code class="language-css">libmysqlclient<span class="token number">.</span>so<span class="token number">.18</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">64</span>bit<span class="token punctuation">)</span> 被 <span class="token punctuation">(</span>已安裝<span class="token punctuation">)</span> <span class="token property">postfix-2</span><span class="token punctuation">:</span><span class="token number">2.10.1</span>-<span class="token number">6.</span>el<span class="token number">7.</span>x<span class="token number">86</span>_<span class="token number">64</span> 需要
+<p>　　第一个80的tomcat的三个端口分别修改为：8005/80/8009</p>
+<p>　　第二个8082的tomcat的三个端口分别修改为：7082/8082/9082</p>
+<h3 id="步骤四"><a href="#步骤四" class="headerlink" title="步骤四"></a>步骤四</h3><p>　　启动tomcat，分别进入tomcat里面的bin目录</p>
+<p>　　执行： ./startup.sh  –&gt;启动tomcat</p>
+<p>　　执行： ./shutdown.sh –&gt;关闭tomcat</p>
+<p>　　浏览器中输入：<a href="http://localhost:8080/" target="_blank" rel="noopener">http://ip:80</a> 和<a href="http://localhost:8090/" target="_blank" rel="noopener">http://</a><a href="http://localhost:8080/" target="_blank" rel="noopener">ip</a><a href="http://localhost:8090/" target="_blank" rel="noopener">:80</a>82（ip指服务器的IP地址），即可访问不同的tomcat</p>
+<p><a href="https://imgtu.com/i/5B0dKS" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5B0dKS.jpg" alt="5B0dKS.jpg"></a></p>
+<p><a href="https://imgtu.com/i/5BBCGt" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BBCGt.jpg" alt="5BBCGt.jpg"></a></p>
+<h3 id="步骤五"><a href="#步骤五" class="headerlink" title="步骤五"></a>步骤五</h3><p>　　设置tomcat开机启动</p>
+<p>　　1、找到/etc文件夹下的rc.local文件（有的是在/etc/rc.d文件夹下），在文件的最后添加以下java环境变量和启动tomcat命令：</p>
+<p>　</p>
+<pre class=" language-bash"><code class="language-bash">　<span class="token function">export</span> JAVA_HOME<span class="token operator">=</span>/home/wst/jdk1.8
 
-libmysqlclient<span class="token number">.</span>so<span class="token number">.18</span><span class="token punctuation">(</span>libmysqlclient_<span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">64</span>bit<span class="token punctuation">)</span> 被 <span class="token punctuation">(</span>已安裝<span class="token punctuation">)</span> <span class="token property">postfix-2</span><span class="token punctuation">:</span><span class="token number">2.10.1</span>-<span class="token number">6.</span>el<span class="token number">7.</span>x<span class="token number">86</span>_<span class="token number">64</span> 需要
+  <span class="token function">export</span> JRE_HOME<span class="token operator">=</span><span class="token variable">$JAVA_HOME</span>/jre
 
-libmysqlclient<span class="token number">.</span>so<span class="token number">.18</span><span class="token punctuation">(</span>libmysqlclient_<span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">64</span>bit<span class="token punctuation">)</span> 被 <span class="token punctuation">(</span>已安裝<span class="token punctuation">)</span> <span class="token property">postfix-2</span><span class="token punctuation">:</span><span class="token number">2.10.1</span>-<span class="token number">6.</span>el<span class="token number">7.</span>x<span class="token number">86</span>_<span class="token number">64</span> 需要
+　sh /home/wst/Documents/tomcat10/apache-tomcat-10.0.12-80/bin/startup.sh（启动命令，可以配置条）
 </code></pre>
-<p>使用强制删除：</p>
-<pre class=" language-css"><code class="language-css">rpm -e --nodeps mariadb-libs-<span class="token number">5.5.56</span>-<span class="token number">2.</span>el<span class="token number">7.</span>x<span class="token number">86</span>_<span class="token number">64</span>
+<p> <img src="https://img2018.cnblogs.com/blog/997648/201810/997648-20181011102318788-1124306211.png" alt="img"></p>
+<p><a href="https://imgtu.com/i/5BwwkR" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BwwkR.jpg" alt="5BwwkR.jpg"></a></p>
+<p>　保存退出 :wq</p>
+<p>　　2、给rc.local文件添加执行权限</p>
+<pre class=" language-bash"><code class="language-bash">　<span class="token function">chmod</span> +x rc.local
 </code></pre>
-<p>至此就将原来有的mysql 和mariadb数据库删除了；</p>
-<h1 id="1-2-安装mysql"><a href="#1-2-安装mysql" class="headerlink" title="1.2 安装mysql"></a>1.2 安装mysql</h1><p>1.2.1 下面mysql官网提供的mysql repo源<br> centos的yum 源中默认是没有mysql的，所以我们需要先去官网下载mysql的repo源并安装；</p>
-<p>mysql官网下载链接：mysql repo下载地址 如下：<a href="https://dev.mysql.com/downloads/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/</a></p>
-<h3 id="1-2-2-下载软件包rpm文件"><a href="#1-2-2-下载软件包rpm文件" class="headerlink" title="1.2.2 下载软件包rpm文件"></a>1.2.2 下载软件包rpm文件</h3><p>文件下载到home/wst/Documents/mysql8.0文件夹下；</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> home/wst/Documents
-<span class="token function">mkdir</span> mysql8.0
-<span class="token function">cd</span> mysql8.0
-<span class="token function">wget</span>  https://repo.mysql.com//mysql80-community-release-el7-1.noarch.rpm
+<p>　　 3、重启服务器，即可访问Tomcat</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">reboot</span>
 </code></pre>
-<h3 id="1-2-3-安装-yum-repo文件并更新-yum-缓存；"><a href="#1-2-3-安装-yum-repo文件并更新-yum-缓存；" class="headerlink" title="1.2.3 安装 yum repo文件并更新 yum 缓存；"></a>1.2.3 安装 yum repo文件并更新 yum 缓存；</h3><pre class=" language-css"><code class="language-css">rpm -ivh mysql<span class="token number">80</span>-community-release-el<span class="token number">7</span>-<span class="token number">1.</span>noarch<span class="token number">.</span>rpm
-</code></pre>
-<p>执行结果：</p>
-<p>会在/etc/yum.repos.d/目录下生成两个repo文件mysql-community.repo mysql-community-source.repo</p>
-<p>更新 yum 命令</p>
-<pre class=" language-undefined"><code class="language-undefined">yum clean all
-yum makecache
-</code></pre>
-<h3 id="1-2-4-使用-yum安装mysql"><a href="#1-2-4-使用-yum安装mysql" class="headerlink" title="1.2.4 使用 yum安装mysql"></a>1.2.4 使用 yum安装mysql</h3><p>当我们在使用yum安装mysql时，yum默认会从yum仓库中安装mysql最新的GA版本；如何选择自己的版本；</p>
-<p>第一步： 查看mysql yum仓库中mysql版本，使用如下命令</p>
-<pre class=" language-undefined"><code class="language-undefined">yum repolist all | grep mysql
-</code></pre>
-<p>可以看到 MySQL 5.5 5.6 5.7为禁用状态 而MySQL 8.0为启用状态；</p>
-<p>第二步 使用 yum-config-manager 命令修改相应的版本为启用状态最新版本为禁用状态，根据需要安装的版本修改</p>
-<pre class=" language-bash"><code class="language-bash">yum-config-manager --disable mysql80-community <span class="token comment" spellcheck="true">#关闭8.0版本</span>
-yum-config-manager --enable mysql57-community <span class="token comment" spellcheck="true">#开启5.7版本</span>
-</code></pre>
-<p>或者可以编辑 mysql repo文件，</p>
-<pre class=" language-undefined"><code class="language-undefined">cat /etc/yum.repos.d/mysql-community.repo 
-</code></pre>
-<p>将相应版本下的enabled改成 1 即可；</p>
-<h3 id="1-2-5-安装mysql-命令如下："><a href="#1-2-5-安装mysql-命令如下：" class="headerlink" title="1.2.5 安装mysql 命令如下："></a>1.2.5 安装mysql 命令如下：</h3><pre class=" language-undefined"><code class="language-undefined">yum install mysql-community-server
-</code></pre>
-<h3 id="1-2-6-开启mysql-服务"><a href="#1-2-6-开启mysql-服务" class="headerlink" title="1.2.6 开启mysql 服务"></a>1.2.6 开启mysql 服务</h3><pre class=" language-css"><code class="language-css">systemctl start mysqld<span class="token number">.</span>service
-</code></pre>
-<h3 id="1-2-7-获取初始密码登录mysql"><a href="#1-2-7-获取初始密码登录mysql" class="headerlink" title="1.2.7 获取初始密码登录mysql"></a>1.2.7 获取初始密码登录mysql</h3><p>mysql在安装后会创建一个root@locahost账户，并且把初始的密码放到了/var/log/mysqld.log文件中；</p>
-<pre class=" language-cpp"><code class="language-cpp">cat <span class="token operator">/</span>var<span class="token operator">/</span>log<span class="token operator">/</span>mysqld<span class="token punctuation">.</span>log <span class="token operator">|</span> grep password
-</code></pre>
-<p>使用初始密码登录mysql</p>
-<p>jKw)wB/&lt;X4?z</p>
-<pre class=" language-bash"><code class="language-bash">mysql -u root -p  <span class="token comment" spellcheck="true">#会提示输入密码</span>
-</code></pre>
-<h3 id="修改初始密码："><a href="#修改初始密码：" class="headerlink" title="修改初始密码："></a>修改初始密码：</h3><pre class=" language-bash"><code class="language-bash">ALTER USER <span class="token string">'root'</span>@<span class="token string">'localhost'</span> IDENTIFIED BY <span class="token string">'MyNewPass4!'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">#注意位数和种类至少大+写+小写+符号+数字</span>
-</code></pre>
-<h3 id="忘记密码重置密码"><a href="#忘记密码重置密码" class="headerlink" title="忘记密码重置密码"></a>忘记密码重置密码</h3><p>[重置密码解决MySQL for Linux错误 ERROR 1045 (28000): Access denied for user ‘root‘@’localhost’ (using password: YES)]</p>
-<pre class=" language-bash"><code class="language-bash">vim /etc/my.cnf <span class="token comment" spellcheck="true">#注：windows下修改的是my.ini</span>
-
-skip-grant-tables<span class="token comment" spellcheck="true"># 在[mysqld]后面任意一行添加skip-grant-tables用来跳过密码验证的过程;设置完密码记得删除</span>
-systemctl restart mysqld.service <span class="token comment" spellcheck="true">#重启mysql ，就可以免密码登陆了，然后进行修改密码</span>
-</code></pre>
-<h3 id="1-2-8-在防火墙中开启3306端口"><a href="#1-2-8-在防火墙中开启3306端口" class="headerlink" title="1.2.8 在防火墙中开启3306端口"></a>1.2.8 在防火墙中开启3306端口</h3><p>CentOS7默认使用的是firewall作为防火墙，我这里改为习惯常用的iptables防火墙</p>
-<p>第一步：开启firewall3306端口防火墙</p>
-<pre class=" language-csharp"><code class="language-csharp">firewall<span class="token operator">-</span>cmd <span class="token operator">--</span>zone<span class="token operator">=</span><span class="token keyword">public</span> <span class="token operator">--</span>list<span class="token operator">-</span>ports 查看所有打开的端口
-firewall<span class="token operator">-</span>cmd <span class="token operator">--</span>zone<span class="token operator">=</span><span class="token keyword">public</span> <span class="token operator">--</span><span class="token keyword">add</span><span class="token operator">-</span>port<span class="token operator">=</span><span class="token number">80</span><span class="token operator">/</span>tcp <span class="token operator">--</span>permanent    开启一个端口，添加<span class="token operator">--</span>permanent永久生效，没有此参数重启后失效
-firewall<span class="token operator">-</span>cmd <span class="token operator">--</span>permanent <span class="token operator">--</span><span class="token keyword">add</span><span class="token operator">-</span>port<span class="token operator">=</span><span class="token number">80</span><span class="token operator">/</span>tcp  开放端口<span class="token number">80</span>
-firewall<span class="token operator">-</span>cmd <span class="token operator">--</span>permanent <span class="token operator">--</span><span class="token keyword">remove</span><span class="token operator">-</span>port<span class="token operator">=</span><span class="token number">80</span><span class="token operator">/</span>tcp   移除端口<span class="token number">80</span>
-firewall<span class="token operator">-</span>cmd <span class="token operator">--</span>reload   重启防火墙，修改后重启防火墙生效
-</code></pre>
-<p>第五步： 重启防火墙</p>
-<pre class=" language-css"><code class="language-css">systemctl enable iptables<span class="token number">.</span>service
-systemctl start iptables<span class="token number">.</span>service
-</code></pre>
-<p>1.2.9 将mysql 服务加入开机启动项，并启动mysql进程</p>
-<pre class=" language-css"><code class="language-css">systemctl enable mysqld<span class="token number">.</span>service
-systemctl start mysqld<span class="token number">.</span>service
-</code></pre>
-<p>常用mysql服务命令：</p>
-<pre class=" language-csharp"><code class="language-csharp">mysql <span class="token operator">-</span>u username <span class="token operator">-</span>p #登录mysql
-quit #退出mysql 
-systemctl start mysqld<span class="token punctuation">.</span>service  #启动mysql
-systemctl stop mysqld<span class="token punctuation">.</span>service #结束
-systemctl restart mysqld<span class="token punctuation">.</span>service #重启
-systemctl enable mysqld<span class="token punctuation">.</span>service #开机自启
-<span class="token keyword">select</span> <span class="token function">version</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> #查看mysql版本
-</code></pre>
-<h1 id="2-1-开启mysql远程服务："><a href="#2-1-开启mysql远程服务：" class="headerlink" title="2.1 开启mysql远程服务："></a>2.1 开启mysql远程服务：</h1><p>外网 Navicat 连接 Mysql</p>
-<h3 id="2-1-1-修改mysql数据库下的user表中host的值"><a href="#2-1-1-修改mysql数据库下的user表中host的值" class="headerlink" title="2.1.1 修改mysql数据库下的user表中host的值"></a>2.1.1 修改mysql数据库下的user表中host的值</h3><p>可能是你的帐号不允许从远程登陆，只能在localhost。这个时候只要在localhost的那台电脑，登入mysql后，更改 “mysql” 数据库里的 “user” 表里的 “host” 项，从”localhost”改称”%”登录mysql数据库 执行如下命令：</p>
-<pre class=" language-bash"><code class="language-bash">mysql -u root -p
-use mysql<span class="token punctuation">;</span>
-update user <span class="token keyword">set</span> host<span class="token operator">=</span><span class="token string">'%'</span> where user<span class="token operator">=</span><span class="token string">'root'</span><span class="token punctuation">;</span>
-</code></pre>
-<h3 id="2-1-2-使用授权的方式"><a href="#2-1-2-使用授权的方式" class="headerlink" title="2.1.2 使用授权的方式"></a>2.1.2 使用授权的方式</h3><p>赋予任何主机访问数据的权限</p>
-<pre class=" language-rust"><code class="language-rust">mysql<span class="token operator">></span> GRANT ALL PRIVILEGES ON <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> TO <span class="token string">'root'</span><span class="token operator">@</span><span class="token string">'%'</span>WITH GRANT OPTION<span class="token punctuation">;</span>
-mysql<span class="token operator">></span>FLUSH PRIVILEGES
-</code></pre>
-<p>如果想myuser用户使用mypassword密码从任何主机连接到mysql服务器的话。</p>
-<pre class=" language-rust"><code class="language-rust">GRANT ALL PRIVILEGES ON <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> TO <span class="token string">'myuser'</span><span class="token operator">@</span><span class="token string">'%'</span>IDENTIFIED BY <span class="token string">'mypassword'</span> WITH GRANT OPTION<span class="token punctuation">;</span>
-</code></pre>
-<p>如果你想允许用户myuser从ip为192.168.1.6的主机连接到mysql服务器，并使用mypassword作为密码</p>
-<pre class=" language-rust"><code class="language-rust">GRANT ALL PRIVILEGES ON <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> TO <span class="token string">'myuser'</span><span class="token operator">@</span><span class="token string">'192.168.1.3'</span>IDENTIFIED BY <span class="token string">'mypassword'</span> WITH GRANT OPTION<span class="token punctuation">;</span>
-</code></pre>
-<h3 id="2-2-在使用-Navicat-for-Mysql连接mysql-8-0时会报如下错误："><a href="#2-2-在使用-Navicat-for-Mysql连接mysql-8-0时会报如下错误：" class="headerlink" title="2.2 在使用 Navicat for Mysql连接mysql 8.0时会报如下错误："></a>2.2 在使用 Navicat for Mysql连接mysql 8.0时会报如下错误：</h3><p>Authentication plugin ‘caching_sha2_password’ cannot be loaded:</p>
-<p>mysql8.0 引入了新特性 caching_sha2_password；这种密码加密方式客户端不支持；客户端支持的是mysql_native_password 这种加密方式；</p>
-<p>我们可可以查看mysql 数据库中user表的 plugin字段；</p>
-<p>可以使用命令将他修改成mysql_native_password加密模式：</p>
-<pre class=" language-bash"><code class="language-bash">update user <span class="token keyword">set</span> plugin<span class="token operator">=</span><span class="token string">'mysql_native_password'</span> where user<span class="token operator">=</span><span class="token string">'root'</span><span class="token punctuation">;</span>
-</code></pre>
-<p>再用Navicat链接 就可以链接成功；</p>
-<hr>
-<p>安装过程中涉及到的Linux命令学习；<br> 3.1 rpm</p>
-<p>3.2 putty 上传文件 pscp命令；</p>
-<pre class=" language-dart"><code class="language-dart">在window机上CD进入pttty安装目录：
-</code></pre>
-<pre class=" language-bash"><code class="language-bash">    <span class="token function">cd</span> :\program files <span class="token punctuation">(</span>x86<span class="token punctuation">)</span>\Putty
-</code></pre>
-<pre class=" language-dart"><code class="language-dart">将本地文件拷贝到Linux上：pscp 文件 用户名<span class="token metadata symbol">@LinuxIP</span><span class="token punctuation">:</span>目录
-</code></pre>
-<pre class=" language-ruby"><code class="language-ruby">    pscp hello<span class="token punctuation">.</span>txt root@<span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">145.135</span><span class="token punctuation">:</span><span class="token operator">/</span>tmp<span class="token regex">/userfile/</span>
-</code></pre>
-<pre class=" language-dart"><code class="language-dart">将本地文件夹 拷贝到Linux上：pscp  <span class="token operator">-</span>r 目录 用户名<span class="token metadata symbol">@LinuxIP</span><span class="token punctuation">:</span>目录
-</code></pre>
-<pre class=" language-ruby"><code class="language-ruby">   pscp <span class="token operator">-</span>r c<span class="token punctuation">:</span>\file root@<span class="token number">10.43</span><span class="token punctuation">.</span><span class="token number">65.98</span><span class="token punctuation">:</span><span class="token operator">/</span>root<span class="token operator">/</span>testFolder  
-</code></pre>
-<pre class=" language-css"><code class="language-css">将Linux上的文件\root\test<span class="token number">.</span>txt拷贝到本地C盘src文件夹，如下：
-</code></pre>
-<pre class=" language-ruby"><code class="language-ruby">   pscp root<span class="token variable">@abc_pc</span><span class="token punctuation">:</span><span class="token operator">/</span>root<span class="token operator">/</span>test<span class="token punctuation">.</span>txt  <span class="token constant">C</span><span class="token punctuation">:</span>\src  
-</code></pre>
-<p>3.3 修改防火墙文件/etc/sysconfig/iptables</p>
-<p>3.4 systemctl命令</p>
-<p>授权外网登陆<br> 1。 改表法。</p>
-<p>可能是你的帐号不允许从远程登陆，只能在localhost。这个时候只要在localhost的那台电脑，登入mysql后，更改 “mysql” 数据库里的 “user” 表里的 “host” 项，从”localhost”改成”%”</p>
-<p>Sql代码</p>
-<pre class=" language-csharp"><code class="language-csharp">  <span class="token number">1</span><span class="token punctuation">.</span> mysql <span class="token operator">-</span>u root <span class="token operator">-</span>pvmwaremysql<span class="token operator">></span>use mysql<span class="token punctuation">;</span>  
-
-  <span class="token number">2</span><span class="token punctuation">.</span> mysql<span class="token operator">></span>update user <span class="token keyword">set</span> host <span class="token operator">=</span> <span class="token string">'%'</span> <span class="token keyword">where</span> user <span class="token operator">=</span> <span class="token string">'root'</span><span class="token punctuation">;</span>  
-
-  <span class="token number">3</span><span class="token punctuation">.</span> mysql<span class="token operator">></span><span class="token keyword">select</span> host<span class="token punctuation">,</span> user <span class="token keyword">from</span> user<span class="token punctuation">;</span> 
-</code></pre>
-<ol>
-<li>授权法。</li>
-</ol>
-<p>例如，你想myuser使用mypassword从任何主机连接到mysql服务器的话。</p>
-<p>Sql代码</p>
-<pre class=" language-bash"><code class="language-bash">GRANT ALL PRIVILEGES ON *.* TO <span class="token string">'myuser'</span>@<span class="token string">'%'</span> IDENTIFIED BY <span class="token string">'mypassword'</span> WITH
-
-GRANT OPTION<span class="token punctuation">;</span>  
-
-FLUSH   PRIVILEGES<span class="token punctuation">;</span> 
-</code></pre>
-<p>如果你想允许用户myuser从ip为192.168.1.6的主机连接到mysql服务器的dk数据库，并使用mypassword作为密码</p>
-<p>Sql代码</p>
-<pre class=" language-bash"><code class="language-bash">GRANT ALL PRIVILEGES ON dk.* TO <span class="token string">'myuser'</span>@<span class="token string">'192.168.1.3'</span> IDENTIFIED BY 
-
-<span class="token string">'mypassword'</span> WITH GRANT OPTION<span class="token punctuation">;</span> 
-
-FLUSH   PRIVILEGES<span class="token punctuation">;</span> 
-</code></pre>
-<p>注意授权后必须FLUSH PRIVILEGES;否则无法立即生效。</p>
-<p>3<br> 另外一种方法.</p>
-<p>在安装mysql的机器上运行：</p>
-<pre class=" language-undefined"><code class="language-undefined">1、d:\mysql\bin\>mysql -h localhost -u root 
-</code></pre>
-<p>//这样应该可以进入MySQL服务器</p>
-<pre class=" language-bash"><code class="language-bash">2、mysql<span class="token operator">></span>GRANT ALL PRIVILEGES ON *.* TO <span class="token string">'root'</span>@<span class="token string">'%'</span> WITH GRANT OPTION 
-</code></pre>
-<p>//赋予任何主机访问数据的权限</p>
-<pre class=" language-undefined"><code class="language-undefined">3、mysql>FLUSH PRIVILEGES 
-</code></pre>
-<p>//修改生效</p>
-<pre class=" language-php"><code class="language-php"><span class="token number">4</span>、mysql<span class="token operator">></span><span class="token constant">EXIT</span> 
-</code></pre>
-<p>//退出MySQL服务器</p>
-<p>这样就可以在其它任何的主机上以root身份登录啦！</p>
-<p>其它：</p>
-<pre class=" language-csharp"><code class="language-csharp">mysql<span class="token operator">></span> grant all privileges on <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> to <span class="token string">'energy_pf'</span><span class="token string">@'192.168.2.65'</span> identified by <span class="token string">'energy_pf'</span> with grant option<span class="token punctuation">;</span>
-</code></pre>
-<p>Query OK, 0 rows affected (0.00 sec)</p>
-<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> plush privileges<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">#立即生效</span>
-</code></pre>
-<p>允许用户energy_pf从ip为192.168.2.65的主机连接到mysql服务器的任意数据库（*.*），并使用energy_pf作为密码</p>
 
                 
             </div>
@@ -709,7 +541,7 @@ FLUSH   PRIVILEGES<span class="token punctuation">;</span>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://409713427.github.io/2021/102036523.html">https://409713427.github.io/2021/102036523.html</a>
+                    <a href="https://409713427.github.io/2021/102136523.html">https://409713427.github.io/2021/102136523.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1186,9 +1018,10 @@ FLUSH   PRIVILEGES<span class="token punctuation">;</span>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/102136523.html">
                     <div class="card-image">
@@ -1205,9 +1038,9 @@ FLUSH   PRIVILEGES<span class="token punctuation">;</span>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1220,6 +1053,7 @@ FLUSH   PRIVILEGES<span class="token punctuation">;</span>
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1238,12 +1072,12 @@ FLUSH   PRIVILEGES<span class="token punctuation">;</span>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/101936523.html">
+                <a href="/2021/102036523.html">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/2.jpg" class="responsive-img" alt="【Linux安装插件系列】Linux安装配置jdk1.8">
+                        <img src="/medias/banner/2.jpg" class="responsive-img" alt="【Linux安装插件系列】Linux安装配置mysql8.0">
                         
-                        <span class="card-title">【Linux安装插件系列】Linux安装配置jdk1.8</span>
+                        <span class="card-title">【Linux安装插件系列】Linux安装配置mysql8.0</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1254,7 +1088,7 @@ FLUSH   PRIVILEGES<span class="token punctuation">;</span>
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-20
                             </span>
                         <span class="publish-author">
                             
