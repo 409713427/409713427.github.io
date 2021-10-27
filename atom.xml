@@ -6,7 +6,7 @@
   <link href="https://409713427.github.io/atom.xml" rel="self"/>
   
   <link href="https://409713427.github.io/"/>
-  <updated>2021-10-21T05:54:07.928Z</updated>
+  <updated>2021-10-27T04:37:34.419Z</updated>
   <id>https://409713427.github.io/</id>
   
   <author>
@@ -15,6 +15,131 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【JS新特性系列】ES6新增属性Symbol详解</title>
+    <link href="https://409713427.github.io/2021/102719592.html"/>
+    <id>https://409713427.github.io/2021/102719592.html</id>
+    <published>2021-10-27T08:25:32.000Z</published>
+    <updated>2021-10-27T04:37:34.419Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="javascript" scheme="https://409713427.github.io/categories/javascript/"/>
+    
+    
+    <category term="javascript" scheme="https://409713427.github.io/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【JS新特性系列】Generator函数与async函数</title>
+    <link href="https://409713427.github.io/2021/102724586.html"/>
+    <id>https://409713427.github.io/2021/102724586.html</id>
+    <published>2021-10-27T04:35:32.000Z</published>
+    <updated>2021-10-27T04:37:34.425Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="javascript" scheme="https://409713427.github.io/categories/javascript/"/>
+    
+    
+    <category term="javascript" scheme="https://409713427.github.io/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【JS新特性系列】ES6 Promise总结</title>
+    <link href="https://409713427.github.io/2021/102715630.html"/>
+    <id>https://409713427.github.io/2021/102715630.html</id>
+    <published>2021-10-27T04:25:32.000Z</published>
+    <updated>2021-10-27T04:37:34.424Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="javascript" scheme="https://409713427.github.io/categories/javascript/"/>
+    
+    
+    <category term="javascript" scheme="https://409713427.github.io/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【JS新特性系列】ajax,fetch,axios之间的详细区别以及优缺点</title>
+    <link href="https://409713427.github.io/2021/102634377.html"/>
+    <id>https://409713427.github.io/2021/102634377.html</id>
+    <published>2021-10-26T02:25:32.000Z</published>
+    <updated>2021-10-27T04:37:34.427Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="javascript" scheme="https://409713427.github.io/categories/javascript/"/>
+    
+    
+    <category term="javascript" scheme="https://409713427.github.io/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【JS新特性系列】H5新增存储方案有以及同源跨域访问请求</title>
+    <link href="https://409713427.github.io/2021/102545839.html"/>
+    <id>https://409713427.github.io/2021/102545839.html</id>
+    <published>2021-10-25T04:35:32.000Z</published>
+    <updated>2021-10-27T04:37:34.428Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="javascript" scheme="https://409713427.github.io/categories/javascript/"/>
+    
+    
+    <category term="javascript" scheme="https://409713427.github.io/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>【Linux安装插件系列】Linux安装配置tomcat9.0</title>

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="linux tomcat">
+    <meta name="keywords" content="js javascript ES6">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【Linux安装插件系列】Linux安装配置tomcat9.0 | Wst&#39;s Blog</title>
+    <title>【JS新特性系列】H5新增存储方案有以及同源跨域访问请求 | Wst&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -294,12 +294,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【Linux安装插件系列】Linux安装配置tomcat9.0</h1>
+                    <h1 class="description center-align post-title">【JS新特性系列】H5新增存储方案有以及同源跨域访问请求</h1>
                 </div>
             </div>
         </div>
@@ -419,8 +419,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/linux/">
-                                <span class="chip bg-color">linux</span>
+                            <a href="/tags/javascript/">
+                                <span class="chip bg-color">javascript</span>
                             </a>
                         
                     </div>
@@ -431,8 +431,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/linux/" class="post-category">
-                                linux
+                            <a href="/categories/javascript/" class="post-category">
+                                javascript
                             </a>
                         
                     </div>
@@ -444,7 +444,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-21
+                    2021-10-25
                 </div>
                 
 
@@ -465,55 +465,186 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Linux服务器上安装tomcat"><a href="#Linux服务器上安装tomcat" class="headerlink" title="Linux服务器上安装tomcat"></a>Linux服务器上安装tomcat</h1><p> 安装软件 ： apache-tomcat-9.0.0.M1.tar.gz（下载地址<a href="http://tomcat.apache.org/%EF%BC%89" target="_blank" rel="noopener">http://tomcat.apache.org/）</a></p>
-<h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>　　Tomcat是其中一个开源的且免费的java Web服务器，是Apache软件基金会的项目，所以安装Tomcat之前要安装java JDk，请参照<a href="https://409713427.github.io/2021/102036523.html">Linux安装jdk1.8</a></p>
-<h3 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h3><p>　　下载Tomcat9</p>
-<p>​    <a href="https://imgtu.com/i/5Bwrp6" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5Bwrp6.jpg" alt="5Bwrp6.jpg"></a></p>
-<pre class=" language-bash"><code class="language-bash">将文件移动到apache-tomcat-9.0.0.M1.tar.gz移动到/usr/tomcat/下，并解压：
-</code></pre>
-<p><a href="https://imgtu.com/i/5Bws1K" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5Bws1K.jpg" alt="5Bws1K.jpg"></a></p>
-<pre class=" language-bash"><code class="language-bash">解压命令 <span class="token keyword">:</span> <span class="token function">tar</span> -xzvf apache-tomcat-10.0.12.tar.gz 
-</code></pre>
-<p>   <a href="https://imgtu.com/i/5Bw0t1" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5Bw0t1.jpg" alt="5Bw0t1.jpg"></a></p>
-<p>并修改文件名</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">mv</span> apache-tomcat-10.0.12 apache-tomcat-10.0.12-8082
-</code></pre>
-<p>　　再次解压apache-tomcat-10.0.12.tar.gz 文件，并修改解压后的文件价名为apache-tomcat-10.0.12-8082，得到　</p>
-<p>​    <a href="https://imgtu.com/i/5BwBfx" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BwBfx.jpg" alt="5BwBfx.jpg"></a></p>
-<h3 id="步骤三"><a href="#步骤三" class="headerlink" title="步骤三"></a>步骤三</h3><p>　　修改端口，分别修改tomcat里面conf/server.xml</p>
-<p>server.xml文件中有三个端口设置</p>
-<p>　　</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token operator">&lt;</span>Server port<span class="token operator">=</span><span class="token string">"8005"</span> shutdown<span class="token operator">=</span><span class="token string">"SHUTDOWN"</span><span class="token operator">></span> ：关闭时使用
+                <h2 id="JS新特性"><a href="#JS新特性" class="headerlink" title="JS新特性"></a>JS新特性</h2><h3 id="H5新增存储方案"><a href="#H5新增存储方案" class="headerlink" title="H5新增存储方案"></a>H5新增存储方案</h3><p>1.SessionStorage和LocalStorage简介<br>        和Cookie一样, SessionStorage和LocalStorage也是用于存储网页中的数据的</p>
+<p>2.Cookie、 SessionStorage、LocalStorage区别<br>    2.1生命周期(同一浏览器下)<br>        Cookie生命周期:         默认是关闭浏览器后失效, 但是也可以设置过期时间<br>        SessionStorage生命周期:     仅在当前会话(窗口)下有效，关闭窗口或浏览器后被清除, 不能设置过期时间<br>        LocalStorage生命周期:     除非被清除，否则永久保存</p>
+<p>​    2.2容量<br>​        Cookie容量:         有大小(4KB左右)和个数(20~50)限制<br>​        SessionStorage容量:   有大小限制(5M左右)   <a href="http://dev-test.nemikor.com/web-storage/support-test/" target="_blank" rel="noopener">老外写的SessionStorage支撑测试</a><br>​        LocalStorage容量:     有大小限制(5M左右)   <a href="http://dev-test.nemikor.com/web-storage/support-test/" target="_blank" rel="noopener">老外写的LocalStorage支撑测试</a></p>
+<p>​    2.3网络请求<br>​        Cookie网络请求:         每次都会携带在HTTP头中，如果使用cookie保存过多数据会带来性能问题<br>​        SessionStorage网络请求: 仅在浏览器中保存，不参与和服务器的通信<br>​        LocalStorage网络请求:   仅在浏览器中保存，不参与和服务器的通信</p>
+<p>3.Cookie、 SessionStorage、LocalStorage应用场景<br>    Cookie:         判断用户是否登录<br>    LocalStorage:   购物车<br>    sessionStorage: 表单数据</p>
+<p>4.注意点:<br>    无论通过以上哪种方式存储的数据, 切记不能将敏感数据直接存储到本地</p>
+<p>示例:</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 存储cookie</span>
+document<span class="token punctuation">.</span>cookie <span class="token operator">=</span> <span class="token string">"myName=hhh;path=/;domain=127.0.0.1;"</span><span class="token punctuation">;</span>
 
-　　<span class="token operator">&lt;</span>Connector port<span class="token operator">=</span><span class="token string">"8080"</span> protocol<span class="token operator">=</span><span class="token string">"HTTP/1.1"</span> connectionTimeout<span class="token operator">=</span><span class="token string">"20000"</span> redirectPort<span class="token operator">=</span><span class="token string">"8443"</span> /<span class="token operator">></span> ： 一般应用使用
+<span class="token comment" spellcheck="true">//存储sessionStorage,删除sessionStorage,清空sessionStorage</span>
+sessionStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">"age"</span><span class="token punctuation">,</span> <span class="token string">"34"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+sessionStorage<span class="token punctuation">.</span><span class="token function">removeItem</span><span class="token punctuation">(</span><span class="token string">"age"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+sessionStorage<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-　　<span class="token operator">&lt;</span>Connector port<span class="token operator">=</span><span class="token string">"8009"</span> protocol<span class="token operator">=</span><span class="token string">"AJP/1.3"</span> redirectPort<span class="token operator">=</span><span class="token string">"8443"</span> /<span class="token operator">></span>：为AJP端口，即容器使用，如 APACHE能通过AJP协议访问Tomcat的8009端口
+<span class="token comment" spellcheck="true">//存储localStorage,删除localStorage,清空localStorage</span>
+localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"lnj"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+localStorage<span class="token punctuation">.</span><span class="token function">removeItem</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+localStorage<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>　　第一个80的tomcat的三个端口分别修改为：8005/80/8009</p>
-<p>　　第二个8082的tomcat的三个端口分别修改为：7082/8082/9082</p>
-<h3 id="步骤四"><a href="#步骤四" class="headerlink" title="步骤四"></a>步骤四</h3><p>　　启动tomcat，分别进入tomcat里面的bin目录</p>
-<p>　　执行： ./startup.sh  –&gt;启动tomcat</p>
-<p>　　执行： ./shutdown.sh –&gt;关闭tomcat</p>
-<p>　　浏览器中输入：<a href="http://localhost:8080/" target="_blank" rel="noopener">http://ip:80</a> 和<a href="http://localhost:8090/" target="_blank" rel="noopener">http://</a><a href="http://localhost:8080/" target="_blank" rel="noopener">ip</a><a href="http://localhost:8090/" target="_blank" rel="noopener">:80</a>82（ip指服务器的IP地址），即可访问不同的tomcat</p>
-<p><a href="https://imgtu.com/i/5B0dKS" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5B0dKS.jpg" alt="5B0dKS.jpg"></a></p>
-<p><a href="https://imgtu.com/i/5BBCGt" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BBCGt.jpg" alt="5BBCGt.jpg"></a></p>
-<h3 id="步骤五"><a href="#步骤五" class="headerlink" title="步骤五"></a>步骤五</h3><p>　　设置tomcat开机启动</p>
-<p>　　1、找到/etc文件夹下的rc.local文件（有的是在/etc/rc.d文件夹下），在文件的最后添加以下java环境变量和启动tomcat命令：</p>
-<p>　</p>
-<pre class=" language-bash"><code class="language-bash">　<span class="token function">export</span> JAVA_HOME<span class="token operator">=</span>/home/wst/jdk1.8
+<h3 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h3><p>1.什么是同源策略?<br>        同源策略（Same origin policy）是一种约定，它是浏览器最核心也最基本的安全功能<br>        所谓同源是指: 协议，域名，端口都相同,就是同源, 否则就是跨域</p>
+<p>​    <a href="http://www.baidu.com/index.html" target="_blank" rel="noopener">http://www.baidu.com:80/index.html</a><br>​    协议: http/https/…<br>​    一级域名: baidu.com/taobao.com<br>​    二级域名: www/study/edu/…<br>​    端口号: 80/3306/…</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 协议+一级域名+二级域名+端口号都相同, 所以同源</span>
+http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>it666<span class="token punctuation">.</span>com<span class="token punctuation">:</span><span class="token number">80</span><span class="token operator">/</span>index<span class="token punctuation">.</span>html
+http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>it666<span class="token punctuation">.</span>com<span class="token punctuation">:</span><span class="token number">80</span><span class="token operator">/</span>detail<span class="token punctuation">.</span>html
 
-  <span class="token function">export</span> JRE_HOME<span class="token operator">=</span><span class="token variable">$JAVA_HOME</span>/jre
+<span class="token comment" spellcheck="true">// 协议不同, 所以不同源, 是跨域</span>
+http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>it666<span class="token punctuation">.</span>com<span class="token punctuation">:</span><span class="token number">80</span><span class="token operator">/</span>index<span class="token punctuation">.</span>html
+https<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>it666<span class="token punctuation">.</span>com<span class="token punctuation">:</span><span class="token number">80</span><span class="token operator">/</span>index<span class="token punctuation">.</span>html
 
-　sh /home/wst/Documents/tomcat10/apache-tomcat-10.0.12-80/bin/startup.sh（启动命令，可以配置条）
+<span class="token comment" spellcheck="true">// 一级域名不同, 所以不同源, 是跨域</span>
+http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>it666<span class="token punctuation">.</span>com<span class="token punctuation">:</span><span class="token number">80</span><span class="token operator">/</span>index<span class="token punctuation">.</span>html
+http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>itzb<span class="token punctuation">.</span>com<span class="token punctuation">:</span><span class="token number">80</span><span class="token operator">/</span>index<span class="token punctuation">.</span>html
+
+<span class="token comment" spellcheck="true">// 二级域名不同, 所以不同源, 是跨域</span>
+http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>it666<span class="token punctuation">.</span>com<span class="token punctuation">:</span><span class="token number">80</span><span class="token operator">/</span>index<span class="token punctuation">.</span>html
+http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>edu<span class="token punctuation">.</span>it666<span class="token punctuation">.</span>com<span class="token punctuation">:</span><span class="token number">80</span><span class="token operator">/</span>index<span class="token punctuation">.</span>html
+
+<span class="token comment" spellcheck="true">// 端口号不同, 所以不同源, 是跨域</span>
+http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>it666<span class="token punctuation">.</span>com<span class="token punctuation">:</span><span class="token number">80</span><span class="token operator">/</span>index<span class="token punctuation">.</span>html
+http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>it666<span class="token punctuation">.</span>com<span class="token punctuation">:</span><span class="token number">8090</span><span class="token operator">/</span>index<span class="token punctuation">.</span>html
+
+<span class="token comment" spellcheck="true">//ajax默认同源</span>
+        $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            url<span class="token punctuation">:</span><span class="token string">"http://127.0.0.1:80/jQuery/Ajax/xxx.php"</span><span class="token punctuation">,</span>
+            success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            error<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"请求失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p> <img src="https://img2018.cnblogs.com/blog/997648/201810/997648-20181011102318788-1124306211.png" alt="img"></p>
-<p><a href="https://imgtu.com/i/5BwwkR" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BwwkR.jpg" alt="5BwwkR.jpg"></a></p>
-<p>　保存退出 :wq</p>
-<p>　　2、给rc.local文件添加执行权限</p>
-<pre class=" language-bash"><code class="language-bash">　<span class="token function">chmod</span> +x rc.local
+<p>2.同源策略带来的影响<br>        在同源策略下, 浏览器只允许Ajax请求同源的数据, 不允许请求不同源的数据<br>        但在企业开发中, 一般情况下为了提升网页的性能, 网页和数据都是单独存储在不同服务器上的<br>        这时如果再通过Ajax请求数据就会拿不到跨域数据</p>
+<p>3.跨域解决方案(除第一种 剩下的基本不用了)<br>        jsonp<br>        document.domain+iframe<br>        location.hash + iframe<br>        window.name + iframe<br>        window.postMessage<br>        flash等第三方插件</p>
+<h3 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h3><ol>
+<li>什么是JSONP?<br>JSONP让网页从别的地址（跨域的地址）那获取资料，即跨域读取数据</li>
+<li>JSONP实现跨域访问的原理<br>2.1  在同一界面中可以定义多个script标签<br>2.2  同一个界面中多个script标签中的数据可以相互访问<br>2.3  可以通过script的src属性导入其它资源<br>2.4  通过src属性导入其它资源的本质就是将资源拷贝到script标签中<br>2.5  script的src属性不仅能导入本地资源, 还能导入远程资源<br>2.6  由于script的src属性没有同源限制, 所以可以通过script的src属性来请求跨域数据</li>
+</ol>
+<pre class=" language-javascript"><code class="language-javascript">
+<span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"http://libs.baidu.com/jquery/2.0.0/jquery.min.js"</span><span class="token operator">></span>
+    
+<span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"http://127.0.0.1:80/jQuery/Ajax/xx.php"</span><span class="token operator">></span>
+    
+<span class="token comment" spellcheck="true">/*
+    当前网页的地址: http://127.0.0.1:63342/jQuery/Ajax/jsonp%E5%8E%9F%E7%90%86.html
+    远程资源的地址: http://127.0.0.1:80/jQuery/Ajax/jsonp.php
+*/</span>
+    
+    <span class="token comment" spellcheck="true">/*
+    优化一
+    1.在企业开发中通过JSONP来获取跨域的数据,
+        一般情况下服务器返回的都不会是一个变量, 而是一个函数的调用
+    */</span>
+
+    <span class="token comment" spellcheck="true">/*
+    优化二
+    2.当前服务器返回的函数调用名称写死了 例如服务前返回demo() ,那么本地就必须有一个
+        服务器返回函数叫什么名称, 我们本地就必须定义一个叫什么名称的函数
+        
+        解决方案:
+        通过URL参数的方式来动态指定函数名称
+        例:http://127.0.0.1:80/jQuery/Ajax/20-jsonp.php?cb=test
+        cb=test就是指定返回的函数调用名为test,后台获取到就可以定义一个test方法返回
+    */</span>
+
+    <span class="token comment" spellcheck="true">/*
+    优化三
+    3.由于script标签默认是同步, 前面的script标签没有加载完数据, 后面的script标签就不会被执行
+    所以请求数据的script标签必须放到后面
+    
+        解决方案:
+        通过JS动态创建script标签, 因为JS动态创建的script标签默认就是异步的,
+        不用等到前面的标签加载完就可以执行后面的script标签
+    */</span>
+    <span class="token keyword">let</span> oScript <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"script"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    oScript<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token string">"http://127.0.0.1:80/jQuery/Ajax/20-jsonp.php?cb=test"</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>oScript<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   
 </code></pre>
-<p>　　 3、重启服务器，即可访问Tomcat</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">reboot</span>
+<h3 id="jQuery中jsonp使用"><a href="#jQuery中jsonp使用" class="headerlink" title="jQuery中jsonp使用"></a>jQuery中jsonp使用</h3><pre class=" language-javascript"><code class="language-javascript">$<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    url<span class="token punctuation">:</span> <span class="token string">"http://127.0.0.1:80/jQuery/Ajax/jsonp.php"</span><span class="token punctuation">,</span>
+    data<span class="token punctuation">:</span><span class="token punctuation">{</span>
+        <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"wst"</span><span class="token punctuation">,</span>
+        <span class="token string">"age"</span><span class="token punctuation">:</span> <span class="token number">21</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    dataType<span class="token punctuation">:</span> <span class="token string">"jsonp"</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 告诉jQuery需要请求跨域的数据</span>
+    jsonp<span class="token punctuation">:</span> <span class="token string">"cb"</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">// 告诉jQuery服务器在获取回调函数名称的时候需要用什么key来获取</span>
+    jsonpCallback<span class="token punctuation">:</span> <span class="token string">"wst"</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 告诉jQuery服务器在获取回调函数名称的时候回调函数的名称是什么</span>
+    success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="jQuery封装JSONP原理"><a href="#jQuery封装JSONP原理" class="headerlink" title="jQuery封装JSONP原理"></a>jQuery封装JSONP原理</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//自己封装的jsonp</span>
+<span class="token keyword">function</span> <span class="token function">obj2str</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 生成随机因子</span>
+    obj<span class="token punctuation">.</span>t <span class="token operator">=</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> obj<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>key <span class="token operator">+</span> <span class="token string">"="</span> <span class="token operator">+</span> <span class="token function">encodeURI</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">let</span> str <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">"&amp;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// console.log(str);</span>
+    <span class="token keyword">return</span> str<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">myJSONP</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    options <span class="token operator">=</span> options <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// http://127.0.0.1/jQuery/Ajax/jsonp.php?cb=wst&amp;name=wst&amp;age=21&amp;_=1559735634387</span>
+    <span class="token comment" spellcheck="true">// http://127.0.0.1/jQuery/Ajax/jsonp.php?cb=wst&amp;name=wst&amp;age=21&amp;t=08520581619221432</span>
+    <span class="token comment" spellcheck="true">// 1.生成URL地址</span>
+    <span class="token keyword">let</span> url <span class="token operator">=</span> options<span class="token punctuation">.</span>url<span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>jsonp<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        url <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">"?"</span> <span class="token operator">+</span> options<span class="token punctuation">.</span>jsonp <span class="token operator">+</span> <span class="token string">"="</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        url <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">"?callback="</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">let</span> callbackName <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">"jQuery"</span> <span class="token operator">+</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>jsonpCallback<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        callbackName <span class="token operator">=</span> options<span class="token punctuation">.</span>jsonpCallback<span class="token punctuation">;</span>
+        url <span class="token operator">+</span><span class="token operator">=</span> options<span class="token punctuation">.</span>jsonpCallback<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// console.log(callbackName);</span>
+        url <span class="token operator">+</span><span class="token operator">=</span> callbackName<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token function">obj2str</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        url <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">"&amp;"</span> <span class="token operator">+</span> str<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// console.log(url);</span>
+
+    <span class="token comment" spellcheck="true">// 2.获取跨域的数据</span>
+    <span class="token keyword">let</span> oScript <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"script"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    oScript<span class="token punctuation">.</span>src <span class="token operator">=</span> url<span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>oScript<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 3.定义回调函数</span>
+    window<span class="token punctuation">[</span>callbackName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 删除已经获取了数据的script标签</span>
+        document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span>oScript<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 将获取到的数据返回给外界</span>
+        options<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment" spellcheck="true">//调用自己定义的jsonp</span>
+<span class="token function">myJSONP</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        url<span class="token punctuation">:</span> <span class="token string">"http://127.0.0.1:80/jQuery/Ajax/jsonp.php"</span><span class="token punctuation">,</span>
+        data<span class="token punctuation">:</span><span class="token punctuation">{</span>
+            <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"wst"</span><span class="token punctuation">,</span>
+            <span class="token string">"age"</span><span class="token punctuation">:</span> <span class="token number">21</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        jsonp<span class="token punctuation">:</span> <span class="token string">"cb"</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">// 告诉jQuery服务器在获取回调函数名称的时候需要用什么key来获取</span>
+        jsonpCallback<span class="token punctuation">:</span> <span class="token string">"wst"</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 告诉jQuery服务器在获取回调函数名称的时候回调函数的名称是什么</span>
+        success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 
                 
@@ -541,7 +672,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://409713427.github.io/2021/102136523.html">https://409713427.github.io/2021/102136523.html</a>
+                    <a href="https://409713427.github.io/2021/102545839.html">https://409713427.github.io/2021/102545839.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -579,8 +710,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/linux/">
-                                    <span class="chip bg-color">linux</span>
+                                <a href="/tags/javascript/">
+                                    <span class="chip bg-color">javascript</span>
                                 </a>
                             
                         </div>
@@ -1022,12 +1153,12 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/102545839.html">
+                <a href="/2021/102634377.html">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/4.jpg" class="responsive-img" alt="【JS新特性系列】H5新增存储方案有以及同源跨域访问请求">
+                        <img src="/medias/banner/4.jpg" class="responsive-img" alt="【JS新特性系列】ajax,fetch,axios之间的详细区别以及优缺点">
                         
-                        <span class="card-title">【JS新特性系列】H5新增存储方案有以及同源跨域访问请求</span>
+                        <span class="card-title">【JS新特性系列】ajax,fetch,axios之间的详细区别以及优缺点</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1038,7 +1169,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-25
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-26
                         </span>
                         <span class="publish-author">
                             
@@ -1070,12 +1201,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/101936523.html">
+                <a href="/2021/102136523.html">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/2.jpg" class="responsive-img" alt="【Linux安装插件系列】Linux安装配置jdk1.8">
+                        <img src="/medias/banner/2.jpg" class="responsive-img" alt="【Linux安装插件系列】Linux安装配置tomcat9.0">
                         
-                        <span class="card-title">【Linux安装插件系列】Linux安装配置jdk1.8</span>
+                        <span class="card-title">【Linux安装插件系列】Linux安装配置tomcat9.0</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1086,7 +1217,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-21
                             </span>
                         <span class="publish-author">
                             

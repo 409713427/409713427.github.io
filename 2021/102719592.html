@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="linux tomcat">
+    <meta name="keywords" content="js javascript ES6 symbol">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【Linux安装插件系列】Linux安装配置tomcat9.0 | Wst&#39;s Blog</title>
+    <title>【JS新特性系列】ES6新增属性Symbol详解 | Wst&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -294,12 +294,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【Linux安装插件系列】Linux安装配置tomcat9.0</h1>
+                    <h1 class="description center-align post-title">【JS新特性系列】ES6新增属性Symbol详解</h1>
                 </div>
             </div>
         </div>
@@ -419,8 +419,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/linux/">
-                                <span class="chip bg-color">linux</span>
+                            <a href="/tags/javascript/">
+                                <span class="chip bg-color">javascript</span>
                             </a>
                         
                     </div>
@@ -431,8 +431,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/linux/" class="post-category">
-                                linux
+                            <a href="/categories/javascript/" class="post-category">
+                                javascript
                             </a>
                         
                     </div>
@@ -444,7 +444,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-21
+                    2021-10-27
                 </div>
                 
 
@@ -465,55 +465,85 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Linux服务器上安装tomcat"><a href="#Linux服务器上安装tomcat" class="headerlink" title="Linux服务器上安装tomcat"></a>Linux服务器上安装tomcat</h1><p> 安装软件 ： apache-tomcat-9.0.0.M1.tar.gz（下载地址<a href="http://tomcat.apache.org/%EF%BC%89" target="_blank" rel="noopener">http://tomcat.apache.org/）</a></p>
-<h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>　　Tomcat是其中一个开源的且免费的java Web服务器，是Apache软件基金会的项目，所以安装Tomcat之前要安装java JDk，请参照<a href="https://409713427.github.io/2021/102036523.html">Linux安装jdk1.8</a></p>
-<h3 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h3><p>　　下载Tomcat9</p>
-<p>​    <a href="https://imgtu.com/i/5Bwrp6" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5Bwrp6.jpg" alt="5Bwrp6.jpg"></a></p>
-<pre class=" language-bash"><code class="language-bash">将文件移动到apache-tomcat-9.0.0.M1.tar.gz移动到/usr/tomcat/下，并解压：
+                <h1 id="ES6新增属性Symbol详解"><a href="#ES6新增属性Symbol详解" class="headerlink" title="ES6新增属性Symbol详解"></a>ES6新增属性Symbol详解</h1><h2 id="1-什么Symbol"><a href="#1-什么Symbol" class="headerlink" title="1.什么Symbol?"></a>1.什么Symbol?</h2><p>Symbol是ES6中新增的一种数据类型, 被划分到了基本数据类型中<br>基本数据类型: 字符串、数值、布尔、undefined、null、Symbol<br>引用数据类型: Object</p>
+<h2 id="2-Symbol的作用"><a href="#2-Symbol的作用" class="headerlink" title="2.Symbol的作用"></a>2.Symbol的作用</h2><p>用来表示一个独一无二的值</p>
+<h2 id="3-如果生成一个独一无二的值"><a href="#3-如果生成一个独一无二的值" class="headerlink" title="3.如果生成一个独一无二的值?"></a>3.如果生成一个独一无二的值?</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p><a href="https://imgtu.com/i/5Bws1K" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5Bws1K.jpg" alt="5Bws1K.jpg"></a></p>
-<pre class=" language-bash"><code class="language-bash">解压命令 <span class="token keyword">:</span> <span class="token function">tar</span> -xzvf apache-tomcat-10.0.12.tar.gz 
-</code></pre>
-<p>   <a href="https://imgtu.com/i/5Bw0t1" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5Bw0t1.jpg" alt="5Bw0t1.jpg"></a></p>
-<p>并修改文件名</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">mv</span> apache-tomcat-10.0.12 apache-tomcat-10.0.12-8082
-</code></pre>
-<p>　　再次解压apache-tomcat-10.0.12.tar.gz 文件，并修改解压后的文件价名为apache-tomcat-10.0.12-8082，得到　</p>
-<p>​    <a href="https://imgtu.com/i/5BwBfx" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BwBfx.jpg" alt="5BwBfx.jpg"></a></p>
-<h3 id="步骤三"><a href="#步骤三" class="headerlink" title="步骤三"></a>步骤三</h3><p>　　修改端口，分别修改tomcat里面conf/server.xml</p>
-<p>server.xml文件中有三个端口设置</p>
-<p>　　</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token operator">&lt;</span>Server port<span class="token operator">=</span><span class="token string">"8005"</span> shutdown<span class="token operator">=</span><span class="token string">"SHUTDOWN"</span><span class="token operator">></span> ：关闭时使用
+<h2 id="4-为什么需要Symbol"><a href="#4-为什么需要Symbol" class="headerlink" title="4.为什么需要Symbol?"></a>4.为什么需要Symbol?</h2><p>在企业开发中如果需要对一些第三方的插件、框架进行自定义的时候<br>可能会因为添加了同名的属性或者方法, 将框架中原有的属性或者方法覆盖掉<br>为了避免这种情况的发生, 框架的作者或者我们就可以使用Symbol作为属性或者方法的名称</p>
+<h2 id="5-如何区分Symbol"><a href="#5-如何区分Symbol" class="headerlink" title="5.如何区分Symbol?"></a>5.如何区分Symbol?</h2><p>在通过Symbol生成独一无二的值时可以设置一个标记<br>这个标记仅仅用于区分, 没有其它任何含义</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"lnj"</span><span class="token punctuation">,</span>
+    say<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"say"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+obj<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"it666"</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//it666 原值被覆盖</span>
+obj<span class="token punctuation">.</span>say <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+obj<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//test 原方法被覆盖</span>
 
-　　<span class="token operator">&lt;</span>Connector port<span class="token operator">=</span><span class="token string">"8080"</span> protocol<span class="token operator">=</span><span class="token string">"HTTP/1.1"</span> connectionTimeout<span class="token operator">=</span><span class="token string">"20000"</span> redirectPort<span class="token operator">=</span><span class="token string">"8443"</span> /<span class="token operator">></span> ： 一般应用使用
-
-　　<span class="token operator">&lt;</span>Connector port<span class="token operator">=</span><span class="token string">"8009"</span> protocol<span class="token operator">=</span><span class="token string">"AJP/1.3"</span> redirectPort<span class="token operator">=</span><span class="token string">"8443"</span> /<span class="token operator">></span>：为AJP端口，即容器使用，如 APACHE能通过AJP协议访问Tomcat的8009端口
+<span class="token comment" spellcheck="true">//解决方案: 用symbol</span>
+<span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> say <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"say"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 注意点: 如果想使用变量作为对象属性的名称, 那么必须加上[]</span>
+    <span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token string">"lnj"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span>say<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"say"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// obj.name = "it666";</span>
+obj<span class="token punctuation">[</span><span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"it666"</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>　　第一个80的tomcat的三个端口分别修改为：8005/80/8009</p>
-<p>　　第二个8082的tomcat的三个端口分别修改为：7082/8082/9082</p>
-<h3 id="步骤四"><a href="#步骤四" class="headerlink" title="步骤四"></a>步骤四</h3><p>　　启动tomcat，分别进入tomcat里面的bin目录</p>
-<p>　　执行： ./startup.sh  –&gt;启动tomcat</p>
-<p>　　执行： ./shutdown.sh –&gt;关闭tomcat</p>
-<p>　　浏览器中输入：<a href="http://localhost:8080/" target="_blank" rel="noopener">http://ip:80</a> 和<a href="http://localhost:8090/" target="_blank" rel="noopener">http://</a><a href="http://localhost:8080/" target="_blank" rel="noopener">ip</a><a href="http://localhost:8090/" target="_blank" rel="noopener">:80</a>82（ip指服务器的IP地址），即可访问不同的tomcat</p>
-<p><a href="https://imgtu.com/i/5B0dKS" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5B0dKS.jpg" alt="5B0dKS.jpg"></a></p>
-<p><a href="https://imgtu.com/i/5BBCGt" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BBCGt.jpg" alt="5BBCGt.jpg"></a></p>
-<h3 id="步骤五"><a href="#步骤五" class="headerlink" title="步骤五"></a>步骤五</h3><p>　　设置tomcat开机启动</p>
-<p>　　1、找到/etc文件夹下的rc.local文件（有的是在/etc/rc.d文件夹下），在文件的最后添加以下java环境变量和启动tomcat命令：</p>
-<p>　</p>
-<pre class=" language-bash"><code class="language-bash">　<span class="token function">export</span> JAVA_HOME<span class="token operator">=</span>/home/wst/jdk1.8
-
-  <span class="token function">export</span> JRE_HOME<span class="token operator">=</span><span class="token variable">$JAVA_HOME</span>/jre
-
-　sh /home/wst/Documents/tomcat10/apache-tomcat-10.0.12-80/bin/startup.sh（启动命令，可以配置条）
+<h2 id="6-symbol注意点"><a href="#6-symbol注意点" class="headerlink" title="6.symbol注意点"></a>6.symbol注意点</h2><p>通过Symbol生成独一无二值时需要在后面加上(), 但是前面不能加new, 因为它不是引用类型</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 正确</span>
+<span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 错误</span>
 </code></pre>
-<p> <img src="https://img2018.cnblogs.com/blog/997648/201810/997648-20181011102318788-1124306211.png" alt="img"></p>
-<p><a href="https://imgtu.com/i/5BwwkR" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/10/20/5BwwkR.jpg" alt="5BwwkR.jpg"></a></p>
-<p>　保存退出 :wq</p>
-<p>　　2、给rc.local文件添加执行权限</p>
-<pre class=" language-bash"><code class="language-bash">　<span class="token function">chmod</span> +x rc.local
+<p>通过Symbol生成独一无二值时传入的字符串仅仅是一个标记, 方便我们阅读代码, 没有其它任何意义</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>　　 3、重启服务器，即可访问Tomcat</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">reboot</span>
+<p>做类型转换的时候不能转换成数值</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">String</span><span class="token punctuation">(</span>xxx<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">Boolean</span><span class="token punctuation">(</span>xxx<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">Number</span><span class="token punctuation">(</span>xxx<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>不能做任何运算</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>xxx <span class="token operator">+</span> <span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//报错</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>xxx <span class="token operator">+</span> <span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//报错</span>
+</code></pre>
+<p>Symbol生成的值作为属性或方法名称时, 一定更要保存下来, 否则后续无法使用</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// [name]: "lnj"</span>
+    <span class="token punctuation">[</span><span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token string">"it666"</span>
+ <span class="token punctuation">}</span>
+ <span class="token comment" spellcheck="true">// console.log(obj[name]);</span>
+ console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span><span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>for循环无法遍历出Symbol的属性和方法</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> say <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"say"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 注意点: 如果想使用变量作为对象属性的名称, 那么必须加上[]</span>
+    <span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token string">"lnj"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span>say<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"say"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    age<span class="token punctuation">:</span> <span class="token number">34</span><span class="token punctuation">,</span>
+    gender<span class="token punctuation">:</span> <span class="token string">"man"</span><span class="token punctuation">,</span>
+    hi<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"hi"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// for(let key in obj){</span>
+<span class="token comment" spellcheck="true">//     console.log(key);</span>
+<span class="token comment" spellcheck="true">// }</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getOwnPropertySymbols</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 
                 
@@ -541,7 +571,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://409713427.github.io/2021/102136523.html">https://409713427.github.io/2021/102136523.html</a>
+                    <a href="https://409713427.github.io/2021/102719592.html">https://409713427.github.io/2021/102719592.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -579,8 +609,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/linux/">
-                                    <span class="chip bg-color">linux</span>
+                                <a href="/tags/javascript/">
+                                    <span class="chip bg-color">javascript</span>
                                 </a>
                             
                         </div>
@@ -1018,16 +1048,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/102545839.html">
+                <a href="/2021/102719592.html">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/4.jpg" class="responsive-img" alt="【JS新特性系列】H5新增存储方案有以及同源跨域访问请求">
+                        <img src="/medias/banner/4.jpg" class="responsive-img" alt="【JS新特性系列】ES6新增属性Symbol详解">
                         
-                        <span class="card-title">【JS新特性系列】H5新增存储方案有以及同源跨域访问请求</span>
+                        <span class="card-title">【JS新特性系列】ES6新增属性Symbol详解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1037,9 +1068,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1052,6 +1083,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1070,12 +1102,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/101936523.html">
+                <a href="/2021/102724586.html">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/2.jpg" class="responsive-img" alt="【Linux安装插件系列】Linux安装配置jdk1.8">
+                        <img src="/medias/banner/4.jpg" class="responsive-img" alt="【JS新特性系列】Generator函数与async函数">
                         
-                        <span class="card-title">【Linux安装插件系列】Linux安装配置jdk1.8</span>
+                        <span class="card-title">【JS新特性系列】Generator函数与async函数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1086,14 +1118,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/linux/" class="post-category">
-                                    linux
+                            <a href="/categories/javascript/" class="post-category">
+                                    javascript
                                 </a>
                             
                             
@@ -1103,8 +1135,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/linux/">
-                        <span class="chip bg-color">linux</span>
+                    <a href="/tags/javascript/">
+                        <span class="chip bg-color">javascript</span>
                     </a>
                     
                 </div>
