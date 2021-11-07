@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="js javascript ES6 symbol">
+    <meta name="keywords" content="spring/[ssm] Spring基本使用1, Wst&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【JS新特性系列】ES6新增属性Symbol详解 | Wst&#39;s Blog</title>
+    <title>spring/[ssm] Spring基本使用1 | Wst&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -294,12 +294,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【JS新特性系列】ES6新增属性Symbol详解</h1>
+                    <h1 class="description center-align post-title">spring/[ssm] Spring基本使用1</h1>
                 </div>
             </div>
         </div>
@@ -417,25 +417,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/javascript/">
-                                <span class="chip bg-color">javascript</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/javascript/" class="post-category">
-                                javascript
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -444,7 +431,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-27
+                    2021-11-01
                 </div>
                 
 
@@ -465,87 +452,99 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="ES6新增属性Symbol详解"><a href="#ES6新增属性Symbol详解" class="headerlink" title="ES6新增属性Symbol详解"></a>ES6新增属性Symbol详解</h1><h2 id="1-什么Symbol"><a href="#1-什么Symbol" class="headerlink" title="1.什么Symbol?"></a>1.什么Symbol?</h2><p>Symbol是ES6中新增的一种数据类型, 被划分到了基本数据类型中<br>基本数据类型: 字符串、数值、布尔、undefined、null、Symbol<br>引用数据类型: Object</p>
-<h2 id="2-Symbol的作用"><a href="#2-Symbol的作用" class="headerlink" title="2.Symbol的作用"></a>2.Symbol的作用</h2><p>用来表示一个独一无二的值</p>
-<h2 id="3-如果生成一个独一无二的值"><a href="#3-如果生成一个独一无二的值" class="headerlink" title="3.如果生成一个独一无二的值?"></a>3.如果生成一个独一无二的值?</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <h1 id="ssm-Spring基本使用1"><a href="#ssm-Spring基本使用1" class="headerlink" title="[ssm] Spring基本使用1"></a>[ssm] Spring基本使用1</h1><h2 id="1-Spring简介"><a href="#1-Spring简介" class="headerlink" title="1. Spring简介"></a>1. Spring简介</h2><h3 id="1-1-Spring是什么"><a href="#1-1-Spring是什么" class="headerlink" title="1.1 Spring是什么"></a>1.1 Spring是什么</h3><p>​        Spring是分层的 Java SE/EE应用 full-stack 轻量级开源框架，以 <strong>IoC</strong>（Inverse Of Control：反转控制）和</p>
+<p>​        <strong>AOP</strong>（Aspect Oriented Programming：面向切面编程）为内核。</p>
+<p>​        提供了<strong>展现层 SpringMVC</strong> 和<strong>持久层 Spring JDBCTemplate</strong> 以及<strong>业务层事务管理</strong>等众多的企业级应用技术</p>
+<p>​        ，还能整合开源世界众多著名的第三方框架和类库，逐渐成为使用最多的Java EE 企业应用开源框架。</p>
+<h3 id="1-2-Spring的优势"><a href="#1-2-Spring的优势" class="headerlink" title="1.2 Spring的优势"></a>1.2 Spring的优势</h3><p>​    <strong>1）方便解耦，简化开发</strong></p>
+<p>​        通过 Spring 提供的 IoC容器，可以将对象间的依赖关系交由 Spring 进行控制，避免硬编码所造成的过度耦合。</p>
+<p>​        用户也不必再为单例模式类、属性文件解析等这些很底层的需求编写代码，可以更专注于上层的应用。</p>
+<p>​    <strong>2）AOP 编程的支持</strong></p>
+<p>​        通过 Spring的 AOP 功能，方便进行面向切面编程，许多不容易用传统 OOP 实现的功能可以通过 AOP 轻松实现。</p>
+<p>​    <strong>3）声明式事务的支持</strong></p>
+<p>​        可以将我们从单调烦闷的事务管理代码中解脱出来，通过声明式方式灵活的进行事务管理，提高开发效率和质量。</p>
+<p>​    <strong>4）方便程序的测试</strong></p>
+<p>​        可以用非容器依赖的编程方式进行几乎所有的测试工作，测试不再是昂贵的操作，而是随手可做的事情。</p>
+<p>​    <strong>5）方便集成各种优秀框架</strong></p>
+<p>​        Spring对各种优秀框架（Struts、Hibernate、Hessian、Quartz等）的支持。</p>
+<p>​    <strong>6）降低 JavaEE API 的使用难度</strong></p>
+<p>​        Spring对 JavaEE API（如 JDBC、JavaMail、远程调用等）进行了薄薄的封装层，使这些 API 的使用难度大为降低。</p>
+<p>​    <strong>7）Java 源码是经典学习范例</strong></p>
+<p>​        Spring的源代码设计精妙、结构清晰、匠心独用，处处体现着大师对Java 设计模式灵活运用以及对 Java技术的高深</p>
+<p>​        造诣。它的源代码无意是 Java 技术的最佳实践的范例。</p>
+<h3 id="1-3-Spring体系结构"><a href="#1-3-Spring体系结构" class="headerlink" title="1.3 Spring体系结构"></a>1.3 Spring体系结构</h3><p><a href="https://imgtu.com/i/IPBOjs" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/11/01/IPBOjs.png" alt="IPBOjs.png"></a></p>
+<h2 id="2-Spring快速入门"><a href="#2-Spring快速入门" class="headerlink" title="2. Spring快速入门"></a>2. Spring快速入门</h2><p>​    2.1Spring程序开发步骤</p>
+<p><a href="https://imgtu.com/i/IPDJbt" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/11/01/IPDJbt.png" alt="IPDJbt.png"></a></p>
+<p>① 导入 Spring 开发的基本包坐标 (配置maven)</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!--导入spring的context坐标，context依赖core、beans、expression--></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-context<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>5.0.5.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
 </code></pre>
-<h2 id="4-为什么需要Symbol"><a href="#4-为什么需要Symbol" class="headerlink" title="4.为什么需要Symbol?"></a>4.为什么需要Symbol?</h2><p>在企业开发中如果需要对一些第三方的插件、框架进行自定义的时候<br>可能会因为添加了同名的属性或者方法, 将框架中原有的属性或者方法覆盖掉<br>为了避免这种情况的发生, 框架的作者或者我们就可以使用Symbol作为属性或者方法的名称</p>
-<h2 id="5-如何区分Symbol"><a href="#5-如何区分Symbol" class="headerlink" title="5.如何区分Symbol?"></a>5.如何区分Symbol?</h2><p>在通过Symbol生成独一无二的值时可以设置一个标记<br>这个标记仅仅用于区分, 没有其它任何含义</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">"lnj"</span><span class="token punctuation">,</span>
-    say<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"say"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+<p>② 编写 Dao 接口和实现类</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserDao</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-obj<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"it666"</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//it666 原值被覆盖</span>
-obj<span class="token punctuation">.</span>say <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserDaoImpl</span> <span class="token keyword">implements</span> <span class="token class-name">UserDao</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"UserDao save method running...."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> 
 <span class="token punctuation">}</span>
-obj<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//test 原方法被覆盖</span>
-
-<span class="token comment" spellcheck="true">//解决方案: 用symbol</span>
-<span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> say <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"say"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 注意点: 如果想使用变量作为对象属性的名称, 那么必须加上[]</span>
-    <span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token string">"lnj"</span><span class="token punctuation">,</span>
-    <span class="token punctuation">[</span>say<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"say"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+</code></pre>
+<p>③ 创建 Spring 核心配置文件</p>
+<p>​    在类路径下（resources）创建applicationContext.xml配置文件</p>
+<pre class=" language-XML"><code class="language-XML"><?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+</beans>
+</code></pre>
+<p>④ 在 Spring 配置文件中配置 UserDaoImpl</p>
+<pre class=" language-XML"><code class="language-XML"><?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <bean id="userDao"     class="com.itheima.dao.impl.UserDaoImpl"></bean>
+</beans>
+</code></pre>
+<p>⑤ 使用 Spring 的 API 获得 Bean 实例</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    ApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> 
+                    <span class="token class-name">ClassPathXmlApplicationContext</span><span class="token punctuation">(</span><span class="token string">"applicationContext.xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    UserDao userDao <span class="token operator">=</span> <span class="token punctuation">(</span>UserDao<span class="token punctuation">)</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"userDao"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    userDao<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// obj.name = "it666";</span>
-obj<span class="token punctuation">[</span><span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"it666"</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h2 id="6-symbol注意点"><a href="#6-symbol注意点" class="headerlink" title="6.symbol注意点"></a>6.symbol注意点</h2><p>通过Symbol生成独一无二值时需要在后面加上(), 但是前面不能加new, 因为它不是引用类型</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 正确</span>
-<span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 错误</span>
-</code></pre>
-<p>通过Symbol生成独一无二值时传入的字符串仅仅是一个标记, 方便我们阅读代码, 没有其它任何意义</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>做类型转换的时候不能转换成数值</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">String</span><span class="token punctuation">(</span>xxx<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">Boolean</span><span class="token punctuation">(</span>xxx<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">Number</span><span class="token punctuation">(</span>xxx<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>不能做任何运算</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>xxx <span class="token operator">+</span> <span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//报错</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>xxx <span class="token operator">+</span> <span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//报错</span>
-</code></pre>
-<p>Symbol生成的值作为属性或方法名称时, 一定更要保存下来, 否则后续无法使用</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// [name]: "lnj"</span>
-    <span class="token punctuation">[</span><span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token string">"it666"</span>
- <span class="token punctuation">}</span>
- <span class="token comment" spellcheck="true">// console.log(obj[name]);</span>
- console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span><span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>for循环无法遍历出Symbol的属性和方法</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> say <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"say"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 注意点: 如果想使用变量作为对象属性的名称, 那么必须加上[]</span>
-    <span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token string">"lnj"</span><span class="token punctuation">,</span>
-    <span class="token punctuation">[</span>say<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"say"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    age<span class="token punctuation">:</span> <span class="token number">34</span><span class="token punctuation">,</span>
-    gender<span class="token punctuation">:</span> <span class="token string">"man"</span><span class="token punctuation">,</span>
-    hi<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"hi"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// for(let key in obj){</span>
-<span class="token comment" spellcheck="true">//     console.log(key);</span>
-<span class="token comment" spellcheck="true">// }</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getOwnPropertySymbols</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-
+<h2 id="3-Spring配置文件"><a href="#3-Spring配置文件" class="headerlink" title="3. Spring配置文件"></a>3. Spring配置文件</h2><h3 id="3-1-Bean标签基本配置"><a href="#3-1-Bean标签基本配置" class="headerlink" title="3.1 Bean标签基本配置"></a>3.1 Bean标签基本配置</h3><p>​        用于配置对象交由<strong>Spring</strong> 来创建。</p>
+<p>​        默认情况下它调用的是类中的<strong>无参构造函数</strong>，如果没有无参构造函数则不能创建成功。</p>
+<p>​        基本属性：</p>
+<p>​             <strong>id</strong>：Bean实例在Spring容器中的唯一标识</p>
+<p>​            <strong>class</strong>：Bean的全限定名称    </p>
+<h3 id="3-2-Bean标签范围配置"><a href="#3-2-Bean标签范围配置" class="headerlink" title="3.2 Bean标签范围配置"></a>3.2 Bean标签范围配置</h3><p>​        scope：指对象的作用范围，取值如下：</p>
+<p><a href="https://imgtu.com/i/IPrOwq" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/11/01/IPrOwq.png" alt="IPrOwq.png"></a></p>
+<h3 id="3-2-Bean标签范围配置-1"><a href="#3-2-Bean标签范围配置-1" class="headerlink" title="3.2 Bean标签范围配置"></a>3.2 Bean标签范围配置</h3><p>​        <strong>1）当scope的取值为<strong><strong>singleton</strong></strong>时</strong></p>
+<p>​            Bean的实例化个数：1个</p>
+<p>​            Bean的实例化时机：当Spring核心文件被加载时，实例化配置的Bean实例</p>
+<p>​            Bean的生命周期：</p>
+<p>​                对象创建：当应用加载，创建容器时，对象就被创建了</p>
+<p>​                对象运行：只要容器在，对象一直活着</p>
+<p>​                对象销毁：当应用卸载，销毁容器时，对象就被销毁了</p>
+<p>​    <strong>2）当scope的取值为<strong><strong>prototype</strong></strong>时</strong></p>
+<p>​            Bean的实例化个数：多个</p>
+<p>​            Bean的实例化时机：当调用getBean()方法时实例化Bean</p>
+<p>​                对象创建：当使用对象时，创建新的对象实例</p>
+<p>​                对象运行：只要对象在使用中，就一直活着</p>
+<p>​                对象销毁：当对象长时间不用时，被 Java 的垃圾回收器回收了</p>
+<h2 id="4-Spring相关API"><a href="#4-Spring相关API" class="headerlink" title="4. Spring相关API"></a>4. Spring相关API</h2>
                 
             </div>
             <hr/>
@@ -561,7 +560,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">wst</a>
+                    <a href="/about" rel="external nofollow noreferrer">ShuaiTongWang</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -571,7 +570,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://409713427.github.io/2021/102719592.html">https://409713427.github.io/2021/102719592.html</a>
+                    <a href="https://409713427.github.io/2021/110154261.html">https://409713427.github.io/2021/110154261.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -584,7 +583,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">wst</a>
+                    <a href="/about" target="_blank">ShuaiTongWang</a>
                     !
                 </span>
             </div>
@@ -608,11 +607,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/javascript/">
-                                    <span class="chip bg-color">javascript</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -1052,13 +1047,12 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/110154261.html">
+                <a href="/2021/110738710.html">
                     <div class="card-image">
                         
+                        <img src="/medias/banner/4.jpg" class="responsive-img" alt="spring整合MyBatis,maven工程中c3p0的jar包导入坐标">
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="spring/[ssm] Spring基本使用1">
-                        
-                        <span class="card-title">spring/[ssm] Spring基本使用1</span>
+                        <span class="card-title">spring整合MyBatis,maven工程中c3p0的jar包导入坐标</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1069,15 +1063,27 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-07
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            ShuaiTongWang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/bug-spring-c3p0/" class="post-category">
+                                    bug spring c3p0
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/bug-spring-c3p0/">
+                        <span class="chip bg-color">bug spring c3p0</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1089,12 +1095,12 @@ console<span class="token punctuation">.</span><span class="token function">log<
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/102724586.html">
+                <a href="/2021/102719592.html">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/4.jpg" class="responsive-img" alt="【JS新特性系列】Generator函数与async函数">
+                        <img src="/medias/banner/4.jpg" class="responsive-img" alt="【JS新特性系列】ES6新增属性Symbol详解">
                         
-                        <span class="card-title">【JS新特性系列】Generator函数与async函数</span>
+                        <span class="card-title">【JS新特性系列】ES6新增属性Symbol详解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="js javascript ES6 symbol">
+    <meta name="keywords" content="bug spring c3p0">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【JS新特性系列】ES6新增属性Symbol详解 | Wst&#39;s Blog</title>
+    <title>spring整合MyBatis,maven工程中c3p0的jar包导入坐标 | Wst&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -299,7 +299,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【JS新特性系列】ES6新增属性Symbol详解</h1>
+                    <h1 class="description center-align post-title">spring整合MyBatis,maven工程中c3p0的jar包导入坐标</h1>
                 </div>
             </div>
         </div>
@@ -419,8 +419,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/javascript/">
-                                <span class="chip bg-color">javascript</span>
+                            <a href="/tags/bug-spring-c3p0/">
+                                <span class="chip bg-color">bug spring c3p0</span>
                             </a>
                         
                     </div>
@@ -431,8 +431,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/javascript/" class="post-category">
-                                javascript
+                            <a href="/categories/bug-spring-c3p0/" class="post-category">
+                                bug spring c3p0
                             </a>
                         
                     </div>
@@ -444,7 +444,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-27
+                    2021-11-07
                 </div>
                 
 
@@ -465,85 +465,25 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="ES6新增属性Symbol详解"><a href="#ES6新增属性Symbol详解" class="headerlink" title="ES6新增属性Symbol详解"></a>ES6新增属性Symbol详解</h1><h2 id="1-什么Symbol"><a href="#1-什么Symbol" class="headerlink" title="1.什么Symbol?"></a>1.什么Symbol?</h2><p>Symbol是ES6中新增的一种数据类型, 被划分到了基本数据类型中<br>基本数据类型: 字符串、数值、布尔、undefined、null、Symbol<br>引用数据类型: Object</p>
-<h2 id="2-Symbol的作用"><a href="#2-Symbol的作用" class="headerlink" title="2.Symbol的作用"></a>2.Symbol的作用</h2><p>用来表示一个独一无二的值</p>
-<h2 id="3-如果生成一个独一无二的值"><a href="#3-如果生成一个独一无二的值" class="headerlink" title="3.如果生成一个独一无二的值?"></a>3.如果生成一个独一无二的值?</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <h1 id="Receiver-class-com-mchange-v2-c3p0-impl-NewProxyResultSet-does-not-define-or-inherit-an-implementati"><a href="#Receiver-class-com-mchange-v2-c3p0-impl-NewProxyResultSet-does-not-define-or-inherit-an-implementati" class="headerlink" title="Receiver class com.mchange.v2.c3p0.impl.NewProxyResultSet does not define or inherit an implementati"></a>Receiver class com.mchange.v2.c3p0.impl.NewProxyResultSet does not define or inherit an implementati</h1><h3 id="最近做SSM框架整合测试的时候，spring整合MyBatis的时候，运行测试报错以下"><a href="#最近做SSM框架整合测试的时候，spring整合MyBatis的时候，运行测试报错以下" class="headerlink" title="最近做SSM框架整合测试的时候，spring整合MyBatis的时候，运行测试报错以下:"></a>最近做SSM框架整合测试的时候，spring整合MyBatis的时候，运行测试报错以下:</h3><p><a href="https://imgtu.com/i/I1afN8" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/11/07/I1afN8.png" alt="I1afN8.png"></a></p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决:"></a>解决:</h3><p>面向百度一顿查,然后发现maven工程中c3p0的jar包导的有问题:</p>
+<p>错误</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>c3p0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>c3p0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.9.1.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>type</span><span class="token punctuation">></span></span>jar<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>type</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
 </code></pre>
-<h2 id="4-为什么需要Symbol"><a href="#4-为什么需要Symbol" class="headerlink" title="4.为什么需要Symbol?"></a>4.为什么需要Symbol?</h2><p>在企业开发中如果需要对一些第三方的插件、框架进行自定义的时候<br>可能会因为添加了同名的属性或者方法, 将框架中原有的属性或者方法覆盖掉<br>为了避免这种情况的发生, 框架的作者或者我们就可以使用Symbol作为属性或者方法的名称</p>
-<h2 id="5-如何区分Symbol"><a href="#5-如何区分Symbol" class="headerlink" title="5.如何区分Symbol?"></a>5.如何区分Symbol?</h2><p>在通过Symbol生成独一无二的值时可以设置一个标记<br>这个标记仅仅用于区分, 没有其它任何含义</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">"lnj"</span><span class="token punctuation">,</span>
-    say<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"say"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-obj<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"it666"</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//it666 原值被覆盖</span>
-obj<span class="token punctuation">.</span>say <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-obj<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//test 原方法被覆盖</span>
-
-<span class="token comment" spellcheck="true">//解决方案: 用symbol</span>
-<span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> say <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"say"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 注意点: 如果想使用变量作为对象属性的名称, 那么必须加上[]</span>
-    <span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token string">"lnj"</span><span class="token punctuation">,</span>
-    <span class="token punctuation">[</span>say<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"say"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// obj.name = "it666";</span>
-obj<span class="token punctuation">[</span><span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"it666"</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<h2 id="6-symbol注意点"><a href="#6-symbol注意点" class="headerlink" title="6.symbol注意点"></a>6.symbol注意点</h2><p>通过Symbol生成独一无二值时需要在后面加上(), 但是前面不能加new, 因为它不是引用类型</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 正确</span>
-<span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 错误</span>
-</code></pre>
-<p>通过Symbol生成独一无二值时传入的字符串仅仅是一个标记, 方便我们阅读代码, 没有其它任何意义</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>做类型转换的时候不能转换成数值</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">String</span><span class="token punctuation">(</span>xxx<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">Boolean</span><span class="token punctuation">(</span>xxx<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">Number</span><span class="token punctuation">(</span>xxx<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>不能做任何运算</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> xxx <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>xxx <span class="token operator">+</span> <span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//报错</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>xxx <span class="token operator">+</span> <span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//报错</span>
-</code></pre>
-<p>Symbol生成的值作为属性或方法名称时, 一定更要保存下来, 否则后续无法使用</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// [name]: "lnj"</span>
-    <span class="token punctuation">[</span><span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token string">"it666"</span>
- <span class="token punctuation">}</span>
- <span class="token comment" spellcheck="true">// console.log(obj[name]);</span>
- console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span><span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>for循环无法遍历出Symbol的属性和方法</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> say <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"say"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 注意点: 如果想使用变量作为对象属性的名称, 那么必须加上[]</span>
-    <span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token string">"lnj"</span><span class="token punctuation">,</span>
-    <span class="token punctuation">[</span>say<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"say"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    age<span class="token punctuation">:</span> <span class="token number">34</span><span class="token punctuation">,</span>
-    gender<span class="token punctuation">:</span> <span class="token string">"man"</span><span class="token punctuation">,</span>
-    hi<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"hi"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// for(let key in obj){</span>
-<span class="token comment" spellcheck="true">//     console.log(key);</span>
-<span class="token comment" spellcheck="true">// }</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getOwnPropertySymbols</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>正确</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.mchange<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>c3p0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.9.5.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>type</span><span class="token punctuation">></span></span>jar<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>type</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
 </code></pre>
 
                 
@@ -571,7 +511,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://409713427.github.io/2021/102719592.html">https://409713427.github.io/2021/102719592.html</a>
+                    <a href="https://409713427.github.io/2021/110738710.html">https://409713427.github.io/2021/110738710.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -609,8 +549,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/javascript/">
-                                    <span class="chip bg-color">javascript</span>
+                                <a href="/tags/bug-spring-c3p0/">
+                                    <span class="chip bg-color">bug spring c3p0</span>
                                 </a>
                             
                         </div>
@@ -1048,9 +988,59 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/110738710.html">
+                    <div class="card-image">
+                        
+                        <img src="/medias/banner/4.jpg" class="responsive-img" alt="spring整合MyBatis,maven工程中c3p0的jar包导入坐标">
+                        
+                        <span class="card-title">spring整合MyBatis,maven工程中c3p0的jar包导入坐标</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/bug-spring-c3p0/" class="post-category">
+                                    bug spring c3p0
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/bug-spring-c3p0/">
+                        <span class="chip bg-color">bug spring c3p0</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/110154261.html">
                     <div class="card-image">
@@ -1068,9 +1058,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1078,54 +1068,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
                             
                         </span>
                     </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/102724586.html">
-                    <div class="card-image">
-                        
-                        <img src="/medias/banner/4.jpg" class="responsive-img" alt="【JS新特性系列】Generator函数与async函数">
-                        
-                        <span class="card-title">【JS新特性系列】Generator函数与async函数</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-27
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/javascript/" class="post-category">
-                                    javascript
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/javascript/">
-                        <span class="chip bg-color">javascript</span>
-                    </a>
-                    
                 </div>
                 
             </div>
