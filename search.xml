@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>bug</title>
+      <link href="/2022/031855064.html"/>
+      <url>/2022/031855064.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="maven出现：Failed-to-execute-goal-on-project-…-Could-not-resolve-dependencies-for-project-…"><a href="#maven出现：Failed-to-execute-goal-on-project-…-Could-not-resolve-dependencies-for-project-…" class="headerlink" title="maven出现：Failed to execute goal on project …: Could not resolve dependencies for project …"></a>maven出现：Failed to execute goal on project …: Could not resolve dependencies for project …</h1><p>1、我的项目结构是一个父项目，多个子项目目录如下：</p><p><a href="https://imgtu.com/i/qFsTB9" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2022/03/18/qFsTB9.png" alt="qFsTB9.png"></a></p><p>2、我这里就举个例子，所以应用的也就是common和order-add这个项目。</p><p>3、两个项目都继承父项目</p><p>4、在模块中order-add依赖于common，在common中执行完clean和install之后，本地仓库也存在依赖，但是在order-add中进行install就会出现</p><pre><code>Failed to execute goal on project ...: Could not resolve dependencies for project ...</code></pre><p>这样测错误，最后发现原来是自己没有首先对父项目也就是springcloud-demo1项目进行clean和install ，</p><p>5、总结、在父项目下有的子项目在首次运行clean 和install前应该先运行父项目的clean和install</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> bug </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> bug </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SASS用法指南</title>
       <link href="/2022/022448561.html"/>
       <url>/2022/022448561.html</url>
