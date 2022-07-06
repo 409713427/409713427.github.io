@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="bug/微服务项目报错 Failed to configure a DataSource ‘url‘ attribute is not specified and no embedde, Wst&#39;s Blog">
+    <meta name="keywords" content="SpringBoot 过滤器 拦截器">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>bug/微服务项目报错 Failed to configure a DataSource ‘url‘ attribute is not specified and no embedde | Wst&#39;s Blog</title>
+    <title>【springboot】过滤器和拦截器用法及使用场景 | Wst&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -294,12 +294,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">bug/微服务项目报错 Failed to configure a DataSource ‘url‘ attribute is not specified and no embedde</h1>
+                    <h1 class="description center-align post-title">【springboot】过滤器和拦截器用法及使用场景</h1>
                 </div>
             </div>
         </div>
@@ -417,12 +417,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/springboot/">
+                                <span class="chip bg-color">springboot</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/springboot/" class="post-category">
+                                springboot
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -431,7 +444,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-03-20
+                    2022-01-23
                 </div>
                 
 
@@ -452,81 +465,145 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="微服务项目报错-Failed-to-configure-a-DataSource-‘url‘-attribute-is-not-specified-and-no-embedde"><a href="#微服务项目报错-Failed-to-configure-a-DataSource-‘url‘-attribute-is-not-specified-and-no-embedde" class="headerlink" title="微服务项目报错: Failed to configure a DataSource: ‘url‘ attribute is not specified and no embedde"></a>微服务项目报错: Failed to configure a DataSource: ‘url‘ attribute is not specified and no embedde</h1><h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构:"></a>项目结构:</h3><p><a href="https://imgtu.com/i/qeGua6" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2022/03/20/qeGua6.png" alt="qeGua6.png"></a></p>
-<blockquote>
-<p>在我的项目中api-user-login-8001不需要用放到mybatis-plus ,但是需要依赖beans,beans中导入了mybatis-plus依赖,会存在传递依赖,导致项目报错如下</p>
-</blockquote>
-<p><a href="https://imgtu.com/i/qeJEY8" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2022/03/20/qeJEY8.png" alt="qeJEY8.png"></a></p>
-<p>问题分析及解决方案</p>
-<p>问题原因: Mybatis没有找到合适的加载类,其实是spring - datasource - url没有加载成功,分析原因如下所示.</p>
-<pre><code> 1. DataSourceAutoConfiguration会自动加载.
- 2. 没有配置spring - datasource - url 属性. 
- 3. spring - datasource - url 配置的地址格式有问题.
- 4. 配置 spring - datasource - url的文件没有加载.
- 5. 导入commons没有把不需要的依赖排除掉
+                <h2 id="拦截器与过滤器的区别："><a href="#拦截器与过滤器的区别：" class="headerlink" title="拦截器与过滤器的区别："></a>拦截器与过滤器的区别：</h2><ol>
+<li>过滤器和拦截器触发时机不一样，过滤器是在请求进入容器后，但请求进入<a href="https://so.csdn.net/so/search?q=servlet&spm=1001.2101.3001.7020" target="_blank" rel="noopener">servlet</a>之前进行预处理的。请求结束返回也是，是在servlet处理完后，返回给前端之前。  </li>
+</ol>
+<p> 如下图：<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26718429/1652147378312-b1da0142-5c4a-4d77-a6b8-9dba2bc9067e.png#clientId=u7308a466-704b-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=292&id=ue64da70a&margin=%5Bobject%20Object%5D&name=20180418181500252.png&originHeight=457&originWidth=535&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8489&status=done&style=none&taskId=u725b0dc1-06ba-4e0f-a223-aa078eb61b4&title=&width=342.4" alt="20180418181500252.png"></p>
+<ol start="2">
+<li> 拦截器可以获取<a href="https://so.csdn.net/so/search?q=IOC&spm=1001.2101.3001.7020" target="_blank" rel="noopener">IOC</a>容器中的各个bean，而过滤器就不行，因为拦截器是spring提供并管理的，spring的功能可以被拦截器使用，在拦截器里注入一个service，可以调用业务逻辑。而过滤器是JavaEE标准，只需依赖servlet api ，不需要依赖spring。  </li>
+</ol>
+<p> 过滤器拦截器运行先后步骤：<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26718429/1652147445411-eafc952d-c83c-4eff-95d3-520a1a660195.png#clientId=u7308a466-704b-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=294&id=u5202ad8c&margin=%5Bobject%20Object%5D&name=20180418181054330.png&originHeight=460&originWidth=819&originalType=binary&ratio=1&rotation=0&showTitle=false&size=201705&status=done&style=none&taskId=u4856dd14-6c48-4845-92ab-63af373c9fa&title=&width=524.16" alt="20180418181054330.png"><br> 其中第2步，SpringMVC的机制是由DispaterServlet来分发请求给不同的Controller，其实这一步是在Servlet的service()方法中执行的.  </p>
+<ol start="3">
+<li>过滤器的实现基于回调函数。而拦截器（代理模式）的实现基于反射，代理分静态代理和动态代理，动态代理是拦截器的简单实现。</li>
+<li> 区别对比:</li>
+<li>最简单明了的区别就是<strong>过滤器可以修改request，而拦截器不能</strong></li>
+<li><strong>过滤器需要在servlet容器中实现，拦截器可以适用于javaEE，javaSE等各种环境</strong></li>
+<li><strong>拦截器可以调用IOC容器中的各种依赖，而过滤器不能</strong></li>
+<li><strong>过滤器只能在请求的前后使用，而拦截器可以详细到每个方法</strong></li>
+<li>过滤器就是筛选出你要的东西，比如requeset中你要的那部分<br>拦截器在做安全方面用的比较多，比如终止一些流程  </li>
+</ol>
+<p>何时使用拦截器？何时使用过滤器？</p>
+<ul>
+<li>如果是非spring项目，那么拦截器不能用，只能使用过滤器。</li>
+<li>如果是处理controller前后，既可以使用拦截器也可以使用过滤器。</li>
+<li>如果是处理dispaterServlet前后，只能使用过滤器。</li>
+</ul>
+<p>项目请求执行顺序</p>
+<ul>
+<li>Filter -&gt;Interceptor.preHandle-&gt;Handler( Controller )-&gt;Interceptor.postHandle-&gt;Interceptor.afterCompletion-&gt;Filter  <h2 id="spring-boot-使用过滤器"><a href="#spring-boot-使用过滤器" class="headerlink" title="spring boot 使用过滤器"></a>spring boot 使用过滤器</h2>两种方式： </li>
+</ul>
+<ol>
+<li>使用spring boot提供的FilterRegistrationBean注册Filter </li>
+<li>使用原生servlet注解定义Filter </li>
+</ol>
+<p>两种方式的本质都是一样的，都是去FilterRegistrationBean注册自定义Filter</p>
+<p>方式一: </p>
+<ol>
+<li>先定义Filter：<br>```java<br>package com.hwm.filter;</li>
+</ol>
+<p>import javax.servlet.*;<br>import java.io.IOException;</p>
+<p>public class MyFilter implements Filter {<br>    @Override<br>    public void init(FilterConfig filterConfig) throws ServletException {</p>
+<pre><code>}
+@Override
+public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    // do something 处理request 或response
+    System.out.println(&quot;filter1&quot;);
+    // 调用filter链中的下一个filter
+    filterChain.doFilter(servletRequest,servletResponse);
+}
+@Override
+public void destroy() {
+
+}
 </code></pre>
-<p>网上给出了这几种解决方案.<br>方案一 (解决原因1)</p>
-<p>排除此类的autoconfig。启动以后就可以正常运行。</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span><span class="token punctuation">(</span>exclude<span class="token operator">=</span> <span class="token punctuation">{</span>DataSourceAutoConfiguration<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<p>}</p>
+<pre><code>
+2.  注册自定义Filter  
+```java
+@Configuration
+public class FilterConfig {
+
+    @Bean
+    public FilterRegistrationBean registrationBean() {
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new MyFilter());
+        filterRegistrationBean.addUrlPatterns(&quot;/*&quot;);
+        return filterRegistrationBean;
+    }
+}
 </code></pre>
-<p>方案二 (解决原因2)</p>
-<p><code>在application.properties/或者application.yml文件中没有添加数据库配置信息.</code></p>
-<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
-  <span class="token key atrule">datasource</span><span class="token punctuation">:</span>
-    <span class="token key atrule">url</span><span class="token punctuation">:</span> jdbc<span class="token punctuation">:</span>mysql<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span>3306/read_data<span class="token punctuation">?</span>useUnicode=true<span class="token important">&amp;characterEncoding</span>=UTF<span class="token punctuation">-</span>8<span class="token important">&amp;useSSL</span>=false
-    <span class="token key atrule">username</span><span class="token punctuation">:</span> root
-    <span class="token key atrule">password</span><span class="token punctuation">:</span> <span class="token number">123456</span>
-    <span class="token key atrule">driver-class-name</span><span class="token punctuation">:</span> com.mysql.jdbc.Driver
+<hr>
+<p> 方式二：  <strong>（使用</strong>原生servlet注解定义Filter )</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 注入spring容器</span>
+<span class="token annotation punctuation">@Component</span>
+<span class="token comment" spellcheck="true">// 定义filterName 和过滤的url</span>
+<span class="token annotation punctuation">@WebFilter</span><span class="token punctuation">(</span>filterName <span class="token operator">=</span> <span class="token string">"my2Filter"</span> <span class="token punctuation">,</span>urlPatterns <span class="token operator">=</span> <span class="token string">"/*"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">My2Filter</span> <span class="token keyword">implements</span> <span class="token class-name">Filter</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span>FilterConfig filterConfig<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doFilter</span><span class="token punctuation">(</span>ServletRequest servletRequest<span class="token punctuation">,</span> ServletResponse servletResponse<span class="token punctuation">,</span> FilterChain filterChain<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException<span class="token punctuation">,</span> ServletException <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"filter2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<p>方案三 (解决原因3)</p>
-<p>在spring xml配置文件中引用了数据库地址 所以需要对:等进行转义处理.但是在application.properties/或者application.yml文件并不需要转义,错误和正确方法写在下面了.</p>
-<pre class=" language-properties"><code class="language-properties">//错误示例
-<span class="token attr-name">spring.datasource.url</span> <span class="token punctuation">=</span> <span class="token attr-value">jdbc:mysql\://192.168.0.20\:1504/f_me?setUnicode=true&amp;characterEncoding=utf8</span>
+<p> 这里直接用@WebFilter就可以进行配置，同样，可以设置url匹配模式，过滤器名称等。这里需要注意一点的是@WebFilter这个注解是Servlet3.0的规范，并不是Spring boot提供的。除了这个注解以外，我们还需在启动类中加另外一个注解：@ServletComponetScan ，指定扫描的包。</p>
+<h2 id="Spring-boot拦截器的使用："><a href="#Spring-boot拦截器的使用：" class="headerlink" title="Spring boot拦截器的使用："></a>Spring boot拦截器的使用：</h2><p> 实现拦截器可以通过继承<code> HandlerInterceptorAdapter</code>类也可以通过实现<code>HandlerInterceptor</code>这个接口。另外，如果preHandle方法return true，则继续后续处理。<br><strong>首先我们实现拦截器类：</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyInterceptor</span> <span class="token keyword">implements</span> <span class="token class-name">HandlerInterceptor</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">preHandle</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">,</span> Object handler<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"preHandle"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">postHandle</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">,</span> Object handler<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> ModelAndView modelAndView<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"postHandle"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">afterCompletion</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">,</span> Object handler<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> Exception ex<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"afterCompletion"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<pre class=" language-properties"><code class="language-properties">//正确示例
-<span class="token attr-name">spring.datasource.url</span> <span class="token punctuation">=</span> <span class="token attr-value">jdbc:mysql://192.168.0.20:1504/f_me?setUnicode=true&amp;characterEncoding=utf8</span>
+<p> 我们<strong>还需要</strong>实现<strong>HandlerInterceptor这个接口</strong>，这个接口包括三个方法，p<strong>reHandle是请求执行前</strong>执行的，<strong>postHandler是请求结束</strong>执行的，但<strong>只有preHandle方法返回true的时候才会执</strong>行，<strong>afterCompletion是视图渲染完成后才执行</strong>，同样需要preHandle返回true，该方法通常用于清理资源等工作。除了实现上面的接口外，我们还需对其进行配置：<br>配置拦截器:</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">InterceptorConfig</span> <span class="token keyword">implements</span> <span class="token class-name">WebMvcConfigurer</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addInterceptors</span><span class="token punctuation">(</span>InterceptorRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        registry<span class="token punctuation">.</span><span class="token function">addInterceptor</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MyInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addPathPatterns</span><span class="token punctuation">(</span><span class="token string">"/**"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<p>方案四 (解决原因4)</p>
-<p>yml或者properties文件没有被扫描到,需要在pom文件中添加如下.来保证文件都能正常被扫描到并且加载成功.</p>
-<pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resources</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resource</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>directory</span><span class="token punctuation">></span></span>src/main/java<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>directory</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>includes</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span><span class="token punctuation">></span></span>**/*.yml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>include</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span><span class="token punctuation">></span></span>**/*.properties<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>include</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span><span class="token punctuation">></span></span>**/*.xml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>include</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>includes</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filtering</span><span class="token punctuation">></span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filtering</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resource</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resource</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>directory</span><span class="token punctuation">></span></span>src/main/resources<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>directory</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>includes</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span><span class="token punctuation">></span></span>**/*.yml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>include</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span><span class="token punctuation">></span></span>**/*.properties<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>include</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span><span class="token punctuation">></span></span>**/*.xml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>include</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>includes</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filtering</span><span class="token punctuation">></span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filtering</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resource</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resources</span><span class="token punctuation">></span></span>
-</code></pre>
-<p>方案五 (解决原因5)</p>
-<p>在导入common依赖时,将不需要并导致无法正常运行的以来排除掉</p>
-<pre class=" language-xml"><code class="language-xml">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.wst<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>beans<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.0.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusions</span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusion</span><span class="token punctuation">></span></span>
-                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.baomidou<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mybatis-plus-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusion</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusions</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
-</code></pre>
-<p>说明</p>
-<p>我的问题是有原因1或5造成的,没有排除相关依赖或者排除此类的autoconfig,其他方案均未认证其正确性,所以需要自行酌情而定.切勿盲目而为.</p>
+<p> 这里我们<strong>继承了WebMVCConfigurerAdapter</strong>，这里我们<strong>重写了addInterceptors这个方法</strong>，进行拦截器的配置，<strong>主要配置项就两个</strong>，一个是<strong>指定拦截器</strong>，第二个是<strong>指定拦截的URL</strong>。  </p>
+<h3 id="拦截器不生效常见问题："><a href="#拦截器不生效常见问题：" class="headerlink" title="拦截器不生效常见问题："></a>拦截器不生效常见问题：</h3><ol>
+<li>是否有加@Configuration</li>
+<li>拦截路径是否有问题 ** 和 *</li>
+<li>拦截器最后路径一定要 “/*”， 如果是目录的话则是 //  <h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="1-拦截器应用场景"><a href="#1-拦截器应用场景" class="headerlink" title="1. 拦截器应用场景"></a>1. 拦截器应用场景</h3>拦截器本质上是面向切面编程（AOP），符合横切关注点的功能都可以放在拦截器中来实现，主要的应用场景包括：</li>
+</ol>
+<ul>
+<li>登录验证，判断用户是否登录。</li>
+<li>权限验证，判断用户是否有权限访问资源，如校验token</li>
+<li>日志记录，记录请求操作日志（用户ip，访问时间等），以便统计请求访问量。</li>
+<li>处理cookie、本地化、国际化、主题等。</li>
+<li>性能监控，监控请求处理时长等。</li>
+<li>通用行为：读取cookie得到用户信息并将用户对象放入请求，从而方便后续流程使用，还有如提取Locale、Theme信息等，只要是多个处理器都需要的即可使用拦截器实现）<h3 id="2-过滤器应用场景"><a href="#2-过滤器应用场景" class="headerlink" title="2. 过滤器应用场景"></a>2. 过滤器应用场景</h3></li>
+</ul>
+<ol>
+<li>过滤敏感词汇（防止sql注入）</li>
+<li>设置字符编码</li>
+<li>URL级别的权限访问控制</li>
+<li>压缩响应信息</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/26718429/1652150614301-020f3696-a0ea-4319-9ce1-c29b436e9be5.jpeg#clientId=ue8ae27d4-d643-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=215&id=u463025f2&margin=%5Bobject%20Object%5D&name=v2-b3355ba7f4d9e39c04224dbe30a7bbe4_720w.jpg&originHeight=336&originWidth=720&originalType=binary&ratio=1&rotation=0&showTitle=false&size=55613&status=done&style=none&taskId=ude30401d-78f9-422f-839d-e84112ae0f1&title=&width=460.8" alt="v2-b3355ba7f4d9e39c04224dbe30a7bbe4_720w.jpg"></p>
 
                 
             </div>
@@ -543,7 +620,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">ShuaiTongWang</a>
+                    <a href="/about" rel="external nofollow noreferrer">wst</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -553,7 +630,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://409713427.github.io/2022/032051148.html">https://409713427.github.io/2022/032051148.html</a>
+                    <a href="https://409713427.github.io/2022/0123%5Bobject%20Object%5D.html">https://409713427.github.io/2022/0123%5Bobject%20Object%5D.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -566,7 +643,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">ShuaiTongWang</a>
+                    <a href="/about" target="_blank">wst</a>
                     !
                 </span>
             </div>
@@ -590,7 +667,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/springboot/">
+                                    <span class="chip bg-color">springboot</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1030,12 +1111,12 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/0329%5Bobject%20Object%5D.html">
+                <a href="/2022/0123%5Bobject%20Object%5D.html">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/1.jpg" class="responsive-img" alt="【RabbitMQ】5.发布确认高级 其他知识点">
+                        <img src="/medias/banner/6.jpg" class="responsive-img" alt="【springboot】整合缓存Redis">
                         
-                        <span class="card-title">【RabbitMQ】5.发布确认高级 其他知识点</span>
+                        <span class="card-title">【springboot】整合缓存Redis</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1046,14 +1127,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-29
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-23
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/RabbitMQ/" class="post-category">
-                                    RabbitMQ
+                            <a href="/categories/springboot/" class="post-category">
+                                    springboot
                                 </a>
                             
                             
@@ -1063,8 +1144,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/RabbitMQ/">
-                        <span class="chip bg-color">RabbitMQ</span>
+                    <a href="/tags/springboot/">
+                        <span class="chip bg-color">springboot</span>
                     </a>
                     
                 </div>
@@ -1078,12 +1159,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/031855064.html">
+                <a href="/2021/1219%5Bobject%20Object%5D.html">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/4.jpg" class="responsive-img" alt="bug">
+                        <img src="/medias/banner/4.jpg" class="responsive-img" alt="【springcloud】Consul的基本使用">
                         
-                        <span class="card-title">bug</span>
+                        <span class="card-title">【springcloud】Consul的基本使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1094,14 +1175,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-19
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/bug/" class="post-category">
-                                    bug
+                            <a href="/categories/springcloud/" class="post-category">
+                                    springcloud
                                 </a>
                             
                             
@@ -1111,8 +1192,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/bug/">
-                        <span class="chip bg-color">bug</span>
+                    <a href="/tags/springcloud/">
+                        <span class="chip bg-color">springcloud</span>
                     </a>
                     
                 </div>
