@@ -1,0 +1,2819 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="docker">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>【Docker】Docker（v20.10.x） 基础篇 | Wst&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Wst's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+
+    
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Wst&#39;s Blog</span>
+                
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Wst&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/409713427?tab=repositories" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>欢迎骚扰
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/409713427?tab=repositories" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="欢迎骚扰" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/2.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">【Docker】Docker（v20.10.x） 基础篇</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+        background-color: rgb(255, 255, 255,0.7);
+        border-radius: 10px;
+        box-shadow: 0 10px 35px 2px rgba(0, 0, 0, .15), 0 5px 15px rgba(0, 0, 0, .07), 0 2px 5px -5px rgba(0, 0, 0, .1) !important;
+    }
+
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/docker/">
+                                <span class="chip bg-color">docker</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/docker/" class="post-category">
+                                docker
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-07-06
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>操作系统为 CentOS 7.9 。</p>
+</blockquote>
+<h1 id="第一章：Docker-简介"><a href="#第一章：Docker-简介" class="headerlink" title="第一章：Docker 简介"></a>第一章：Docker 简介</h1><h2 id="1-1-Docker-是什么？"><a href="#1-1-Docker-是什么？" class="headerlink" title="1.1 Docker 是什么？"></a>1.1 Docker 是什么？</h2><h3 id="1-1-1-为什么会出现-Docker-？"><a href="#1-1-1-为什么会出现-Docker-？" class="headerlink" title="1.1.1 为什么会出现 Docker ？"></a>1.1.1 为什么会出现 Docker ？</h3><ul>
+<li>如果我们正在开发一个商城系统，使用是一台笔记本电脑，并且本地的开发环境具有特定的配置，然而其他开发人员身处的环境以及配置也各不相同。我们正在开发的应用依赖于我们当前的配置，并且还要依赖于某些配置文件。此外，企业还拥有标准化的测试和生产环境，具有自身的配置和一系列的支持文件，如果我们希望尽可能多的在本地模拟这些环境而不产生重新创建服务器环境的开销，怎么办？</li>
+<li>我们如何确保应用能够在这些环境中运行并通过质量检测？在部署过程中不出现令人头疼的版本、配置问题，也无需重新编写代码和进行故障修复？</li>
+<li>答案就是使用容器。Docker 之所以发展如此迅速，也是因为它给出了一个标准化的解决方案 </li>
+</ul>
+<p>—- <code>系统平滑迁移，容器虚拟化技术</code>。</p>
+<ul>
+<li>环境配置相当麻烦，换一台机器，就要重新再来一次，费时费力。很多人相当，能不能从根本上解决问题，<code>软件可以带环境安装？</code> 换言之，<code>安装的时候，将原始的环境一模一样的复制过来</code>。<code>开发人员利用 Docker 可以消除协作编码时 “在我的机器上可以正常工作” 的问题</code>。</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/bmp/513185/1645865583052-29ceabac-d10a-4928-b885-9a091e14f06d.bmp?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_20,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10/resize,w_707,limit_0#crop=0&crop=0&crop=1&crop=1&from=url&id=hnYUr&margin=%5Bobject%20Object%5D&originHeight=350&originWidth=707&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><p>之前在服务器配置一个应用的运行环境，需要安装各种软件，就拿电商系统的环境来说，JDK、RabbitMQ、Redis、MySQL 等，安装和配置这些软件有多麻烦不说，它还不能跨平台。假如我们在 Windows 上安装的这些环境，到了 Linux 又需要重新安装。况且就算不跨操作系统，换另一台同样的操作系统的服务器，要<code>移植</code>应用也是非常麻烦。</p>
+</li>
+<li><p>传统上认为，软件编码开发、测试结束后，所产出的成果就是程序或者能编译执行的二进制字节码等。而为了让这些程序可以顺利的执行，开发团队也需要准备完整的部署文档，以便运维团队得以部署应用系统，<code>开发需要清楚的告诉运维团队，所用的全部配置文件和所有的软件环境</code>。不过，即便如此，依然会发生部署失败的状况。Docker 的出现使得 Docker 得以<code>打破以前的『 程序即应用 』的概念</code>。通过镜像（images）将系统内核除外，运行应用程序所需要的系统环境，由下向上打包，达到应用程序间跨平台间的无缝接轨运作。</p>
+<h3 id="1-1-2-Docker-的理念"><a href="#1-1-2-Docker-的理念" class="headerlink" title="1.1.2 Docker 的理念"></a>1.1.2 Docker 的理念</h3></li>
+<li><p><code>Docker 是基于 GO 语言实现的云开源项目</code>。</p>
+</li>
+<li><p>Docker 的主要目标是<code>“Build，Ship and Run Any App,Anywhere”</code>，也就是通过对应用组件的封装、分发、部署、运行等生命周期的姑奶，使得用户的 APP （可以是一个 WEB 应用或者数据库应用等）及其运行环境能够做到<code>一次镜像，处处运行</code>。</p>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645865618924-76aacb6b-56b6-49dd-b33e-55ffa0db35bf.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_18,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=flHZa&margin=%5Bobject%20Object%5D&originHeight=293&originWidth=645&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><p><code>Linux 容器技术的出现就解决了这样一个问题，而 Docker 就是在它的基础上发展过来的</code>。将应用打成镜像，通过镜像成为运行在 Docker 容器上面的实例，而 Docker 容器在任何操作系统上都是一致的，这就实现了跨平台、跨服务器。<code>只需要一次配置好环境，换到别的机器就可以一键部署，大大简化了操作流程</code>。</p>
+<h3 id="1-1-3-总结"><a href="#1-1-3-总结" class="headerlink" title="1.1.3 总结"></a>1.1.3 总结</h3></li>
+<li><p>Docker 解决了<code>运行环境和配置问题</code>的<code>软件容器</code>，可以方便做持续集成并有助于整体发布的容器虚拟化技术。</p>
+<h2 id="1-2-容器-VS-虚拟机"><a href="#1-2-容器-VS-虚拟机" class="headerlink" title="1.2 容器 VS 虚拟机"></a>1.2 容器 VS 虚拟机</h2><h3 id="1-2-1-容器发展简史"><a href="#1-2-1-容器发展简史" class="headerlink" title="1.2.1 容器发展简史"></a>1.2.1 容器发展简史</h3></li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645865632635-f4176df0-dea5-46a7-97e0-25ee644a03e7.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_40,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=OpdCl&margin=%5Bobject%20Object%5D&originHeight=604&originWidth=1396&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="1-2-2-传统虚拟化技术"><a href="#1-2-2-传统虚拟化技术" class="headerlink" title="1.2.2 传统虚拟化技术"></a>1.2.2 传统虚拟化技术</h3><ul>
+<li>虚拟机（Virtual Machine）就是带环境安装的一种解决方案。</li>
+<li>它可以在一种操作系统里面运行另一种操作系统，比如在 Windows 10 系统里面运行 Linux 系统 CentOS 7 。应用程序对此毫无感知，因为虚拟机看上去和真实系统一模一样，而对于底层系统来说，虚拟机就是一个普通文件，不需要了删除即可，对其他部分毫无影响。这类虚拟机完美的运行了另一套系统，能够使应用程序、操作系统和硬件三者的逻辑不变。</li>
+<li>传统虚拟机技术基于安装在主操作系统上的虚拟机管理系统（如：VirtualBox 和 VMWare 等），可以创建虚拟机（虚拟各种硬件），在虚拟机上安装从操作系统，然后在从操作系统上安装部署各种应用。</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645865638553-75289ee8-c7f1-492d-a650-4b7d85a09d9f.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_16,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=Xtqdd&margin=%5Bobject%20Object%5D&originHeight=487&originWidth=554&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><p>虚拟机的缺点： </p>
+<ul>
+<li>① 资源占用多。</li>
+<li>② 冗余步骤多。</li>
+<li>③ 启动慢。<h3 id="1-2-3-容器虚拟化技术"><a href="#1-2-3-容器虚拟化技术" class="headerlink" title="1.2.3 容器虚拟化技术"></a>1.2.3 容器虚拟化技术</h3></li>
+</ul>
+</li>
+<li><p>由于传统虚拟机的某些缺点，Linux 发展出了另外一种虚拟化技术：<code>Linux 容器（Linux Containers，简称为 LXC）</code>。</p>
+</li>
+<li><p>Linux 容器是和系统其他部分隔离的一系列进程，从另一个镜像运行，并由该镜像提供支持进程所需的全部文件。容器提供的镜像包含了应用的所有依赖项，因此在从开发到测试再到生产的整个过程中，它都具有可移植性和一致性。</p>
+</li>
+<li><p><code>Linux 容器不是模拟一个完整的操作系统而是对进程进行隔离</code>。有了容器，就可以将软件运行的所有资源打包到一个隔离的容器中。<code>容器和虚拟机不同，不需要捆绑一整套操作系统，只需要软件工作所需的库资源和设置</code>。系统因此而变得高效轻量并保证部署在任何环境中的软件都能始终如一的运行。</p>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645865647837-7f9b85c6-1098-48bc-88db-c66566518f9b.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_16,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=NXTe0&margin=%5Bobject%20Object%5D&originHeight=462&originWidth=554&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><p>Docker 容器是在操作系统层面上实现虚拟化，直接复用本地主机上的操作系统，而传统虚拟机则是在硬件层面实现虚拟化。和传统虚拟机相比，Docker 优势体现为启动速度快、占用体积小。</p>
+<h3 id="1-2-4-对比"><a href="#1-2-4-对比" class="headerlink" title="1.2.4 对比"></a>1.2.4 对比</h3></li>
+<li><p>① 传统的虚拟机是虚拟出一整套硬件后，在其上运行一个完整的操作系统，在该系统上再运行所需要的应用进程。</p>
+</li>
+<li><p>② 容器内的应用进程直接运行于宿主机的内核，<code>容器内没有自己的内核也没有直接进行硬件虚拟</code>。因此容器要比传统虚拟机更为轻便。</p>
+</li>
+<li><p>③ 每个容器之间互相隔离，每个容器都有自己的文件系统，容器之间的进程不会相互影响，能区分计算资源。</p>
+<h2 id="1-3-Docker-能干嘛？"><a href="#1-3-Docker-能干嘛？" class="headerlink" title="1.3 Docker 能干嘛？"></a>1.3 Docker 能干嘛？</h2><h3 id="1-3-1-技术职称变化"><a href="#1-3-1-技术职称变化" class="headerlink" title="1.3.1 技术职称变化"></a>1.3.1 技术职称变化</h3></li>
+<li><p>coder。</p>
+</li>
+<li><p>programmer。</p>
+</li>
+<li><p>software engineer。</p>
+</li>
+<li><p>DevOps engineer。</p>
+<h3 id="1-3-2-开发运维（DevOps）新一代开发工程师"><a href="#1-3-2-开发运维（DevOps）新一代开发工程师" class="headerlink" title="1.3.2 开发运维（DevOps）新一代开发工程师"></a>1.3.2 开发运维（DevOps）新一代开发工程师</h3></li>
+<li><p>一次构建，到处运行： </p>
+<ul>
+<li>更快速的应用交付和部署：传统的应用开发完成后，需要提供一堆安装程序和配置说明文档，安装部署后需根据配置文档进行繁杂的配置才能正常运行。Docker 化之后只需要交付少量容器镜像文件，在正式生产环境加载镜像并运行即可，应用安装配置在镜像里已经内置好，大大节省部署配置和测试验证时间。</li>
+<li>更便捷的升级和扩缩容：随着微服务架构和 Docker 的发展，大量的应用会通过微服务方式架构，应用的开发构建将变成搭乐高积木一样，每个 Docker 容器将变成一块 “积木”，应用的升级将变得非常容易。当现有的容器不足以支撑业务处理时，可通过镜像运行新的容器进行快速扩容，使应用系统的扩容从原先的天级变成分钟级甚至秒级。</li>
+<li>更简单的系统运维：应用容器化运行后，生产环境运行的应用可与开发、测试环境的应用高度一致，容器会将应用程序相关的环境和状态完全封装起来，不会因为底层基础架构和操作系统的不一致性给应用带来影响，产生新的 BUG 。当出现程序异常时，也可以通过测试环境的相同容器进行快速定位和修复。</li>
+<li>更高效的计算资源利用：Docker 是内核级虚拟化，其不像传统的虚拟化技术一样需要额外的 Hypervisor 支持，所以在一台物理机上可以运行很多个容器实例，可大大提升物理服务器的 CPU 和内存的利用率。</li>
+</ul>
+</li>
+<li><p>Docker 应用场景：Docker 借鉴了标准集装箱的概念。标准集装箱将货物运往世界各地，Docker 将这个模型运用到自己的设计中，唯一不同的是：集装箱运输货物，而 Docker 运输软件。</p>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/bmp/513185/1645865656649-9cf6c930-9711-4edd-9498-8ce2552ccb27.bmp?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_20,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10/resize,w_716,limit_0#crop=0&crop=0&crop=1&crop=1&from=url&id=a3Fuv&margin=%5Bobject%20Object%5D&originHeight=432&originWidth=716&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="1-4-Docker-去哪下？"><a href="#1-4-Docker-去哪下？" class="headerlink" title="1.4 Docker 去哪下？"></a>1.4 Docker 去哪下？</h2><ul>
+<li><p><a href="https://www.docker.com/" target="_blank" rel="noopener">Docker 官网</a>。</p>
+</li>
+<li><p><a href="https://hub.docker.com/" target="_blank" rel="noopener">Docker Hub  官网</a>。</p>
+<h1 id="第二章：Docker-安装和卸载"><a href="#第二章：Docker-安装和卸载" class="headerlink" title="第二章：Docker 安装和卸载"></a>第二章：Docker 安装和卸载</h1><h2 id="2-1-前提说明"><a href="#2-1-前提说明" class="headerlink" title="2.1  前提说明"></a>2.1  前提说明</h2></li>
+<li><p>CentOS 7 安装 Docker： </p>
+<ul>
+<li>Docker 并非是一个通用的容器工具，它依赖于已经存在并运行的 Linux 内核环境。 </li>
+<li>Docker 实际上是在已经运行的 Linux 下制造一个隔离的文件环境，因此它执行的效率几乎等同于所部署的 Linux 主机。 </li>
+<li>因此，Docker 必须部署在 Linux 内核的系统上。如果其他系统想要部署 Docker 就必须要安装一个虚拟的 Linux 环境。 </li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645865664155-76d246f6-4577-4b3d-b8af-53b3c9bd2317.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_16,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=SvoO3&margin=%5Bobject%20Object%5D&originHeight=476&originWidth=561&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>在 Windows 系统上部署 Docker 的方法就是先安装一个虚拟机，并在安装 Linux 系统的虚拟机中运行 Docker（当然，现在 Win 10+ 系统也支持 Docker ，本次不考虑）。</li>
+<li>前提条件： <ul>
+<li>目前，CentOS 仅发行版本中的内核支持 Docker。Docker 运行在 CentOS 7 (64-bit)上，要求系统为 64 位、Linux 系统内核版本为 3.8 以上，这里选用 Centos 7.9 。</li>
+</ul>
+</li>
+<li>查看 CentOS 的版本： <pre class=" language-shell"><code class="language-shell">cat /etc/redhat-release
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645865675190-c4ae9e84-4fec-4a2e-b6d1-92e50667c838.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_22,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=Pze65&margin=%5Bobject%20Object%5D&originHeight=576&originWidth=763&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>查看 Linux 内核：<pre class=" language-shell"><code class="language-shell">uname -r
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645865683375-5c17d87b-f7f8-4293-a4a1-381e8a2ac614.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_22,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=YDSdT&margin=%5Bobject%20Object%5D&originHeight=576&originWidth=763&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="2-2-Docker-的基本组成"><a href="#2-2-Docker-的基本组成" class="headerlink" title="2.2 Docker 的基本组成"></a>2.2 Docker 的基本组成</h2><h3 id="2-2-1-镜像（image）"><a href="#2-2-1-镜像（image）" class="headerlink" title="2.2.1 镜像（image）"></a>2.2.1 镜像（image）</h3><ul>
+<li>Docker 镜像（image）就是一个<code>只读</code>的模板。镜像可以用来创建 Docker 容器，<code>一个镜像可以创建很多容器</code>。 </li>
+<li>Docker 镜像相当于一个 root 文件系统。比如：官方镜像中的<code>centos:7</code>就包含了一套完成的 CentOS7 最小系统的 root 文件系统。 </li>
+<li>Docker 镜像相当于容器的<code>源代码</code>，Docker 镜像文件类似于 Java 的类模板，Docker 容器实例就类似于 Java 中 new 出来的实例对象。 </li>
+<li>容器和镜像的关系类似于面向对象编程中的对象和类： <table>
+<thead>
+<tr>
+<th>Docker</th>
+<th>面向对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>镜像</td>
+<td>类</td>
+</tr>
+<tr>
+<td>容器</td>
+<td>对象</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="2-2-2-容器（container）"><a href="#2-2-2-容器（container）" class="headerlink" title="2.2.2 容器（container）"></a>2.2.2 容器（container）</h3><ul>
+<li><p>从面向对象角度：Docker 利用容器（container）独立运行的一个或一组应用，应用程序或服务运行在容器里面，容器就类似于一个虚拟化的运行环境，<code>容器是用镜像创建的运行实例</code>。就像是 Java 中的类和实例对象一样，镜像是静态的定义，容器是镜像运行的实例。容器为镜像提供了一个标准的和隔离的运行环境，它可以被启动、开始、停止、删除。每个容器都是相互隔离的、保证安全的平台。</p>
+</li>
+<li><p>从镜像容器角度：<code>可以将容器看做是一个简易版的 Linux 环境</code>（包括 root 用户权限、进程空间、用户空间和网络空间等）和运行在其中的应用程序。</p>
+<h3 id="2-2-3-仓库（registry）"><a href="#2-2-3-仓库（registry）" class="headerlink" title="2.2.3 仓库（registry）"></a>2.2.3 仓库（registry）</h3></li>
+<li><p>仓库（registry）是<code>集中存放镜像文件</code>的场所。</p>
+</li>
+<li><p>仓库类似于 Maven 仓库，存放各种 jar 包的地方；也类似于 github 仓库，存放各种 git 项目的地方。</p>
+</li>
+<li><p>Docker 容器提供的官方 registry 被称为 Docker Hub，存放各种镜像模板的地方。</p>
+</li>
+<li><p>仓库分为公开仓库（public）和私有仓库（private）两种，最大的公开仓库是 Docker Hub，存放了数量庞大的镜像供用户下载。</p>
+</li>
+<li><p>国内的公开仓库包括阿里云、网易云等。</p>
+<h3 id="2-2-4-总结"><a href="#2-2-4-总结" class="headerlink" title="2.2.4 总结"></a>2.2.4 总结</h3></li>
+<li><p>Docker 本身是一个容器运行载体或称之为管理引擎。我们将应用程序和配置依赖打包好形成一个可交付的运行环境，这个打包好的运行环境就是 image 镜像文件，只有通过这个镜像文件才能生成 Docker 容器实例（类似于 Java 中 new 出来的一个对象）。</p>
+</li>
+<li><p>image 文件可以看做是容器的模板，Docker 根据 image 文件生成容器的实例，同一个 image 文件，可以生成多个同时运行的容器实例。</p>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645865710027-3a476e58-5d40-45ff-9aa6-15c4c26417f4.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_30,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10/resize,w_937,limit_0#crop=0&crop=0&crop=1&crop=1&from=url&id=f1IaJ&margin=%5Bobject%20Object%5D&originHeight=473&originWidth=937&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="2-3-Docker-平台架构"><a href="#2-3-Docker-平台架构" class="headerlink" title="2.3 Docker 平台架构"></a>2.3 Docker 平台架构</h2><ul>
+<li>Docker 是一个 C/S 模式的架构，后端是一个松耦合架构，众多模块各司其职。</li>
+<li>Docker 运行的基本流程为： <ul>
+<li>① 用户是使用 Docker Client 和 Docker Daemon 建立通信，并发送请求给后者。</li>
+<li>② Docker Daemon 作为 Docker 架构中的主体部分，首先提供 Docker Server 的功能使其可以接受 Docker Client 的请求。</li>
+<li>③ Docker Engine 执行 Docker 内部的一系列工作，每一项工作都是以 Job 的形式存在的。</li>
+<li>④ Job 的运行过程中，当需要容器镜像时，从 Docker Registry 中下载镜像，并通过镜像管理驱动 Graph driver 将下载的镜像以 Graph 的形式存储。</li>
+<li>⑤ 当需要为 Docker 创建网络环境时，通过网络管理驱动 Network driver 创建并配置 Docker 容器网络环境。</li>
+<li>⑥ 当需要限制 Docker 容器运行资源或执行用户指令等操作时，则通过 Exec driver 来完成。</li>
+<li>⑦ Libcontainer 是一项独立的容器管理包，Network driver 以及 Exec driver 都是通过 Libcontainer 来实现具体对容器进行的操作。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645865859897-f5041af6-99df-4e7d-9dbf-e27974017d5a.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_22,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10/resize,w_762,limit_0#crop=0&crop=0&crop=1&crop=1&from=url&id=xEiHf&margin=%5Bobject%20Object%5D&originHeight=1060&originWidth=762&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="2-4-Docker-的隔离原理"><a href="#2-4-Docker-的隔离原理" class="headerlink" title="2.4 Docker 的隔离原理"></a>2.4 Docker 的隔离原理</h2><h3 id="2-4-1-概述"><a href="#2-4-1-概述" class="headerlink" title="2.4.1 概述"></a>2.4.1 概述</h3><ul>
+<li>Docker 用 Go 编程语言编写，并利用 Linux 内核的多种功能来交付其功能。 Docker 使用一种称为名称空间的技术来提供容器的隔离工作区。 运行容器时，Docker 会为该容器创建一组名称空间。 这些名称空间提供了一层隔离。 容器的每个方面都在单独的名称空间中运行，并且对其的访问仅限于该名称空间。<h3 id="2-4-2-namespace-6-项隔离-（资源隔离）"><a href="#2-4-2-namespace-6-项隔离-（资源隔离）" class="headerlink" title="2.4.2 namespace 6 项隔离 （资源隔离）"></a>2.4.2 namespace 6 项隔离 （资源隔离）</h3><table>
+<thead>
+<tr>
+<th>namespace</th>
+<th>系统调用参数</th>
+<th>隔离内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>UTS</td>
+<td>CLONE_NEWUTS</td>
+<td>主机和域名。</td>
+</tr>
+<tr>
+<td>IPC</td>
+<td>CLONE_NEWIPC</td>
+<td>信号量、消息队列和共享内存。</td>
+</tr>
+<tr>
+<td>PID</td>
+<td>CLONE_NEWPID</td>
+<td>进程编号。</td>
+</tr>
+<tr>
+<td>Network</td>
+<td>CLONE_NEWNET</td>
+<td>网络设备、网络栈、端口等。</td>
+</tr>
+<tr>
+<td>Mount</td>
+<td>CLONE_NEWNS</td>
+<td>挂载点(文件系统)。</td>
+</tr>
+<tr>
+<td>User</td>
+<td>CLONE_NEWUSER</td>
+<td>用户和用户组。</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="2-4-3-cgroups-资源限制"><a href="#2-4-3-cgroups-资源限制" class="headerlink" title="2.4.3 cgroups 资源限制"></a>2.4.3 cgroups 资源限制</h3><ul>
+<li>cgroup 提供的主要功能如下： <ul>
+<li>资源限制：限制任务使用的资源总额，并在超过这个配额时发出提示。</li>
+<li>优先级分配：分配CPU时间片数量及磁盘 IO 带宽大小、控制任务运行的优先级。</li>
+<li>资源统计：统计系统资源使用量，如 CPU 使用时长、内存用量等。</li>
+<li>任务控制：对任务执行挂起、恢复等操作。</li>
+</ul>
+</li>
+<li>cgroup 资源控制系统，每种子系统独立地控制一种资源。功能如下：<table>
+<thead>
+<tr>
+<th>子系统</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cpu</td>
+<td>使用调度程序控制任务对 CPU 的使用。</td>
+</tr>
+<tr>
+<td>cpuacct(CPU Accounting)</td>
+<td>自动生成 cgroup 中任务对 CPU 资源使用情况的报告。</td>
+</tr>
+<tr>
+<td>cpuset</td>
+<td>为 cgroup 中的任务分配独立的 CPU (多处理器系统时)和内存。</td>
+</tr>
+<tr>
+<td>devices</td>
+<td>开启或关闭 cgroup 中任务对设备的访问。</td>
+</tr>
+<tr>
+<td>freezer</td>
+<td>挂起或恢复 cgroup 中的任务。</td>
+</tr>
+<tr>
+<td>memory</td>
+<td>设定 cgroup 中任务对内存使用量的限定，并生成这些任务对内存资源使用情况的报告。</td>
+</tr>
+<tr>
+<td>perf_event(Linux CPU 性能探测器)</td>
+<td>使 cgroup 中的任务可以进行统一的性能测试。</td>
+</tr>
+<tr>
+<td>net_cls(Docker 未使用)</td>
+<td>通过等级识别符标记网络数据包，从而允许 Linux 流量监控程序(Traffic Controller)识别从具体 cgroup 中生成的数据包。</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="2-5-Docker-的安装"><a href="#2-5-Docker-的安装" class="headerlink" title="2.5 Docker 的安装"></a>2.5 Docker 的安装</h2><h3 id="2-5-1-准备工作"><a href="#2-5-1-准备工作" class="headerlink" title="2.5.1 准备工作"></a>2.5.1 准备工作</h3><table>
+<thead>
+<tr>
+<th>操作系统</th>
+<th>IP 地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CentOS 7.9</td>
+<td>192.168.65.100</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意：请确保你的 CentOS 7.9 能连上互联网。</p>
+</blockquote>
+<h3 id="2-5-2-关闭防火墙"><a href="#2-5-2-关闭防火墙" class="headerlink" title="2.5.2 关闭防火墙"></a>2.5.2 关闭防火墙</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell"># 关闭防火墙
+systemctl stop firewalld
+</code></pre>
+</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell"># 禁用防火墙开机自动启动
+systemctl disable firewalld
+</code></pre>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645865871921-bb0b9427-723d-4ac0-8529-4c98c8f4608f.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=VtlOH&margin=%5Bobject%20Object%5D&originHeight=595&originWidth=763&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="2-5-3-卸载旧版本"><a href="#2-5-3-卸载旧版本" class="headerlink" title="2.5.3 卸载旧版本"></a>2.5.3 卸载旧版本</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">sudo yum remove docker \
+                docker-client \
+                docker-client-latest \
+                docker-common \
+                docker-latest \
+                docker-latest-logrotate \
+                docker-logrotate \
+                docker-engine
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645865878476-32945318-ac6f-4cc9-a7d5-25ebf8174831.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=BYB6s&margin=%5Bobject%20Object%5D&originHeight=598&originWidth=762&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="2-5-4-yum-安装-gcc-相关"><a href="#2-5-4-yum-安装-gcc-相关" class="headerlink" title="2.5.4 yum 安装 gcc 相关"></a>2.5.4 yum 安装 gcc 相关</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">yum -y install gcc
+</code></pre>
+</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">yum -y install gcc-c++
+</code></pre>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645865887183-f0ce79db-11de-47bc-847c-90e764e1c6ae.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=KrAzs&margin=%5Bobject%20Object%5D&originHeight=597&originWidth=761&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="2-5-5-安装所需要的软件包"><a href="#2-5-5-安装所需要的软件包" class="headerlink" title="2.5.5 安装所需要的软件包"></a>2.5.5 安装所需要的软件包</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">yum -y install yum-utils
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645865894934-65eaf7ff-f776-43c1-b860-abcddc6547a9.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=ovij6&margin=%5Bobject%20Object%5D&originHeight=596&originWidth=757&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="2-5-6-设置-stable-镜像仓库"><a href="#2-5-6-设置-stable-镜像仓库" class="headerlink" title="2.5.6 设置 stable 镜像仓库"></a>2.5.6 设置 stable 镜像仓库</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645865906503-049a90c4-1d96-4beb-abe9-a2fc2904ab47.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=hZXsN&margin=%5Bobject%20Object%5D&originHeight=595&originWidth=762&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="2-5-7-更新-yum-软件包索引"><a href="#2-5-7-更新-yum-软件包索引" class="headerlink" title="2.5.7 更新 yum 软件包索引"></a>2.5.7 更新 yum 软件包索引</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">yum makecache fast
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645865915223-b094795c-919a-48b2-b292-9c92fd709674.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=oTIr6&margin=%5Bobject%20Object%5D&originHeight=594&originWidth=757&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="2-5-8-查看存储库中-Docker-的版本"><a href="#2-5-8-查看存储库中-Docker-的版本" class="headerlink" title="2.5.8 查看存储库中 Docker 的版本"></a>2.5.8 查看存储库中 Docker 的版本</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">yum list docker-ce --showduplicates | sort -r
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645865922187-d9a39f29-8490-4d05-92ac-7bffa2234879.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=gMsTV&margin=%5Bobject%20Object%5D&originHeight=594&originWidth=762&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="2-5-9-安装-Docker"><a href="#2-5-9-安装-Docker" class="headerlink" title="2.5.9 安装 Docker"></a>2.5.9 安装 Docker</h3><ul>
+<li><p>命令：安装指向版本的 Docker，用上面查询的版本号替换 <VERSION_STRING> ，如果不指定就安装最新版本的</VERSION_STRING></p>
+<pre class=" language-shell"><code class="language-shell">yum -y install docker-ce-<VERSION_STRING>.x86_64 docker-ce-cli-<VERSION_STRING>.x86_64 containerd.io
+</code></pre>
+</li>
+<li><p>命令：安装最新版本的 Docker</p>
+<pre class=" language-shell"><code class="language-shell">yum -y install docker-ce docker-ce-cli containerd.io
+</code></pre>
+</li>
+<li><p><code>注意</code>：本次安装的版本是 3:20.10.9-3.el7</p>
+<pre class=" language-shell"><code class="language-shell">yum -y install docker-ce-3:20.10.9-3.el7.x86_64 docker-ce-cli-3:20.10.9-3.el7.x86_64 containerd.io
+</code></pre>
+</li>
+</ul>
+<h3 id><a href="#" class="headerlink" title></a><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645865932880-ac2657de-a817-4a21-9986-4298517f2957.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=dDP5K&margin=%5Bobject%20Object%5D&originHeight=597&originWidth=759&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></h3><h3 id="2-5-10-启动-Docker"><a href="#2-5-10-启动-Docker" class="headerlink" title="2.5.10 启动 Docker"></a>2.5.10 启动 Docker</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell"># 启动 Docker 
+systemctl start docker
+</code></pre>
+</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell"># 开启自动启动
+systemctl enable docker
+</code></pre>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645865940851-74d8fec7-5b28-4caf-bdf1-934391103114.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=o8NU1&margin=%5Bobject%20Object%5D&originHeight=595&originWidth=759&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="2-5-11-验证-Docker-是否安装成功"><a href="#2-5-11-验证-Docker-是否安装成功" class="headerlink" title="2.5.11 验证 Docker 是否安装成功"></a>2.5.11 验证 Docker 是否安装成功</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">docker version
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645865950374-2980509e-4e2c-4a44-89e5-2aa308de2130.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=I9hkq&margin=%5Bobject%20Object%5D&originHeight=596&originWidth=758&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="2-5-12-阿里云镜像加速"><a href="#2-5-12-阿里云镜像加速" class="headerlink" title="2.5.12 阿里云镜像加速"></a>2.5.12 阿里云镜像加速</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">sudo mkdir -p /etc/docker
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+"exec-opts": ["native.cgroupdriver=systemd"],    
+"registry-mirrors": ["https://du3ia00u.mirror.aliyuncs.com"],    
+"live-restore": true,
+"log-driver":"json-file",
+"log-opts": {"max-size":"500m", "max-file":"3"},
+"max-concurrent-downloads": 10,
+"max-concurrent-uploads": 5,
+"storage-driver": "overlay2"
+}
+EOF
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">sudo systemctl daemon-reload
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">sudo systemctl restart docker
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645865964194-6648af89-d122-4f64-a93e-c5c6cad7d009.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=epdHu&margin=%5Bobject%20Object%5D&originHeight=599&originWidth=761&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="2-6-解决警告"><a href="#2-6-解决警告" class="headerlink" title="2.6 解决警告"></a>2.6 解决警告</h2><ul>
+<li><p>如果发现 WARNING: IPv4 forwarding is disabled. Networking will not work. 这样的警告。</p>
+</li>
+<li><p>解决方案：</p>
+<pre class=" language-shell"><code class="language-shell">vim /etc/sysctl.conf
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">net.ipv4.ip_forward=1 # 添加这段代码
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">systemctl restart network && systemctl restart docker
+</code></pre>
+<h2 id="2-7-Docker-的卸载"><a href="#2-7-Docker-的卸载" class="headerlink" title="2.7 Docker 的卸载"></a>2.7 Docker 的卸载</h2></li>
+<li><p>命令：</p>
+<pre class=" language-shell"><code class="language-shell">systemctl stop docker
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">systemctl disable docker
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">yum remove docker-ce docker-ce-cli containerd.io
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">rm -rf /var/lib/docker
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">rm -rf /var/lib/containerd
+</code></pre>
+<h2 id="2-8-为什么-Docker-比-VM-虚拟机快？"><a href="#2-8-为什么-Docker-比-VM-虚拟机快？" class="headerlink" title="2.8 为什么 Docker 比 VM 虚拟机快？"></a>2.8 为什么 Docker 比 VM 虚拟机快？</h2></li>
+<li><p>① Docker 有着比虚拟机更少的抽象层：由于 Docker 不需要 Hypervisor (虚拟机) 实现硬件资源虚拟化，运行在 Docker 容器上的程序直接使用的都是实际物理机的硬件资源，因此在 CPU 、内存利用率上 Docker 将会在效率上有明显的优势。 </p>
+</li>
+<li><p>② Docker 利用的是宿主机的内核，而不需要加载操作系统 OS 内核：当新建一个容器的时候，Docker 不需要和虚拟机一样重新加载一个操作系统内核。进而避免了寻找、加载操作系统内核返回等比较耗时耗资源的过程；当新建一个虚拟机的时候，虚拟机需要加载 OS ，返回新建过程是分钟级的。而 Docker 由于直接利用宿主机的操作系统，则省略了返回过程，因此新建一个 Docker 容器只需要几秒钟。 </p>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645865973571-9bc48797-017d-4755-950b-59e26a97a004.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_18,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=e00bu&margin=%5Bobject%20Object%5D&originHeight=261&originWidth=629&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h1 id="第三章：Docker-常用命令"><a href="#第三章：Docker-常用命令" class="headerlink" title="第三章：Docker 常用命令"></a>第三章：Docker 常用命令</h1><h2 id="3-1-帮助启动类命令"><a href="#3-1-帮助启动类命令" class="headerlink" title="3.1 帮助启动类命令"></a>3.1 帮助启动类命令</h2><h3 id="3-1-1-启动-Docker"><a href="#3-1-1-启动-Docker" class="headerlink" title="3.1.1 启动 Docker"></a>3.1.1 启动 Docker</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">systemctl start docker
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645865985071-53c76040-0071-4dea-9013-4327085b5310.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=WFAax&margin=%5Bobject%20Object%5D&originHeight=596&originWidth=760&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-1-2-停止-Docker"><a href="#3-1-2-停止-Docker" class="headerlink" title="3.1.2 停止 Docker"></a>3.1.2 停止 Docker</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">systemctl stop docker
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645865993871-34f36892-efe0-4f1d-b49f-ed423a72844f.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=vWwLQ&margin=%5Bobject%20Object%5D&originHeight=594&originWidth=760&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-1-3-重启-Docker"><a href="#3-1-3-重启-Docker" class="headerlink" title="3.1.3 重启 Docker"></a>3.1.3 重启 Docker</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">systemctl restart docker
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866009663-150b833f-1924-44a3-b866-4edc8c50cf92.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=J5pSD&margin=%5Bobject%20Object%5D&originHeight=600&originWidth=759&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-1-4-查看-Docker-状态"><a href="#3-1-4-查看-Docker-状态" class="headerlink" title="3.1.4 查看 Docker 状态"></a>3.1.4 查看 Docker 状态</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">systemctl status docker
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866017847-dcc1ecd6-23d6-4972-94c7-49a121850f69.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=cktv9&margin=%5Bobject%20Object%5D&originHeight=596&originWidth=761&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-1-5-开启自动启动-Docker"><a href="#3-1-5-开启自动启动-Docker" class="headerlink" title="3.1.5 开启自动启动 Docker"></a>3.1.5 开启自动启动 Docker</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">systemctl enable docker
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866025441-abfe66f0-6c06-44bb-b929-f394869c78d3.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=QKxst&margin=%5Bobject%20Object%5D&originHeight=597&originWidth=760&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-1-6-查看-Docker-概要信息"><a href="#3-1-6-查看-Docker-概要信息" class="headerlink" title="3.1.6 查看 Docker 概要信息"></a>3.1.6 查看 Docker 概要信息</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">docker info
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866034362-0cc9b162-8c88-4949-ab76-c5baef5cfa17.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=Fh3wN&margin=%5Bobject%20Object%5D&originHeight=597&originWidth=760&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-1-7-查看-Docker-总体帮助文档"><a href="#3-1-7-查看-Docker-总体帮助文档" class="headerlink" title="3.1.7 查看 Docker 总体帮助文档"></a>3.1.7 查看 Docker 总体帮助文档</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">docker --help
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866043082-9f01558a-3b21-48a6-a79c-2fbf020cf218.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=WSKVx&margin=%5Bobject%20Object%5D&originHeight=599&originWidth=758&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-1-8-查看-Docker-命令帮助文档"><a href="#3-1-8-查看-Docker-命令帮助文档" class="headerlink" title="3.1.8 查看 Docker 命令帮助文档"></a>3.1.8 查看 Docker 命令帮助文档</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">docker 具体命令 --help
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866051133-7f1267e6-451a-4b03-9d0e-493cb0e5da57.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=jwlts&margin=%5Bobject%20Object%5D&originHeight=597&originWidth=760&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="3-2-镜像命令"><a href="#3-2-镜像命令" class="headerlink" title="3.2 镜像命令"></a>3.2 镜像命令</h2><h3 id="3-2-1-列出本地主机上的镜像"><a href="#3-2-1-列出本地主机上的镜像" class="headerlink" title="3.2.1 列出本地主机上的镜像"></a>3.2.1 列出本地主机上的镜像</h3><ul>
+<li><p>命令：</p>
+<pre class=" language-shell"><code class="language-shell">docker images [-qa]
+</code></pre>
+</li>
+<li><p>参数： </p>
+<ul>
+<li>-q：只列出镜像 ID 。</li>
+<li>-a：列出所有镜像，包括历史镜像。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><code>注意</code>：在 Docker 中镜像名称 + TAG = 镜像 ID ，容器名称 = 容器 ID 。</p>
+</blockquote>
+<ul>
+<li> 示例：<pre class=" language-shell"><code class="language-shell">docker images
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866059909-32d4d44d-8cf2-44ed-a85c-ef5765e67f46.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_22,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=OcQpg&margin=%5Bobject%20Object%5D&originHeight=576&originWidth=763&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>同一个仓库中可以有多个 tag 版本，代表这个仓库的不同个版本，我们使用 REPOSITORY:TAG 来定义不同的镜像。</li>
+<li>如果不知道一个镜像的版本标签，比如：只是用了 ubuntu，Docker 将默认使用 ubuntu:latest 镜像。</li>
+</ul>
+</blockquote>
+<h3 id="3-2-2-搜索镜像"><a href="#3-2-2-搜索镜像" class="headerlink" title="3.2.2 搜索镜像"></a>3.2.2 搜索镜像</h3><ul>
+<li><p>命令：</p>
+<pre class=" language-shell"><code class="language-shell">docker search 镜像名称
+</code></pre>
+</li>
+<li><p>示列：</p>
+<pre class=" language-shell"><code class="language-shell">docker search redis
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866076992-1c8ac944-1ad0-47ce-9bf1-f4372f739e92.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_23,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=UlbrP&margin=%5Bobject%20Object%5D&originHeight=542&originWidth=807&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-2-3-拉取镜像"><a href="#3-2-3-拉取镜像" class="headerlink" title="3.2.3 拉取镜像"></a>3.2.3 拉取镜像</h3><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">docker pull 镜像名称[:TAG]
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p><code>注意</code>：没有 TAG 就表示 latest 。</p>
+</blockquote>
+<ul>
+<li><p>示例：</p>
+<pre class=" language-shell"><code class="language-shell">docker pull mysql:5.7
+</code></pre>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866088713-699f4e33-6809-4699-8d63-dbdbbb7fab6a.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=wZien&margin=%5Bobject%20Object%5D&originHeight=540&originWidth=806&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-2-4-查看镜像、容器、数据卷所占的空间"><a href="#3-2-4-查看镜像、容器、数据卷所占的空间" class="headerlink" title="3.2.4 查看镜像、容器、数据卷所占的空间"></a>3.2.4 查看镜像、容器、数据卷所占的空间</h3></li>
+<li><p>命令：</p>
+<pre class=" language-shell"><code class="language-shell">docker system df
+</code></pre>
+</li>
+<li><p>示例：</p>
+<pre class=" language-shell"><code class="language-shell">docker system df
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866105285-4cc01d03-fa7b-43a6-91f4-33c95b94c6bc.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_23,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=MlLw6&margin=%5Bobject%20Object%5D&originHeight=542&originWidth=807&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-2-5-删除镜像"><a href="#3-2-5-删除镜像" class="headerlink" title="3.2.5 删除镜像"></a>3.2.5 删除镜像</h3><ul>
+<li><p>命令：删除某个镜像</p>
+<pre class=" language-shell"><code class="language-shell">docker rmi 镜像名称|镜像ID
+</code></pre>
+</li>
+<li><p>命令：强制删除某个镜像</p>
+<pre class=" language-shell"><code class="language-shell">docker rmi -f 镜像名称|镜像ID
+</code></pre>
+</li>
+<li><p> 命令：强制删除所有的镜像</p>
+<pre class=" language-shell"><code class="language-shell">docker rmi -f $(docker images -qa)
+</code></pre>
+</li>
+<li><p>示例：</p>
+<pre class=" language-shell"><code class="language-shell">docker rmi ubuntu
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">docker rmi mysql:5.7
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866116242-bd896ef3-c095-4ff4-b8da-7a09f3501a8f.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=RR1CW&margin=%5Bobject%20Object%5D&originHeight=562&originWidth=802&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>示例：<pre class=" language-shell"><code class="language-shell">docker rmi -f mysql
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866130281-4f3b00f8-a8b7-4ccb-a1e6-5ed35ab06307.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=ssIEr&margin=%5Bobject%20Object%5D&originHeight=565&originWidth=808&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>示例：<pre class=" language-shell"><code class="language-shell">docker rmi -f $(docker images -qa)
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866134994-5c7846c7-4759-4e84-af3f-c19d842dc78a.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=ifdmy&margin=%5Bobject%20Object%5D&originHeight=567&originWidth=805&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="-1"><a href="#-1" class="headerlink" title></a></h2><p>3.3 容器命令</p>
+<h3 id="3-3-1-前提说明"><a href="#3-3-1-前提说明" class="headerlink" title="3.3.1 前提说明"></a>3.3.1 前提说明</h3><ul>
+<li>有镜像才能创建容器，这是根本前提，本次以 ubuntu 为例演示。 </li>
+<li>拉取 ubuntu ： <pre class=" language-shell"><code class="language-shell">docker pull ubuntu
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866140894-1d7a8b3b-d285-4199-9ddf-db9afdf3a788.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=VhQeb&margin=%5Bobject%20Object%5D&originHeight=562&originWidth=806&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-3-2-新建-启动容器"><a href="#3-3-2-新建-启动容器" class="headerlink" title="3.3.2 新建 + 启动容器"></a>3.3.2 新建 + 启动容器</h3><ul>
+<li><p>命令</p>
+<pre class=" language-shell"><code class="language-shell">docker run [OPTIONS] 镜像名称|镜像ID [COMMAND] [ARG...]
+</code></pre>
+</li>
+<li><p>OPTIONS（可选项）： </p>
+<ul>
+<li><code>--name=&quot;容器名称&quot;</code>，为容器指定一个名称。</li>
+<li><code>-d</code>：后台运行容器并返回容器 ID ，即启动守护式容器（后台运行）。</li>
+<li><code>-i</code>：以交互模式运行容器，通常和 -t 同时使用。</li>
+<li><code>-t</code>：为容器重新分配一个伪输入终端，通常和 -i 同时使用，即启动交互式容器（前台有伪终端，等待交互）。</li>
+<li>-P：随机端口映射。</li>
+<li><code>-p</code>：指定端口映射。</li>
+<li>–dns 8.8.8.8：指定容器使用的 DNS 服务器，默认和宿主一致。</li>
+<li>–dns-search example.com：指定容器 DNS 搜索域名，默认和宿主一致。</li>
+<li>-h “mars”：指定容器的 hostname 。</li>
+<li><code>-e username=&quot;dog&quot;</code>：设置环境变量。</li>
+<li><code>--env-file=[]</code>：从指定文件读入环境变量。</li>
+<li><code>--cpuset=&quot;0-2&quot; or --cpuset=&quot;0,1,2&quot;</code>：绑定容器到指定 CPU 运行。</li>
+<li><code>-m</code>：设置容器使用内存最大值。</li>
+<li><code>--network=&quot;bridge&quot;</code>：指定容器的网络连接类型，支持 bridge 、host 、none、container 四种类型，默认 bridge 。</li>
+<li>–link=[]：添加链接到另一个容器。</li>
+<li>–expose=[]：开放一个端口或一组端口。</li>
+<li><code>--restart</code>：指定重启策略，可以写 –restart=awlays 总是故障重启。</li>
+<li><code>--volume , -v</code>:：绑定一个卷。一般格式为<code>主机文件或文件夹:虚拟机文件或文件夹</code> 。</li>
+</ul>
+</li>
+<li><p>COMMAND（启动命令）。 </p>
+</li>
+<li><p>ARG（启动参数）。 </p>
+</li>
+<li><p>示例：启动交互式容器： </p>
+<pre class=" language-shell"><code class="language-shell">docker run -it --name=ubuntu ubuntu /bin/bash
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866156990-d392790e-0f03-46b6-87ad-a85eb16831e0.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=HSjnL&margin=%5Bobject%20Object%5D&originHeight=563&originWidth=805&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-3-3-列出当前所有正在运行的容器"><a href="#3-3-3-列出当前所有正在运行的容器" class="headerlink" title="3.3.3 列出当前所有正在运行的容器"></a>3.3.3 列出当前所有正在运行的容器</h3><ul>
+<li><p>命令：</p>
+<pre class=" language-shell"><code class="language-shell">docker ps [-qa]
+</code></pre>
+</li>
+<li><p>参数： </p>
+<ul>
+<li>-a：累出当前所有正在运行的容器 + 历史上运行过的容器。</li>
+<li>-q：只显示容器编号。</li>
+</ul>
+</li>
+<li><p>示例： </p>
+<pre class=" language-shell"><code class="language-shell">docker ps
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866163931-af260ece-c226-472f-b009-22bb55bf056c.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=bbxrP&margin=%5Bobject%20Object%5D&originHeight=564&originWidth=806&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-3-4-退出容器"><a href="#3-3-4-退出容器" class="headerlink" title="3.3.4 退出容器"></a>3.3.4 退出容器</h3><ul>
+<li><p>① exit ：run 进容器，exit 退出，容器停止。 </p>
+</li>
+<li><p>② ctrl + p + q：run 进容器，ctrl + p + q 退出，容器不停止。 </p>
+</li>
+<li><p>示例： </p>
+<pre class=" language-shell"><code class="language-shell">exit
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866169791-a7b68ef5-a241-46de-bb37-a3871c721593.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=MZY88&margin=%5Bobject%20Object%5D&originHeight=565&originWidth=802&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>示例：<pre class=" language-shell"><code class="language-shell">ctrl + p + q
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866176633-4c101d76-a12a-4aab-905b-0ec5f3731767.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=zhRVW&margin=%5Bobject%20Object%5D&originHeight=566&originWidth=805&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-3-5-启动已停止的容器"><a href="#3-3-5-启动已停止的容器" class="headerlink" title="3.3.5 启动已停止的容器"></a>3.3.5 启动已停止的容器</h3><ul>
+<li><p>命令：</p>
+<pre class=" language-shell"><code class="language-shell">docker start 容器名称或容器ID
+</code></pre>
+</li>
+<li><p>示例：</p>
+<pre class=" language-shell"><code class="language-shell">docker start ubuntu
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866181703-2491e1e6-d310-495e-b3a1-b5757818a2c1.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=LvNlm&margin=%5Bobject%20Object%5D&originHeight=567&originWidth=805&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-3-6-重启容器"><a href="#3-3-6-重启容器" class="headerlink" title="3.3.6 重启容器"></a>3.3.6 重启容器</h3><ul>
+<li><p>命令：</p>
+<pre class=" language-shell"><code class="language-shell">docker restart 容器名称或容器ID
+</code></pre>
+</li>
+<li><p>示例：</p>
+<pre class=" language-shell"><code class="language-shell">docker restart ubuntu
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866187787-e2668b7f-1504-4356-a560-765dd4ecc8fa.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=d0uRe&margin=%5Bobject%20Object%5D&originHeight=562&originWidth=806&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-3-7-停止容器"><a href="#3-3-7-停止容器" class="headerlink" title="3.3.7 停止容器"></a>3.3.7 停止容器</h3><ul>
+<li><p>命令：</p>
+<pre class=" language-shell"><code class="language-shell">docker stop 容器名称或容器ID
+</code></pre>
+</li>
+<li><p> 示例：</p>
+<pre class=" language-shell"><code class="language-shell">docker stop ubuntu
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866193499-62a82598-0d77-454a-bc1a-bbdb6e88331b.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=DicIT&margin=%5Bobject%20Object%5D&originHeight=563&originWidth=806&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-3-8-强制停止容器"><a href="#3-3-8-强制停止容器" class="headerlink" title="3.3.8 强制停止容器"></a>3.3.8 强制停止容器</h3><ul>
+<li><p>命令： </p>
+<pre class=" language-shell"><code class="language-shell">docker kill 容器名称或容器ID
+</code></pre>
+</li>
+<li><p>示例：</p>
+<pre class=" language-shell"><code class="language-shell">docker kill ubuntu
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866206095-3a80e974-42e5-4b00-86c3-e1b0a1cff4d4.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=MVOB6&margin=%5Bobject%20Object%5D&originHeight=563&originWidth=804&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-3-9-删除已停止的容器"><a href="#3-3-9-删除已停止的容器" class="headerlink" title="3.3.9 删除已停止的容器"></a>3.3.9 删除已停止的容器</h3><ul>
+<li><p>命令：</p>
+<pre class=" language-shell"><code class="language-shell">docker rm 容器名称或容器ID
+</code></pre>
+</li>
+<li><p>命令：一次强制删除多个容器</p>
+<pre class=" language-shell"><code class="language-shell">docker rm -f $(docker ps -qa)
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">docker ps -qa | xargs docker rm -f
+</code></pre>
+</li>
+<li><p>示例：</p>
+<pre class=" language-shell"><code class="language-shell">docker rm -f ubuntu
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866211566-0eb750cc-8129-4ae4-a0fc-f40f07b2e263.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=nUqnk&margin=%5Bobject%20Object%5D&originHeight=565&originWidth=802&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><p>示例：</p>
+<pre class=" language-shell"><code class="language-shell">docker rm -f $(docker ps -qa)
+</code></pre>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866216490-71563747-3197-40c2-bce4-deb21ec14cd8.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=XzHjf&margin=%5Bobject%20Object%5D&originHeight=563&originWidth=805&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="3-3-10-实验"><a href="#3-3-10-实验" class="headerlink" title="3.3.10 实验"></a>3.3.10 实验</h3><h4 id="3-3-10-1-前提说明"><a href="#3-3-10-1-前提说明" class="headerlink" title="3.3.10.1 前提说明"></a>3.3.10.1 前提说明</h4></li>
+<li><p>本次以 Redis 6.0.8 镜像作为演示。</p>
+<h4 id="3-3-10-2-拉取镜像"><a href="#3-3-10-2-拉取镜像" class="headerlink" title="3.3.10.2 拉取镜像"></a>3.3.10.2 拉取镜像</h4></li>
+<li><p>命令：</p>
+<pre class=" language-shell"><code class="language-shell">docker pull redis:6.0.8
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866226694-cd4241fa-ad79-47e5-821c-71e0f0cb70f5.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=tm4dc&margin=%5Bobject%20Object%5D&originHeight=597&originWidth=763&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h4 id="3-3-10-3-启动守护式容器"><a href="#3-3-10-3-启动守护式容器" class="headerlink" title="3.3.10.3 启动守护式容器"></a>3.3.10.3 启动守护式容器</h4><ul>
+<li><p>在大部分场景下，我们希望 Docker 的服务是在后台运行的，我们可以通过 -d 指定容器的后台运行模式。 </p>
+</li>
+<li><p>命令： </p>
+<pre class=" language-shell"><code class="language-shell">docker run -d 容器名
+</code></pre>
+</li>
+<li><p>示例：启动 ubuntu 容器，以守护式方式</p>
+<pre class=" language-shell"><code class="language-shell">docker run -d unbutu
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866232938-b1ff62a5-530f-48bb-97e6-d6af73d38dbd.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=HWbV1&margin=%5Bobject%20Object%5D&originHeight=597&originWidth=760&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>如果用 docker ps 查看，会发现容器已经退出了，这是因为<code>Docker 容器后台运行的时候，必须有一个前台的进程</code>，这个是 Docker 的机制问题：如果容器中运行的命令不是一直挂起的命令（比如：top、tail 等），当容器以守护式方式启动就会退出容器；当然如果是命令行模式，表示有交互默认，Docker 也会认为是前台进行的方式启动，不会将容器杀死。</p>
+</blockquote>
+<ul>
+<li>示例：以交互式方式启动 redis 容器：<pre class=" language-shell"><code class="language-shell">docker run -it redis:6.0.8 /bin/bash
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866238548-8409bcfc-9395-46bf-ba92-57377382acd0.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=hDMby&margin=%5Bobject%20Object%5D&originHeight=618&originWidth=875&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>示例：以守护式启动 redis 容器<pre class=" language-shell"><code class="language-shell">docker run -d redis:6.0.8
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866243790-a038ec8e-9e08-454f-89c2-b9bb1b7b0990.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=HN40U&margin=%5Bobject%20Object%5D&originHeight=621&originWidth=876&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h4 id="3-3-10-4-查看容器日志"><a href="#3-3-10-4-查看容器日志" class="headerlink" title="3.3.10.4 查看容器日志"></a>3.3.10.4 查看容器日志</h4><ul>
+<li><p>命令：</p>
+<pre class=" language-shell"><code class="language-shell">docker logs [-f] 容器名称|容器ID
+</code></pre>
+</li>
+<li><p>示例：</p>
+<pre class=" language-shell"><code class="language-shell">docker logs -f redis
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866259500-8917d283-fdfb-4c0d-ab61-6662883140b4.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=WB6Me&margin=%5Bobject%20Object%5D&originHeight=623&originWidth=877&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h4 id="3-3-10-5-查看容器内运行的进程"><a href="#3-3-10-5-查看容器内运行的进程" class="headerlink" title="3.3.10.5 查看容器内运行的进程"></a>3.3.10.5 查看容器内运行的进程</h4><ul>
+<li><p>命令：</p>
+<pre class=" language-shell"><code class="language-shell">docker top 容器名称|容器ID
+</code></pre>
+</li>
+<li><p>示例：</p>
+<pre class=" language-shell"><code class="language-shell">docker top redis
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866264441-dd6d8843-8be4-4cf7-a723-0b5372acdd1c.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=IwkVj&margin=%5Bobject%20Object%5D&originHeight=619&originWidth=878&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h4 id="3-3-10-6-查看容器内部细节"><a href="#3-3-10-6-查看容器内部细节" class="headerlink" title="3.3.10.6 查看容器内部细节"></a>3.3.10.6 查看容器内部细节</h4><ul>
+<li><p>命令：</p>
+<pre class=" language-shell"><code class="language-shell">docker inspect 容器名称|容器ID
+</code></pre>
+</li>
+<li><p>示例：</p>
+<pre class=" language-shell"><code class="language-shell">docker inspect redis
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866275676-c4ddee77-ea30-4baa-94a5-46c5bd3cb501.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=HV6Nk&margin=%5Bobject%20Object%5D&originHeight=623&originWidth=876&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h4 id="3-3-10-7-进入正在运行的容器并以命令行交互"><a href="#3-3-10-7-进入正在运行的容器并以命令行交互" class="headerlink" title="3.3.10.7 进入正在运行的容器并以命令行交互"></a>3.3.10.7 进入正在运行的容器并以命令行交互</h4><ul>
+<li>命令：<pre class=" language-shell"><code class="language-shell">docker exec -it 容器名称|容器ID [COMMAND]
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>注意：使用 exec 时，当 exit 退出容器时，不会导致容器终止。</p>
+</blockquote>
+<ul>
+<li>示例<pre class=" language-shell"><code class="language-shell">docker exec -it redis /bin/bash
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866280769-89ef1da4-21e3-4677-bac7-1cdcad371baa.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=HQ3Yv&margin=%5Bobject%20Object%5D&originHeight=625&originWidth=874&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h4 id="3-3-10-8-容器和主机文件的互相拷贝"><a href="#3-3-10-8-容器和主机文件的互相拷贝" class="headerlink" title="3.3.10.8 容器和主机文件的互相拷贝"></a>3.3.10.8 容器和主机文件的互相拷贝</h4><ul>
+<li><p>命令：拷贝容器中的文件到主机</p>
+<pre class=" language-shell"><code class="language-shell">docker cp CONTAINER:SRC_PATH DEST_PATH|-
+</code></pre>
+</li>
+<li><p>命令：拷贝主机文件到容器内</p>
+<pre class=" language-shell"><code class="language-shell">docker cp SRC_PATH|- CONTAINER:DEST_PATH
+</code></pre>
+</li>
+<li><p>说明： </p>
+<ul>
+<li>SRC_PATH：指定为一个文件。 <ul>
+<li>DEST_PATH 不存在：文件名为 DEST_PATH，内容为SRC的内容。</li>
+<li>DEST_PATH 不存在并且以 / 结尾：报错。</li>
+<li>DEST_PATH 存在并且是文件：目标文件内容被替换为 SRC_PATH 的文件内容。</li>
+<li>DEST_PATH 存在并且是目录：文件复制到目录内，文件名为 SRC_PATH 指定的名字。</li>
+</ul>
+</li>
+<li>SRC_PATH：指定为一个目录。 <ul>
+<li>DEST_PATH 不存在：DEST_PATH 创建文件夹，复制源文件夹内的所有内容。</li>
+<li>DEST_PATH 存在是文件：报错。</li>
+<li>DEST_PATH 存在是目录： <ul>
+<li>SRC_PATH 不以 /.  结束：源文件夹复制到目标里面。</li>
+<li>SRC_PATH 以  /.  结束：源文件夹里面的内容复制到目标里面。</li>
+<li>自动创建文件夹不会做递归。需要把父文件夹手动创建。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>示例： </p>
+<pre class=" language-shell"><code class="language-shell">docker cp redis:/data/a.txt .
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866287212-c2b63df2-efcc-4c53-9124-0b4f811ca766.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=nBZNT&margin=%5Bobject%20Object%5D&originHeight=620&originWidth=878&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h4 id="3-3-10-9-导入和导出容器（不常用）"><a href="#3-3-10-9-导入和导出容器（不常用）" class="headerlink" title="3.3.10.9 导入和导出容器（不常用）"></a>3.3.10.9 导入和导出容器（不常用）</h4><ul>
+<li><p>命令：导出容器，将容器的内容导出为一个 tar 包（或 tar.gz 包，以及 zip 包）</p>
+<pre class=" language-shell"><code class="language-shell">docker export 容器ID|容器名称 > 文件名.tar
+</code></pre>
+</li>
+<li><p>命令：导入容器，从 tar 包（或 tar.gz 包，以及 zip 包）中的内容创建一个新的文件系统再导入为镜像</p>
+<pre class=" language-shell"><code class="language-shell">docker import 文件名.tar 镜像名称:TAG|[用户名/镜像名称:TAG]
+</code></pre>
+</li>
+<li><p> 示例：</p>
+<pre class=" language-shell"><code class="language-shell">docker export redis > redis.tar.gz
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">docker import redis.tar.gz xudaxian/redis
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866295271-aa74ee49-3372-46ad-87da-45c6c20b6029.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=EBB4f&margin=%5Bobject%20Object%5D&originHeight=618&originWidth=876&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="3-4-总结"><a href="#3-4-总结" class="headerlink" title="3.4 总结"></a>3.4 总结</h2><p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866304881-3ad95646-2ad1-4ad3-bad9-e7982585fa5e.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_26,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=kvz5o&margin=%5Bobject%20Object%5D&originHeight=638&originWidth=900&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>attach</td>
+<td>当前 shell 下 attach 连接指定运行镜像。</td>
+</tr>
+<tr>
+<td>build</td>
+<td>通过 Dockerfile 定制镜像。</td>
+</tr>
+<tr>
+<td>commit</td>
+<td>提交当前容器为新的镜像。</td>
+</tr>
+<tr>
+<td>cp</td>
+<td>从容器中拷贝指定文件或者目录到宿主机中。</td>
+</tr>
+<tr>
+<td>create</td>
+<td>创建一个新的容器，同 run，但不启动容器。</td>
+</tr>
+<tr>
+<td>diff</td>
+<td>查看 docker 容器变化。</td>
+</tr>
+<tr>
+<td>events</td>
+<td>从 docker 服务获取容器实时事件。</td>
+</tr>
+<tr>
+<td>exec</td>
+<td>在已存在的容器上运行命令。</td>
+</tr>
+<tr>
+<td>export</td>
+<td>导出容器的内容流作为一个 tar 归档文件[对应 import ]。</td>
+</tr>
+<tr>
+<td>history</td>
+<td>展示一个镜像形成历史。</td>
+</tr>
+<tr>
+<td>images</td>
+<td>列出系统当前镜像。</td>
+</tr>
+<tr>
+<td>import</td>
+<td>从tar包中的内容创建一个新的文件系统映像[对应 export ]。</td>
+</tr>
+<tr>
+<td>info</td>
+<td>显示系统相关信息。</td>
+</tr>
+<tr>
+<td>inspect</td>
+<td>查看容器详细信息。。</td>
+</tr>
+<tr>
+<td>kill</td>
+<td>kill 指定 docker 容器</td>
+</tr>
+<tr>
+<td>load</td>
+<td>从一个 tar 包中加载一个镜像[对应 save ]。</td>
+</tr>
+<tr>
+<td>login</td>
+<td>注册或者登陆一个 docker 源服务器。</td>
+</tr>
+<tr>
+<td>logout</td>
+<td>从当前 Docker registry 退出。</td>
+</tr>
+<tr>
+<td>logs</td>
+<td>输出当前容器日志信息。</td>
+</tr>
+<tr>
+<td>port</td>
+<td>查看映射端口对应的容器内部源端口。</td>
+</tr>
+<tr>
+<td>pause</td>
+<td>暂停容器。</td>
+</tr>
+<tr>
+<td>ps</td>
+<td>列出容器列表。</td>
+</tr>
+<tr>
+<td>pull</td>
+<td>从docker镜像源服务器拉取指定镜像或者库镜像。</td>
+</tr>
+<tr>
+<td>push</td>
+<td>推送指定镜像或者库镜像至docker源服务器。</td>
+</tr>
+<tr>
+<td>restart</td>
+<td>重启运行的容器。</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>移除一个或者多个容器。</td>
+</tr>
+<tr>
+<td>rmi</td>
+<td></td>
+</tr>
+</tbody></table>
+<p> | 移除一个或多个镜像[无容器使用该镜像才可删除，否则需删除相关容器才可继续或 -f 强制删除]。 |<br>| run | 创建一个新的容器并运行一个命令。 |<br>| save | 保存一个镜像为一个 tar 包[对应 load ]。 |<br>| search | 在 docker hub 中搜索镜像。 |<br>| start | 启动容器。 |<br>| stop | 停止容器。 |<br>| tag | 给源中镜像打标签。 |<br>| top | 查看容器中运行的进程信息。 |<br>| unpause | 取消暂停容器。 |<br>| version | 查看 docker 版本号。 |<br>| wait | 截取容器停止时的退出状态值。 |</p>
+<h1 id="第四章：Docker-镜像"><a href="#第四章：Docker-镜像" class="headerlink" title="第四章：Docker 镜像"></a>第四章：Docker 镜像</h1><h2 id="4-1-概述"><a href="#4-1-概述" class="headerlink" title="4.1 概述"></a>4.1 概述</h2><h3 id="4-1-1-Docker-镜像是什么？"><a href="#4-1-1-Docker-镜像是什么？" class="headerlink" title="4.1.1 Docker 镜像是什么？"></a>4.1.1 Docker 镜像是什么？</h3><ul>
+<li><p>镜像是一种轻量级、可执行的独立软件包，它包含运行某个软件所需要的所有内容，我们将应用程序和配置打包好形成一个可交付的运行环境（包括代码、运行时所需要的库、环境变量和配置文件等），这个打包好的运行环境就是 image 镜像文件。</p>
+</li>
+<li><p>只有通过镜像文件才能生成 Docker 容器实例。</p>
+<h3 id="4-1-2-分层的镜像"><a href="#4-1-2-分层的镜像" class="headerlink" title="4.1.2 分层的镜像"></a>4.1.2 分层的镜像</h3></li>
+<li><p>以拉取 tomcat 镜像为例，我们可以看到 Docker 的镜像好像是一层层的下载。 </p>
+</li>
+<li><p>命令： </p>
+<pre class=" language-shell"><code class="language-shell">docker pull tomcat
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866312860-160c487a-7442-475b-b24d-e193bae3da05.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=nX5gw&margin=%5Bobject%20Object%5D&originHeight=583&originWidth=761&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="4-1-3-UnionFS（联合文件系统）"><a href="#4-1-3-UnionFS（联合文件系统）" class="headerlink" title="4.1.3 UnionFS（联合文件系统）"></a>4.1.3 UnionFS（联合文件系统）</h3><blockquote>
+<p>注意：UnionFS 的实现是 aufs 存储驱动，而 aufs 是 Docker 存储驱动的简单实现，如果 Linux 内核是 4.0+ 版本，推荐使用 overlay2 存储驱动，当然我们在安装的时候已经指定了 overlay2 存储驱动。</p>
+</blockquote>
+<ul>
+<li>UnionFS（联合文件系统）：Union 文件系统（UnionFS）是一种分层、轻量级并且高性能的文件系统，它支持对文件系统的修改作为一次提交来一层层的叠加，同时可以将不同目录挂载到同一个虚拟文件系统下(unite several directories into a single virtual filesystem)。Union 文件系统是 Docker 镜像的基础。镜像可以通过分层来进行继承，基于基础镜像（scratch，没有父镜像），可以制作各种具体的应用镜像。</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866319073-4af4cc81-e73d-4c85-9098-92416cffcef3.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_15,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10/resize,w_526,limit_0#crop=0&crop=0&crop=1&crop=1&from=url&id=xcAhx&margin=%5Bobject%20Object%5D&originHeight=314&originWidth=526&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><p>特性：一次同时加载多个文件系统，但从外面看起来，只能看到一个文件系统，联合加载会把各层文件系统叠加起来，这样最终的文件系统会包含所有底层的文件和目录。</p>
+<h3 id="4-1-4-Docker-镜像的加载原理"><a href="#4-1-4-Docker-镜像的加载原理" class="headerlink" title="4.1.4 Docker 镜像的加载原理"></a>4.1.4 Docker 镜像的加载原理</h3></li>
+<li><p>Docker 的镜像实际上由一层层的文件系统组成，这种层级的文件系统就是 UnionFS 。</p>
+</li>
+<li><p>bootfs （boot file system）主要包含 bootloader 和 kernel ，bootloader 主要是引导加载 kernel ，Linux 刚启动的时候会加载 bootfs 文件系统，在 Docker 镜像的最底层是引导文件 bootfs。这一层和典型的 Linux/Unix 系统是一样的，包含 bootloader 和 kernel，当 bootloader 加载完成之后整个内核就在内存之中了，此时内存的使用权已经由 bootfs 转交给内核，此时系统也会卸载 bootfs 。</p>
+</li>
+<li><p>rootfs（root file system），在 bootfs 之上，包含的就是典型 Linux 系统中的 /dev、/proc、/etc 等标准目录和文件。rootfs 就是各种不同操作系统发行版，如：ubuntu、centos 等。</p>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866324342-1eb7ba9f-7414-4116-9132-3588abe74828.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_12,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10/resize,w_438,limit_0#crop=0&crop=0&crop=1&crop=1&from=url&id=EqJwW&margin=%5Bobject%20Object%5D&originHeight=305&originWidth=438&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>『问』平时我们安装进虚拟机的 CentOS 都是 4G 以上，为什么Docker 才 200+ MB？</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866332446-3ae0a347-8c8d-4a38-90a3-eeb9d1fd69cd.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_22,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=IrZGK&margin=%5Bobject%20Object%5D&originHeight=582&originWidth=785&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><p>『答』对于一个精简的 OS ，rootfs 可以很小，只需要包括最基本的命令、工具和程序库就可以了，因为底层直接用的宿主机的 kernel ，自己只需要提供 rootfs 就可以了。由此可见对于不同的 Linux 发行版，bootfs 基本是一致的，rootfs 会有所差别，因为不同的发行版可以共用 bootfs 。</p>
+<h3 id="4-1-5-为什么-Docker-镜像要采用这种分层结构？"><a href="#4-1-5-为什么-Docker-镜像要采用这种分层结构？" class="headerlink" title="4.1.5 为什么 Docker 镜像要采用这种分层结构？"></a>4.1.5 为什么 Docker 镜像要采用这种分层结构？</h3></li>
+<li><p>镜像分层最大的一个好处就是共享资源，方便复制迁移。</p>
+</li>
+<li><p>比如：多个镜像都是从相同的 base 镜像构建而来，那么 Docker 只需要在磁盘中保存一份 base 镜像，同时内存中也只是加载一份 base 镜像，就可以为所有容器服务了，而且镜像的每一层都可以被共享。</p>
+<h2 id="4-2-Docker-镜像的理解"><a href="#4-2-Docker-镜像的理解" class="headerlink" title="4.2 Docker 镜像的理解"></a>4.2 Docker 镜像的理解</h2></li>
+<li><p>写时复制，用时分配：<code>Docker 镜像层都是只读的，容器层是可写的</code>。</p>
+</li>
+<li><p>当容器启动的时候，一个新的可写层被加载到镜像的顶部，这一层通常被称为容器层，容器层之下的都叫做镜像层。</p>
+</li>
+<li><p>所有对容器的改动，无论添加、删除还是修改文件都只会发生在容器层中，只有容器层是可写的，容器层下面的所有镜像层都是只读的。</p>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866339467-45af26c2-5c91-44bf-8d2d-ee468d3e9490.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_14,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10/resize,w_482,limit_0#crop=0&crop=0&crop=1&crop=1&from=url&id=sajik&margin=%5Bobject%20Object%5D&originHeight=406&originWidth=482&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="4-3-使用-commit-制作镜像"><a href="#4-3-使用-commit-制作镜像" class="headerlink" title="4.3 使用 commit 制作镜像"></a>4.3 使用 commit 制作镜像</h2><ul>
+<li><p>需求：在 ubuntu 镜像（官方镜像）中添加 vim 命令，安装制作为新的镜像。</p>
+</li>
+<li><p>命令：</p>
+<pre class=" language-shell"><code class="language-shell">docker commit -m="提交的描述信息" -a="作者" 容器ID 要创建的目标镜像名:TAG
+</code></pre>
+</li>
+<li><p>示例：</p>
+</li>
+<li><p>① 拉取 ubuntu 镜像到本地：</p>
+<pre class=" language-shell"><code class="language-shell">docker pull ubuntu
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866380942-e94a2fe5-61d6-4537-9a11-ea2763884f4c.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=sMFqG&margin=%5Bobject%20Object%5D&originHeight=604&originWidth=783&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li> ② 运行 ubuntu 镜像，查看是否携带 vim 命令：<pre class=" language-shell"><code class="language-shell">docker run -it --name="ubuntu" ubuntu /bin/bash
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">vim a.txt
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866392473-c75f0a21-cd11-4732-aa22-d9d249b6f33a.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=dvJeZ&margin=%5Bobject%20Object%5D&originHeight=604&originWidth=780&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>③ 在连接互联网的情况下，在容器内部安装 vim :<pre class=" language-shell"><code class="language-shell"># 更新包管理器
+apt-get update
+</code></pre>
+<pre class=" language-shell"><code class="language-shell"># 安装 vim 命令
+apt-get -y install vim
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866401209-09e1ace6-6570-40f3-8829-d9376dbc6d88.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=Za3oE&margin=%5Bobject%20Object%5D&originHeight=603&originWidth=783&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>④ 安装完成后，commit 新的镜像：<pre class=" language-shell"><code class="language-shell">docker commit -m="安装有vim的ubuntu镜像" -a="许大仙" ubuntu xudaxian/ubuntu
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866453157-556813c7-de65-44c6-ae5a-6152b00c7971.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=bXHh3&margin=%5Bobject%20Object%5D&originHeight=603&originWidth=782&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>⑤ 启动新的镜像，并进行测试：<pre class=" language-shell"><code class="language-shell">docker run -it --name="xudaxian-ubuntu" xudaxian/ubuntu /bin/bash
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">vim a.txt
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866458251-6ed670a1-c099-4978-a2b9-9be64c142b73.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=qF1rF&margin=%5Bobject%20Object%5D&originHeight=605&originWidth=784&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="4-4-总结"><a href="#4-4-总结" class="headerlink" title="4.4 总结"></a>4.4 总结</h2><ul>
+<li>Docker 中的镜像分层，支持通过扩展现有镜像，创建新的镜像。类似于 Java 中继承一个 Base 基础类，然后自己按需扩展。</li>
+<li>新的镜像是从 base 镜像一层一层的叠加生成的。每安装一个软件，就在现有镜像的基础上增加一层。</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866436217-7861dec7-0e79-44ca-9591-c406d0eb7520.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_27,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10/resize,w_937,limit_0#crop=0&crop=0&crop=1&crop=1&from=url&id=b5ysK&margin=%5Bobject%20Object%5D&originHeight=306&originWidth=937&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h1 id="第五章：本地镜像发布到阿里云"><a href="#第五章：本地镜像发布到阿里云" class="headerlink" title="第五章：本地镜像发布到阿里云"></a>第五章：本地镜像发布到阿里云</h1><h2 id="5-1-本地镜像发布到阿里云流程"><a href="#5-1-本地镜像发布到阿里云流程" class="headerlink" title="5.1 本地镜像发布到阿里云流程"></a>5.1 本地镜像发布到阿里云流程</h2><p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866469075-e5acf904-ba63-473e-8a38-f7bfd491532c.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_18,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=fl2hi&margin=%5Bobject%20Object%5D&originHeight=535&originWidth=642&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="5-2-镜像的生成方法"><a href="#5-2-镜像的生成方法" class="headerlink" title="5.2 镜像的生成方法"></a>5.2 镜像的生成方法</h2><ul>
+<li><p>① 基于当前容器创建镜像，使用 docker commit 命令。</p>
+</li>
+<li><p>② 基于 Dockerfile 文件。</p>
+<h2 id="5-3-本地镜像推送到阿里云"><a href="#5-3-本地镜像推送到阿里云" class="headerlink" title="5.3 本地镜像推送到阿里云"></a>5.3 本地镜像推送到阿里云</h2><h3 id="5-3-1-创建仓库镜像"><a href="#5-3-1-创建仓库镜像" class="headerlink" title="5.3.1 创建仓库镜像"></a>5.3.1 创建仓库镜像</h3></li>
+<li><p>选择控制台，进入容器镜像服务。</p>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866474152-042920ce-35e1-4ef6-85e6-6f0deca1e666.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_55,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10/resize,w_937,limit_0#crop=0&crop=0&crop=1&crop=1&from=url&id=a3XtB&margin=%5Bobject%20Object%5D&originHeight=453&originWidth=937&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>选择个人实例：</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866479804-163b79d9-ee36-491e-868d-caec6dcdbd99.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_55,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=NluCE&margin=%5Bobject%20Object%5D&originHeight=929&originWidth=1920&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>命名空间：</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866488898-c2d3b3fd-6396-486a-9c54-98fbaa69e4a4.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_55,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=MixTV&margin=%5Bobject%20Object%5D&originHeight=929&originWidth=1920&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>镜像仓库：</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866499169-530f1a61-3da2-44bc-88d8-f223aba1645b.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_55,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=Z0na7&margin=%5Bobject%20Object%5D&originHeight=929&originWidth=1914&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866503685-4ef0adca-78c7-4d38-a830-2c1d9b3acd82.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_55,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=RytFz&margin=%5Bobject%20Object%5D&originHeight=929&originWidth=1920&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866508081-a473b94c-eae8-4793-b0f5-6e86cd3a0a26.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_55,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=s9hUB&margin=%5Bobject%20Object%5D&originHeight=929&originWidth=1920&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866523162-6f4b86eb-b211-4d33-b269-254565d8fd65.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_55,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=CXCkq&margin=%5Bobject%20Object%5D&originHeight=929&originWidth=1920&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="5-3-2-将镜像推送到阿里云："><a href="#5-3-2-将镜像推送到阿里云：" class="headerlink" title="5.3.2 将镜像推送到阿里云："></a>5.3.2 将镜像推送到阿里云：</h3><ul>
+<li>登录阿里云：<pre class=" language-shell"><code class="language-shell">docker login --username=**** registry.cn-shanghai.aliyuncs.com
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866534346-d0d04448-62dd-47a1-9c08-55d87a4687c8.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_22,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=CmPgW&margin=%5Bobject%20Object%5D&originHeight=606&originWidth=785&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li> 查看镜像，并给镜像打标签：<pre class=" language-shell"><code class="language-shell">docker tag [ImageId] registry.cn-shanghai.aliyuncs.com/xudaxian/xudaxian-ubuntu:[镜像版本号]
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866539025-c2cf875e-0d29-4c94-8d1f-d2b1e443fc7c.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=vQHT9&margin=%5Bobject%20Object%5D&originHeight=604&originWidth=784&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>推送镜像：<pre class=" language-shell"><code class="language-shell">docker push registry.cn-shanghai.aliyuncs.com/xudaxian/xudaxian-ubuntu:1.0
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866547100-c3f29653-059b-4297-ac2c-3972fa1ea2ab.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=QA5Gm&margin=%5Bobject%20Object%5D&originHeight=595&originWidth=972&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="5-4-将阿里云上的镜像下载到本地"><a href="#5-4-将阿里云上的镜像下载到本地" class="headerlink" title="5.4 将阿里云上的镜像下载到本地"></a>5.4 将阿里云上的镜像下载到本地</h2><ul>
+<li>删除本地镜像：<pre class=" language-shell"><code class="language-shell">docker rmi -f registry.cn-shanghai.aliyuncs.com/xudaxian/xudaxian-ubuntu:1.0
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866552381-05ae9e71-8be3-47d9-b1d3-dfd078733a9c.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=B8h4i&margin=%5Bobject%20Object%5D&originHeight=596&originWidth=973&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>下载镜像到本地：<pre class=" language-shell"><code class="language-shell">docker pull registry.cn-shanghai.aliyuncs.com/xudaxian/xudaxian-ubuntu:1.0
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866558407-33c327a8-fb43-4dc5-a911-3f0a415a7bb6.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=GMMmX&margin=%5Bobject%20Object%5D&originHeight=596&originWidth=975&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h1 id="第六章：本地镜像发布到私有库"><a href="#第六章：本地镜像发布到私有库" class="headerlink" title="第六章：本地镜像发布到私有库"></a>第六章：本地镜像发布到私有库</h1><h2 id="6-1-本地镜像发布到私有库流程"><a href="#6-1-本地镜像发布到私有库流程" class="headerlink" title="6.1 本地镜像发布到私有库流程"></a>6.1 本地镜像发布到私有库流程</h2><p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866572429-044bf9e8-190d-47a5-96f2-8dc0054b7d87.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_18,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=IlNLT&margin=%5Bobject%20Object%5D&originHeight=535&originWidth=642&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="6-2-Docker-Registry"><a href="#6-2-Docker-Registry" class="headerlink" title="6.2 Docker Registry"></a>6.2 Docker Registry</h2><ul>
+<li><p>Docker Registry 是官方提供的工具，可以用于构建私有镜像仓库。</p>
+<h2 id="6-3-将本地镜像推送到私有库"><a href="#6-3-将本地镜像推送到私有库" class="headerlink" title="6.3 将本地镜像推送到私有库"></a>6.3 将本地镜像推送到私有库</h2></li>
+<li><p>下载 Docker Registry 镜像：</p>
+<pre class=" language-shell"><code class="language-shell">docker pull registry
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866578644-42a99b4e-6731-4e99-8afd-8f6540e83b48.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=b7ZFO&margin=%5Bobject%20Object%5D&originHeight=591&originWidth=977&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>运行Docker Registry 私有库 ，相当于本地有个私有的 Docker Hub：<pre class=" language-shell"><code class="language-shell">docker run -d -p 5000:5000 --name="registry"  -v /var/registry/:/tmp/registry --privileged=true registry
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>注意：默认情况，仓库被创建在容器的 /var/lib/registry 目录下，建议自行用容器卷映射，方便于宿主机联调。</p>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866584656-77ad8e62-62fc-4ed2-8ab3-6335604e9be5.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=A2UfE&margin=%5Bobject%20Object%5D&originHeight=597&originWidth=977&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>curl 验证私服库上有什么镜像：<pre class=" language-shell"><code class="language-shell">curl -XGET http://192.168.65.100:5000/v2/_catalog
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866589389-b0014bc0-b095-42b6-918b-4f9ae7e825dd.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_28,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=Uexce&margin=%5Bobject%20Object%5D&originHeight=600&originWidth=977&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><p>命令：将镜像打标签</p>
+<pre class=" language-shell"><code class="language-shell">docker tag 镜像:Tag Host:Port/Repository:Tag
+</code></pre>
+</li>
+<li><p>示例：</p>
+<pre class=" language-shell"><code class="language-shell">docker tag xudaxian/ubuntu 192.168.65.100:5000/xudaxian-ubuntu:1.0
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866599106-fcfa78af-a4ea-416b-a9c6-def9d6beccda.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=YE4fc&margin=%5Bobject%20Object%5D&originHeight=597&originWidth=976&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>修改配置文件以支持 http ：<pre class=" language-json"><code class="language-json">sudo tee /etc/docker/daemon.json &lt;&lt;-'EOF'
+<span class="token punctuation">{</span>
+<span class="token property">"exec-opts"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"native.cgroupdriver=systemd"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>    
+<span class="token property">"registry-mirrors"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"https://du3ia00u.mirror.aliyuncs.com"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>    
+<span class="token property">"live-restore"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token property">"log-driver"</span><span class="token operator">:</span><span class="token string">"json-file"</span><span class="token punctuation">,</span>
+<span class="token property">"log-opts"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token property">"max-size"</span><span class="token operator">:</span><span class="token string">"500m"</span><span class="token punctuation">,</span> <span class="token property">"max-file"</span><span class="token operator">:</span><span class="token string">"3"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token property">"storage-driver"</span><span class="token operator">:</span> <span class="token string">"overlay2"</span><span class="token punctuation">,</span>
+<span class="token property">"insecure-registries"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">"192.168.65.100:5000"</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+EOF
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">sudo systemctl daemon-reload && sudo systemctl restart docker
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866605371-6825e6f8-afc4-4555-8c18-25c347abb6c9.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=q2jGg&margin=%5Bobject%20Object%5D&originHeight=593&originWidth=974&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li> 将本地镜像推送到私有库：<pre class=" language-shell"><code class="language-shell">docker push 192.168.65.100:5000/xudaxian-ubuntu:1.0
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866610661-67a27f8a-79e0-4ab3-9d43-5f0aecc27845.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=f39eX&margin=%5Bobject%20Object%5D&originHeight=595&originWidth=977&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>curl 验证私服库上有什么镜像：<pre class=" language-shell"><code class="language-shell">curl -XGET http://192.168.65.100:5000/v2/_catalog
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/513185/1645866615843-589549f8-2439-416e-b304-b5f0d3793d2b.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_28,text_6K645aSn5LuZ,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10#crop=0&crop=0&crop=1&crop=1&from=url&id=afVmf&margin=%5Bobject%20Object%5D&originHeight=575&originWidth=977&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>拉取本地镜像：<pre class=" language-shell"><code class="language-shell">docker pull 192.168.65.100:5000/xudaxian-ubuntu:1.0
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866621078-30deacc9-216d-4985-810a-983e1eb9250a.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=Vxfrj&margin=%5Bobject%20Object%5D&originHeight=599&originWidth=973&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h1 id="第七章：Docker-容器数据卷"><a href="#第七章：Docker-容器数据卷" class="headerlink" title="第七章：Docker 容器数据卷"></a>第七章：Docker 容器数据卷</h1><h2 id="7-1-坑"><a href="#7-1-坑" class="headerlink" title="7.1 坑"></a>7.1 坑</h2><ul>
+<li>容器卷记得加入<code>--privileged=true</code>。 </li>
+<li>Docker 挂载主机目录访问，如果出现 cannot open directory .: Permission denied ，解决方法就是在挂载目录的时候添加<code>--privileged=true</code>参数即可。 </li>
+<li>因为 CentOS 7 安全模块会之前的系统版本要强，不安全的会先禁止掉，目录挂载默认被认为是不安全的行为。如果我们要开启，一般使用<code>--privileged=true</code>，扩大容器的全局解决挂载目录没有权限的问题，即用了该参数，容器内的 root 就拥有了外部主机的真正的 root 权限；否则，容器内的 root 只是外部主机的一个普通用户。 </li>
+</ul>
+<blockquote>
+<p><code>注意</code>：学习的时候，可以使用该参数，但是如果使用 Dockerfile 来制作镜像的时候，禁止使用 root 用户来制作镜像，推荐使用普通用户制作镜像，防止被黑客攻击。</p>
+</blockquote>
+<h2 id="7-2-Docker-容器数据卷是什么？"><a href="#7-2-Docker-容器数据卷是什么？" class="headerlink" title="7.2 Docker 容器数据卷是什么？"></a>7.2 Docker 容器数据卷是什么？</h2><ul>
+<li><p>卷就是目录或文件，存在于一个或多个容器中，由 Docker 挂载到容器，但是不属于联合文件系统（UnionFS），因此能够绕过 UnionFS 提供一些用于持续存储或共享数据的特性。</p>
+</li>
+<li><p>卷的设计目的就是 数据的持久化 ，完全独立于容器的生命周期，因此 Docker 不会在容器删除的时候删除其挂载的容器数据卷。</p>
+</li>
+<li><p>命令：</p>
+<pre class=" language-shell"><code class="language-shell">docker run -it --privileged=true -v /宿主机绝对路径目录:/容器内目录 镜像名
+</code></pre>
+</li>
+<li><p>总结：将 Docker 容器内的数据保存进宿主机的磁盘中。</p>
+<h2 id="7-3-Docker-容器数据卷能干嘛？"><a href="#7-3-Docker-容器数据卷能干嘛？" class="headerlink" title="7.3 Docker 容器数据卷能干嘛？"></a>7.3 Docker 容器数据卷能干嘛？</h2></li>
+<li><p>将应用和运行的环境打包成镜像，run 后形成容器实例运行，但是我们希望 数据能够持久化 。Docker 容器产生的数据，如果不使用容器数据源，当容器实例删除之后，容器内的数据自然就丢失了，为了解决这个问题，我们使用了容器的数据卷功能。</p>
+<h2 id="7-4-Docker-容器数据卷的特点"><a href="#7-4-Docker-容器数据卷的特点" class="headerlink" title="7.4 Docker 容器数据卷的特点"></a>7.4 Docker 容器数据卷的特点</h2></li>
+<li><p>① 数据卷可以在容器之间共享或重用数据。</p>
+</li>
+<li><p>② 数据卷中的更改可以实时生效。</p>
+</li>
+<li><p>③ 数据卷中的更改不会包含在镜像的更新中。</p>
+</li>
+<li><p>④ 数据卷的生命周期一直持续到没有容器使用它为止。</p>
+<h2 id="7-5-Docker-容器数据卷案例"><a href="#7-5-Docker-容器数据卷案例" class="headerlink" title="7.5 Docker 容器数据卷案例"></a>7.5 Docker 容器数据卷案例</h2><h3 id="7-5-1-宿主机和容器之间映射添加容器数据卷"><a href="#7-5-1-宿主机和容器之间映射添加容器数据卷" class="headerlink" title="7.5.1 宿主机和容器之间映射添加容器数据卷"></a>7.5.1 宿主机和容器之间映射添加容器数据卷</h3></li>
+<li><p>命令：</p>
+<pre class=" language-shell"><code class="language-shell">docker run -it --privileged=true -v /宿主机绝对路径目录:/容器内目录 镜像名
+</code></pre>
+</li>
+<li><p>示例：</p>
+<pre class=" language-shell"><code class="language-shell">docker run -it --privileged=true -v /宿主机绝对路径目录:/容器内目录 镜像名
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866648184-d522a013-1cf3-4797-937c-eaab9777f488.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=Pu7oQ&margin=%5Bobject%20Object%5D&originHeight=594&originWidth=972&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><p>查看数据卷是否挂载成功：</p>
+<pre class=" language-shell"><code class="language-shell">docker inspect 容器ID|容器名称
+</code></pre>
+</li>
+<li><p>示例：</p>
+<pre class=" language-shell"><code class="language-shell">docker inspect ubuntu
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866653266-ea25be49-65dd-411f-9b2a-fca04a4af6ca.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=WhW6L&margin=%5Bobject%20Object%5D&originHeight=598&originWidth=975&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="7-5-2-读写规则映射添加说明"><a href="#7-5-2-读写规则映射添加说明" class="headerlink" title="7.5.2 读写规则映射添加说明"></a>7.5.2 读写规则映射添加说明</h3><ul>
+<li><p>默认情况下，容器内目录是读写（rw），对应的命令为：</p>
+<pre class=" language-shell"><code class="language-shell">docker run -it --privileged=true -v /宿主机绝对路径目录:/容器内目录:rw 镜像名
+</code></pre>
+</li>
+<li><p>如果想设置容器内目录只能读取，不能写入，可以设为只读（ro），对应的命令为（此时如果宿主机写入内容，可以同步给容器内，容器可以读取数据）：</p>
+<pre class=" language-shell"><code class="language-shell">docker run -it --privileged=true -v /宿主机绝对路径目录:/容器内目录:ro 镜像名
+</code></pre>
+<h3 id="7-5-3-容器数据卷的继承和共享"><a href="#7-5-3-容器数据卷的继承和共享" class="headerlink" title="7.5.3 容器数据卷的继承和共享"></a>7.5.3 容器数据卷的继承和共享</h3></li>
+<li><p>① 容器 1 完成和宿主机的映射：</p>
+<pre class=" language-shell"><code class="language-shell">docker run -it  --privileged=true -v /var/tmp:/tmp --name u1 ubuntu
+</code></pre>
+</li>
+<li><p> ② 容器 2 继承容器 1 的卷规则：</p>
+<pre class=" language-shell"><code class="language-shell">docker run -it  --privileged=true --volumes-from u1  --name u2 ubuntu
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>注意：继承的仅仅是容器数据卷的映射规则，容器 1 和 容器 2 之间并没其他什么关系，容器 1 挂了不会影响到 容器 2 。</p>
+</blockquote>
+<h1 id="第八章：Docker-应用常规安装"><a href="#第八章：Docker-应用常规安装" class="headerlink" title="第八章：Docker 应用常规安装"></a>第八章：Docker 应用常规安装</h1><h2 id="8-1-总体步骤"><a href="#8-1-总体步骤" class="headerlink" title="8.1 总体步骤"></a>8.1 总体步骤</h2><ul>
+<li>① 搜索镜像。</li>
+<li>② 拉取镜像。</li>
+<li>③ 查看镜像。</li>
+<li>④ 启动容器：服务端口映射。</li>
+<li>⑤ 停止容器。</li>
+<li>⑥ 移除容器。</li>
+</ul>
+<blockquote>
+<p><code>注意</code>：拉取镜像或者使用 Dockerfile 制作镜像的时候，尽量选择镜像带有<code>alpine</code>或<code>slim</code>后缀的，因为这种类型的镜像的体积相对而言比较小，更易于构建和传输。</p>
+</blockquote>
+<h2 id="8-2-安装-MySQL"><a href="#8-2-安装-MySQL" class="headerlink" title="8.2 安装 MySQL"></a>8.2 安装 MySQL</h2><ul>
+<li>搜索镜像：<pre class=" language-shell"><code class="language-shell">docker search mysql
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866663696-b8e04ed2-0b78-4952-a849-a9fea18df01a.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=PEo3G&margin=%5Bobject%20Object%5D&originHeight=540&originWidth=927&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>拉取镜像：<pre class=" language-shell"><code class="language-shell">docker pull mysql:5.7
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866668607-bfb10d20-75d8-4fb4-a951-83dc3a410698.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=mLHh5&margin=%5Bobject%20Object%5D&originHeight=543&originWidth=926&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li> 查看镜像：<pre class=" language-shell"><code class="language-shell">docker images
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866673997-30668067-6d9b-4e58-bbd8-9f387cee4dca.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=wEJGT&margin=%5Bobject%20Object%5D&originHeight=544&originWidth=927&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>启动容器：<pre class=" language-shell"><code class="language-shell">docker run -d -p 3306:3306 --name mysql5.7 -v /var/mysql5.7/conf:/etc/mysql/conf.d -v /var/mysql5.7/logs:/var/log/mysql -v /var/mysql5.7/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -e TZ=Asia/Shanghai -e MYSQL_DATABASE=ssm --restart=always mysql:5.7 --lower_case_table_names=1 --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --default-authentication-plugin=mysql_native_password
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866685814-3cc51fb6-b8ed-4b4e-b9a7-e312e5ba17b6.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=EJHAY&margin=%5Bobject%20Object%5D&originHeight=542&originWidth=926&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="8-3-安装-Tomcat"><a href="#8-3-安装-Tomcat" class="headerlink" title="8.3 安装 Tomcat"></a>8.3 安装 Tomcat</h2><ul>
+<li>搜索镜像：<pre class=" language-shell"><code class="language-shell">docker search tomcat
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866692797-6b2d71d9-f2c4-4cc1-9c17-98b17a609d67.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=sa2em&margin=%5Bobject%20Object%5D&originHeight=624&originWidth=999&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>拉取镜像：<pre class=" language-shell"><code class="language-shell">docker pull billygoo/tomcat8-jdk8
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866697884-8434c57d-08fe-4a39-a9fe-75d69f5a2626.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=bOE2d&margin=%5Bobject%20Object%5D&originHeight=618&originWidth=999&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>查看镜像：<pre class=" language-shell"><code class="language-shell">docker images
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866702512-2d1865d2-4279-4994-81a4-098631465618.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=gpCMn&margin=%5Bobject%20Object%5D&originHeight=624&originWidth=997&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>启动容器：<pre class=" language-shell"><code class="language-shell">docker run -d -p 8080:8080 --name tomcat8 billygoo/tomcat8-jdk8
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866707237-67ea7a96-d198-4427-963f-03e864922f82.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=qWTmo&margin=%5Bobject%20Object%5D&originHeight=623&originWidth=999&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="8-4-安装-Redis"><a href="#8-4-安装-Redis" class="headerlink" title="8.4 安装 Redis"></a>8.4 安装 Redis</h2><ul>
+<li>搜索镜像：<pre class=" language-shell"><code class="language-shell">docker search redis
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866712613-a6db157b-bbfd-418e-9e4a-b6d02bf97da2.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=EKCcX&margin=%5Bobject%20Object%5D&originHeight=625&originWidth=998&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>拉取镜像：<pre class=" language-shell"><code class="language-shell">docker pull redis:6.0.8
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866717675-92e1815c-0768-407b-a13d-50b9cd3c4093.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=eAnpY&margin=%5Bobject%20Object%5D&originHeight=624&originWidth=996&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>查看镜像：<pre class=" language-shell"><code class="language-shell">docker images
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866722482-a323004b-7320-433c-b552-8749ac8f0389.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=aifJy&margin=%5Bobject%20Object%5D&originHeight=624&originWidth=998&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>启动容器：<pre class=" language-shell"><code class="language-shell">docker run  -p 6379:6379 --name  redis -v /var/redis/data:/data -d redis:6.0.8 redis-server --appendonly yes --requirepass "123456"
+</code></pre>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/gif/513185/1645866727742-54fa9747-a4a5-441e-85fa-25047d73a9f0.gif#crop=0&crop=0&crop=1&crop=1&from=url&id=lVGjq&margin=%5Bobject%20Object%5D&originHeight=623&originWidth=998&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><p> 使用配置文件启动 Redis 容器：</p>
+<pre class=" language-shell"><code class="language-shell">vim /var/redis/redis.conf
+</code></pre>
+<pre class=" language-shell"><code class="language-shell"># 更多配置参照 https://raw.githubusercontent.com/redis/redis/6.0/redis.conf
+port 6379
+appendonly yes
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">docker run -p 6379:6379 --name redis -v /var/redis/data:/data -v /var/redis/redis.conf:/etc/redis/redis.conf -d redis:6.0.8 redis-server /etc/redis/redis.conf --appendonly yes
+</code></pre>
+<h1 id="第九章：其他"><a href="#第九章：其他" class="headerlink" title="第九章：其他"></a>第九章：其他</h1><h2 id="9-1-Docker-中容器的状态"><a href="#9-1-Docker-中容器的状态" class="headerlink" title="9.1 Docker 中容器的状态"></a>9.1 Docker 中容器的状态</h2></li>
+<li><p>① Created（新建）。</p>
+</li>
+<li><p>② Up（运行中）。</p>
+</li>
+<li><p>③ Pause（暂停）。</p>
+</li>
+<li><p>④ Exited（退出）。</p>
+<h2 id="9-2-docker-run-和-docker-create-的异同点"><a href="#9-2-docker-run-和-docker-create-的异同点" class="headerlink" title="9.2 docker run 和 docker create 的异同点"></a>9.2 docker run 和 docker create 的异同点</h2></li>
+<li><p>同：两个命令都可以创建容器。</p>
+</li>
+<li><p>异：docker run 创建完容器后会立即启动（常用）；docker create 创建完容器后，需要手动使用 docker start 启动容器。</p>
+<h2 id="9-3-Docker-中容器的重启策略"><a href="#9-3-Docker-中容器的重启策略" class="headerlink" title="9.3 Docker 中容器的重启策略"></a>9.3 Docker 中容器的重启策略</h2></li>
+<li><p>① no：默认策略，在容器退出时不重启容器。</p>
+</li>
+<li><p>② on-failure：在容器非正常退出时（退出状态非0），才会重启容器。</p>
+</li>
+<li><p>③ on-failure:3：在容器非正常退出时重启容器，最多重启 3 次。</p>
+</li>
+<li><p>④ always：在容器退出时总是重启容器。</p>
+</li>
+<li><p>⑤ unless-stopped：在容器退出时总是重启容器，但是不考虑在 Docker 守护进程启动时就已经停止了的容器。</p>
+</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">wst</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://409713427.github.io/2022/0706%5Bobject%20Object%5D.html">https://409713427.github.io/2022/0706%5Bobject%20Object%5D.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">wst</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/docker/">
+                                    <span class="chip bg-color">docker</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'aN7X7AuorD4PA8HAFujQcr8l-gzGzoHsz',
+        appKey: 'Ju24wK5rhavoKagg8xvPV6cM',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/0706%5Bobject%20Object%5D.html">
+                    <div class="card-image">
+                        
+                        <img src="/medias/banner/2.jpg" class="responsive-img" alt="【Docker】Docker（v20.10.x） 高级篇">
+                        
+                        <span class="card-title">【Docker】Docker（v20.10.x） 高级篇</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/docker/" class="post-category">
+                                    docker
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/032051148.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="bug/微服务项目报错 Failed to configure a DataSource ‘url‘ attribute is not specified and no embedde">
+                        
+                        <span class="card-title">bug/微服务项目报错 Failed to configure a DataSource ‘url‘ attribute is not specified and no embedde</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ShuaiTongWang
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2022</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">ShuaiTongWang</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/409713427?tab=repositories" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:409713427@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=409713427" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 409713427" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+        <!--动态线条背景-->
+<script type="text/javascript"
+color="122 103 238" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+<!--雪花飘落效果-->
+<!--<script src="/js/snow.js"></script>-->
+
+
+<!--
+<script type="text/javascript">
+    //只在桌面版网页启用特效
+    var windowWidth = $(window).width();
+    if (windowWidth > 768) {
+        document.write('<script type="text/javascript" src="/js/sakura.js"><\/script>');
+    }
+    </script>
+
+    -->
+    
+
+</body>
+
+</html>
